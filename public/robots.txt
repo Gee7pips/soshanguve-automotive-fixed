@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.soshanguve-engineering.edu.za/sitemap.xml
+
