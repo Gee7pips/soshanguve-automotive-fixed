@@ -22,4 +22,3 @@ export function logError(error: unknown, options: ErrorLoggerOptions = {}) {
   // For now, we'll just console.error
   console.error("Error:", errorObject)
 }
-

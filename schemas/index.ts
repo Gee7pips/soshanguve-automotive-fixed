@@ -4,4 +4,3 @@ import application from "./application"
 import sponsorship from "./sponsorship"
 
 export const schemaTypes = [update, contact, application, sponsorship]
-

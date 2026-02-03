@@ -36,4 +36,3 @@ export function generateMetadata(title: string, description: string) {
     },
   }
 }
-

@@ -79,4 +79,3 @@ CREATE POLICY "Enable read access for authenticated users only" ON public.sponso
 CREATE INDEX idx_contacts_created_at ON public.contacts(created_at DESC);
 CREATE INDEX idx_applications_created_at ON public.applications(created_at DESC);
 CREATE INDEX idx_sponsorships_created_at ON public.sponsorships(created_at DESC);
-

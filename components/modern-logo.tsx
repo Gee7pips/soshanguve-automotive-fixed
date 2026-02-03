@@ -69,4 +69,3 @@ export function ModernLogo() {
     </animated.svg>
   )
 }
-

@@ -52,4 +52,3 @@ function TimelineItem({ event, index }: { event: TimelineEvent; index: number })
     </animated.div>
   )
 }
-

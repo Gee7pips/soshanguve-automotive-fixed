@@ -23,4 +23,3 @@ export function DocumentDownload({ name, link }: DocumentDownloadProps) {
     </div>
   )
 }
-

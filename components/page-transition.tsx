@@ -16,4 +16,3 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   return transitions((style, item) => <animated.div style={style}>{item === pathname ? children : null}</animated.div>)
 }
-

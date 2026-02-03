@@ -34,4 +34,3 @@ export function SidebarMenuItem({ href, label, isActive, onClick, icon }: Sideba
     </motion.div>
   )
 }
-

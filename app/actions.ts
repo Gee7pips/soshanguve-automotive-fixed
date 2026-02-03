@@ -2,6 +2,7 @@
 
 import { supabaseAdmin } from "@/lib/supabase-admin"
 import { Resend } from "resend"
+import { client } from "@/lib/sanity"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -130,3 +131,21 @@ export async function submitSponsorship(data: {
   }
 }
 
+export async function getUpdates() {
+  try {
+    const updates = await client.fetch(
+      `*[_type == "update"] | order(_createdAt desc) {
+        _id,
+        title,
+        content,
+        _createdAt,
+        category,
+        "imageUrl": image.asset->url
+      }`
+    )
+    return updates
+  } catch (error) {
+    console.error("Error fetching updates:", error)
+    return []
+  }
+}
