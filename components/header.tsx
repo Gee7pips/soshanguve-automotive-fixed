@@ -37,24 +37,24 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-md border-b border-gray-100"
     >
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-3 group">
-          <div className="relative">
+        <Link href="/" className="flex items-center space-x-2 lg:space-x-3 group">
+          <div className="relative h-12 w-12 lg:h-14 lg:w-14">
             <Image
-              src="/images/fb-img-1737649315546.jpeg"
-              alt="Soshanguve Engineering School Logo"
-              width={48}
-              height={48}
-              className="rounded-lg shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105"
+              src="/images/gemini-generated-image-w3vj3ew3vj3ew3vj.jpeg"
+              alt="Soshanguve Automotive S.O.S School Crest"
+              width={56}
+              height={56}
+              className="object-contain drop-shadow-md group-hover:drop-shadow-lg group-hover:scale-110 transition-all duration-300"
               priority
             />
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-school-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-school-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md" />
           </div>
-          <div className="hidden lg:flex flex-col">
-            <span className="font-bold text-lg bg-gradient-to-r from-school-navy via-school-blue to-school-gold bg-clip-text text-transparent group-hover:from-school-gold group-hover:via-school-blue group-hover:to-school-navy transition-all duration-300">
+          <div className="hidden lg:flex flex-col justify-center">
+            <span className="font-bold text-sm lg:text-lg leading-tight bg-gradient-to-r from-school-navy via-school-blue to-school-gold bg-clip-text text-transparent group-hover:from-school-gold group-hover:via-school-blue group-hover:to-school-navy transition-all duration-300">
               Soshanguve Automotive
             </span>
-            <span className="text-xs text-gray-500 font-medium">
-              School of Specialisation
+            <span className="text-xs text-gray-600 font-semibold">
+              S.O.S
             </span>
           </div>
         </Link>
@@ -100,38 +100,43 @@ export function Header() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white p-0">
+          <SheetContent side="right" className="w-[320px] sm:w-[400px] bg-gradient-to-b from-white to-gray-50 p-0 border-l border-gray-200 shadow-xl">
             <nav className="flex flex-col h-full">
-              <div className="p-4 border-b">
+              <div className="sticky top-0 z-10 bg-gradient-to-b from-white to-gray-50/80 backdrop-blur-sm p-4 border-b border-gray-200 flex items-center space-x-3">
                 <Image
-                  src="/images/fb-img-1737649315546.jpeg"
-                  alt="Soshanguve Engineering School Logo"
-                  width={40}
-                  height={40}
-                  className="rounded-sm"
+                  src="/images/gemini-generated-image-w3vj3ew3vj3ew3vj.jpeg"
+                  alt="Soshanguve Automotive S.O.S School Crest"
+                  width={44}
+                  height={44}
+                  className="object-contain drop-shadow-md"
                   priority
                 />
+                <div className="flex flex-col">
+                  <span className="font-bold text-sm leading-tight text-school-navy">Soshanguve</span>
+                  <span className="text-xs text-gray-600">Automotive S.O.S</span>
+                </div>
               </div>
-              <div className="flex-grow overflow-y-auto py-4">
+              <div className="flex-grow overflow-y-auto py-2">
                 <AnimatePresence>
-                  {routes.map((route) => (
+                  {routes.map((route, index) => (
                     <SidebarMenuItem
                       key={route.href}
                       href={route.href}
                       label={route.label}
                       isActive={pathname === route.href}
                       onClick={() => setIsOpen(false)}
+                      index={index}
                     />
                   ))}
                 </AnimatePresence>
               </div>
-              <div className="p-4 border-t">
+              <div className="sticky bottom-0 p-4 border-t border-gray-200 bg-gradient-to-t from-white to-gray-50 backdrop-blur-sm">
                 <Link
-                  href="/support-us"
-                  className="block w-full py-2 px-4 text-center bg-gradient-to-r from-school-navy to-school-blue hover:opacity-90 transition-opacity rounded-lg text-white"
+                  href="/apply"
+                  className="block w-full py-3 px-4 text-center bg-gradient-to-r from-school-navy via-school-blue to-school-gold hover:shadow-lg hover:scale-105 transition-all duration-300 rounded-lg text-white font-semibold"
                   onClick={() => setIsOpen(false)}
                 >
-                  Support Us
+                  Apply Now
                 </Link>
               </div>
             </nav>
