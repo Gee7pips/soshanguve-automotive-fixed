@@ -13,6 +13,7 @@ import { SidebarMenuItem } from "@/components/sidebar-menu-item"
 const routes = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
+  { href: "/staff", label: "Staff" },
   { href: "/academics", label: "Academics" },
   { href: "/achievements", label: "Achievements" },
   { href: "/activities", label: "Activities" },
@@ -30,44 +31,55 @@ export function Header() {
 
   return (
     <motion.header
-      initial={{ y: 0 }}
+      initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm"
+      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-md border-b border-gray-100"
     >
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg"
-            alt="Soshanguve Engineering School Logo"
-            width={40}
-            height={40}
-            className="rounded-sm"
-            priority
-          />
-          <span className="hidden font-bold sm:inline-block bg-gradient-to-r from-school-navy to-school-blue bg-clip-text text-transparent">
-            Soshanguve Automotive
-          </span>
+      <div className="container flex h-20 items-center justify-between">
+        <Link href="/" className="flex items-center space-x-3 group">
+          <div className="relative">
+            <Image
+              src="/images/fb-img-1737649315546.jpeg"
+              alt="Soshanguve Engineering School Logo"
+              width={48}
+              height={48}
+              className="rounded-lg shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105"
+              priority
+            />
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-school-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+          <div className="hidden lg:flex flex-col">
+            <span className="font-bold text-lg bg-gradient-to-r from-school-navy via-school-blue to-school-gold bg-clip-text text-transparent group-hover:from-school-gold group-hover:via-school-blue group-hover:to-school-navy transition-all duration-300">
+              Soshanguve Automotive
+            </span>
+            <span className="text-xs text-gray-500 font-medium">
+              School of Specialisation
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
-          <div className="flex items-center space-x-1 bg-gray-50/50 backdrop-blur-sm rounded-full px-3 py-1.5 border border-gray-100/50">
+        <nav className="hidden xl:flex items-center space-x-1">
+          <div className="flex items-center space-x-1 bg-gradient-to-r from-gray-50 to-white backdrop-blur-xl rounded-full px-4 py-2 border border-gray-200/60 shadow-sm">
             {routes.map((route) => {
               const isActive = pathname === route.href
               return (
                 <Link
                   key={route.href}
                   href={route.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
-                    isActive ? "text-school-navy" : "text-gray-600 hover:text-school-navy"
+                  className={`relative px-4 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 whitespace-nowrap ${
+                    isActive 
+                      ? "text-white" 
+                      : "text-gray-700 hover:text-school-navy hover:bg-gray-100/50"
                   }`}
                 >
                   {route.label}
                   {isActive && (
                     <motion.div
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-white shadow-md rounded-full -z-10"
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                      className="absolute inset-0 bg-gradient-to-r from-school-navy via-school-blue to-school-navy shadow-lg rounded-full -z-10"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
                 </Link>
@@ -78,9 +90,13 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="relative">
-              <Menu className="h-6 w-6" />
+          <SheetTrigger asChild className="xl:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="relative hover:bg-school-navy/10 rounded-full transition-all duration-300"
+            >
+              <Menu className="h-6 w-6 text-school-navy" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
@@ -88,7 +104,7 @@ export function Header() {
             <nav className="flex flex-col h-full">
               <div className="p-4 border-b">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg"
+                  src="/images/fb-img-1737649315546.jpeg"
                   alt="Soshanguve Engineering School Logo"
                   width={40}
                   height={40}
