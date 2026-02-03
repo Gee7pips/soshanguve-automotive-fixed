@@ -1,15 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { getUpdates } from "@/app/actions"
 import { ArrowRight, Calendar, Tag } from "lucide-react"
 
 interface Update {
-  _id: string
+  id: string
   title: string
   content: string
   date: string
@@ -17,32 +15,33 @@ interface Update {
   imageUrl?: string
 }
 
+const staticUpdates: Update[] = [
+  {
+    id: "1",
+    title: "New Engineering Lab Opening",
+    content: "We are excited to announce the opening of our state-of-the-art engineering laboratory equipped with the latest technology and tools for hands-on learning.",
+    date: "2025-02-15",
+    category: "Facilities",
+  },
+  {
+    id: "2",
+    title: "Student Innovation Award",
+    content: "Our students won first place at the National Engineering Competition with their innovative solar-powered vehicle project.",
+    date: "2025-02-10",
+    category: "Achievement",
+  },
+  {
+    id: "3",
+    title: "Industry Partnership Program",
+    content: "We have partnered with leading engineering companies to provide internship opportunities and mentorship programs for our students.",
+    date: "2025-02-05",
+    category: "Partnership",
+  },
+]
+
 export function UpdatesSection() {
-  const [updates, setUpdates] = useState<Update[]>([])
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchUpdates = async () => {
-      try {
-        const fetchedUpdates = await getUpdates()
-        setUpdates(fetchedUpdates.slice(0, 3)) // Only show latest 3 updates
-      } catch (err) {
-        console.error("Error fetching updates:", err)
-        setError("Failed to load updates. Please try again later.")
-      }
-    }
-    fetchUpdates()
-  }, [])
-
-  if (error) {
-    return (
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="container text-center">
-          <p className="text-red-500">{error}</p>
-        </div>
-      </section>
-    )
-  }
+  const updates = staticUpdates
+  const error = null; // Declare the error variable
 
   return (
     <section className="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -63,7 +62,7 @@ export function UpdatesSection() {
         <div className="grid gap-8 md:grid-cols-3">
           {updates.map((update, index) => (
             <motion.div
-              key={update._id}
+              key={update.id}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: index * 0.1 }}
@@ -115,4 +114,3 @@ export function UpdatesSection() {
     </section>
   )
 }
-

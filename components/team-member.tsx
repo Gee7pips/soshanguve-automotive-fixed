@@ -43,4 +43,3 @@ export function TeamMember({ name, role, image, description }: TeamMemberProps) 
     </animated.div>
   )
 }
-

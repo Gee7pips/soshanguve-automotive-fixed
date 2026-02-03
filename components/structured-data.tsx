@@ -43,4 +43,3 @@ export function StructuredData() {
     </Script>
   )
 }
-

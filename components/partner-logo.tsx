@@ -42,4 +42,3 @@ export function PartnerLogo({ src, alt, width, height }: PartnerLogoProps) {
     </animated.div>
   )
 }
-

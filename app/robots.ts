@@ -10,4 +10,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: "https://www.soshanguve-automotive.edu.za/sitemap.xml",
   }
 }
-

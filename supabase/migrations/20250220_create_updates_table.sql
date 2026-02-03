@@ -43,4 +43,3 @@ CREATE TRIGGER update_updates_updated_at
   BEFORE UPDATE ON updates
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();
-

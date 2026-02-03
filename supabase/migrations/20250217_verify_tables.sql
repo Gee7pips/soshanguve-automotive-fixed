@@ -116,4 +116,3 @@ $$;
 CREATE INDEX IF NOT EXISTS idx_contacts_created_at ON public.contacts(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_applications_created_at ON public.applications(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_sponsorships_created_at ON public.sponsorships(created_at DESC);
-

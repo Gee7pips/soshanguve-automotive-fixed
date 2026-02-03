@@ -5,4 +5,3 @@ export const metadata: Metadata = {
   description:
     "Join us in shaping the future of engineering education. Your support can make a significant impact on our students and community.",
 }
-

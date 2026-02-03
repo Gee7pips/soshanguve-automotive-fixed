@@ -142,4 +142,3 @@ VALUES (
     'Test Corp', 'Financial', 'Testing the sponsorship system'
 )
 ON CONFLICT DO NOTHING;
-

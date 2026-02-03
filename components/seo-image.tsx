@@ -17,4 +17,3 @@ export function SEOImage({ alt, title, ...props }: SEOImageProps) {
     />
   )
 }
-

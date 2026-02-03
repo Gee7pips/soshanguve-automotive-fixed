@@ -51,11 +51,10 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
     <>
       <Header />
       <AnimatePresence mode="wait">
-        <main className="flex-grow relative z-0 overflow-hidden">{children}</main>
+        <main className="flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28">{children}</main>
       </AnimatePresence>
       <Footer />
       <StructuredData />
     </>
   )
 }
-

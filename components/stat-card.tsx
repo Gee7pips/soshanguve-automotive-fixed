@@ -32,4 +32,3 @@ export function StatCard({ value, label, description }: StatCardProps) {
     </animated.div>
   )
 }
-

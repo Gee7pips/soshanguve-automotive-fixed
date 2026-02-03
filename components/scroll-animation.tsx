@@ -27,4 +27,3 @@ export function ScrollAnimation({ children, className }: ScrollAnimationProps) {
     </animated.div>
   )
 }
-

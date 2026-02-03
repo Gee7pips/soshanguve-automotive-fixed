@@ -1,6 +1,7 @@
 "use client"
 
 import { Hero } from "@/components/hero"
+import { MatricResultsSection } from "@/components/matric-results-section"
 import { WelcomeSection } from "@/components/welcome-section"
 import { CampusLife } from "@/components/campus-life"
 import { AchievementsSection } from "@/components/achievements-section"
@@ -21,6 +22,7 @@ export default function HomePageClient() {
   return (
     <div className="bg-gradient-to-b from-gray-50 via-white to-gray-50">
       <Hero />
+      <MatricResultsSection />
       <WelcomeSection />
       <InnovationSection />
       <CampusLife />
@@ -29,11 +31,11 @@ export default function HomePageClient() {
           <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-gradient-to-r from-school-navy to-school-blue bg-clip-text text-transparent">
-                A Beacon of Excellence in Engineering Education
+                A Beacon of Excellence in Automotive Education
               </h2>
               <p className="text-gray-600 md:text-lg">
                 With a rich history spanning decades in the Tshwane area, our institution underwent a transformative
-                evolution in 2019 when it became Soshanguve Engineering School of Specialisation. This strategic
+                evolution in 2019 when it became Soshanguve Automotive School of Specialisation. This strategic
                 transformation, as part of the Gauteng Department of Education's initiative, positioned us as one of 39
                 specialisation schools in the province.
               </p>
@@ -54,7 +56,7 @@ export default function HomePageClient() {
                 <Button
                   asChild
                   variant="outline"
-                  className="rounded-full hover:bg-school-navy hover:text-white transition-all duration-300 hover:scale-105"
+                  className="rounded-full hover:bg-school-navy hover:text-white transition-all duration-300 hover:scale-105 bg-transparent"
                 >
                   <Link href="/contact">Contact Us</Link>
                 </Button>
@@ -85,4 +87,3 @@ export default function HomePageClient() {
     </div>
   )
 }
-
