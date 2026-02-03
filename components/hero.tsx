@@ -61,7 +61,7 @@ export function Hero() {
                 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white"
               >
                 <span className="bg-gradient-to-r from-school-gold to-yellow-300 bg-clip-text text-transparent">
-                  Soshanguve Engineering
+                  Soshanguve Automotive
                 </span>
                 <br />
                 <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">School Of Specialisation</span>

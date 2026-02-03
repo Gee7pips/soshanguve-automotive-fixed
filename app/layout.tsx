@@ -12,12 +12,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.soshanguve-engineering.edu.za"),
+  metadataBase: new URL("https://www.soshanguve-automotive.edu.za"),
   title: {
-    default: "Soshanguve Engineering School of Specialisation",
-    template: "%s | Soshanguve Engineering School",
+    default: "Soshanguve Automotive School of Specialisation",
+    template: "%s | Soshanguve Automotive School",
   },
-  description: "Empowering Future Innovators in Engineering Education",
+  description: "Empowering Future Innovators in Automotive and Engineering Education",
   keywords: [
     "automotive school",
     "technical education",
@@ -51,10 +51,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_ZA",
-    url: "https://www.soshanguve-engineering.edu.za",
-    title: "Soshanguve Engineering School of Specialisation",
-    description: "Empowering Future Innovators in Engineering Education",
-    siteName: "Soshanguve Engineering School",
+    url: "https://www.soshanguve-automotive.edu.za",
+    title: "Soshanguve Automotive School of Specialisation",
+    description: "Empowering Future Innovators in Automotive and Engineering Education",
+    siteName: "Soshanguve Automotive School",
     images: [
       {
         url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg",
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Soshanguve Engineering School of Specialisation",
-    description: "Empowering Future Innovators in Engineering Education",
+    title: "Soshanguve Automotive School of Specialisation",
+    description: "Empowering Future Innovators in Automotive and Engineering Education",
     images: [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg",
     ],
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
   verification: {
     google: "google-site-verification-code", // Add your Google verification code
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
