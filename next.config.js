@@ -16,12 +16,6 @@ const nextConfig = {
     optimisticClientCache: true,
   },
   webpack: (config, { dev, isServer }) => {
-    // Optimize CSS
-    config.module.rules.push({
-      test: /\.css$/,
-      use: ["style-loader", "css-loader", "postcss-loader"],
-    })
-
     // Production optimizations
     if (!dev && !isServer) {
       // Enable tree shaking
