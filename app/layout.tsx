@@ -11,7 +11,83 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.soshanguve-automotive.edu.za"),
+  title: {
+    default: "Soshanguve Automotive School of Specialisation",
+    template: "%s | Soshanguve Automotive School",
+  },
+  description: "Empowering Future Innovators in Automotive and Engineering Education",
+  keywords: [
+    "automotive school",
+    "technical education",
+    "engineering school",
+    "Soshanguve",
+    "specialisation school",
+    "STEM education",
+    "South Africa education",
+  ],
+  authors: [{ name: "Soshanguve Automotive School" }],
+  creator: "Soshanguve Automotive School",
+  publisher: "Soshanguve Automotive School",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
+  themeColor: "#1E3A8A",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_ZA",
+    url: "https://www.soshanguve-automotive.edu.za",
+    title: "Soshanguve Automotive School of Specialisation",
+    description: "Empowering Future Innovators in Automotive and Engineering Education",
+    siteName: "Soshanguve Automotive School",
+    images: [
+      {
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Soshanguve Automotive School",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Soshanguve Automotive School of Specialisation",
+    description: "Empowering Future Innovators in Automotive and Engineering Education",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg",
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google-site-verification-code",
+  },
+  generator: 'v0.app'
+}
 
 export default function RootLayout({
   children,
