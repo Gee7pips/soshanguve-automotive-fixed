@@ -12,7 +12,7 @@ import { VideoSection } from "@/components/video-section"
 import { motion } from "framer-motion"
 
 const stats = [
-  { label: "Matric Pass Rate", value: "99.3%", description: "2024 Results" },
+  { label: "Matric Pass Rate", value: "100%", description: "2025 Results" },
   { label: "Student Capacity", value: "700+", description: "Annual Enrollment" },
   { label: "Specialized Programs", value: "9", description: "Technical Fields" },
   { label: "Years of Excellence", value: "5+", description: "Since Establishment" },
@@ -62,8 +62,8 @@ export default function HomePageClient() {
               <p className="text-gray-600 leading-relaxed">
                 Under the visionary leadership of Principal Mr. TA Mashiane, we&apos;ve established ourselves as a
                 cornerstone of technical education. Our non-fee-paying model ensures quality education remains
-                accessible to all 700 learners from Soshanguve township and surrounding areas, with a remarkable
-                99.3% matric pass rate in 2024.
+                accessible to all 700 learners from Soshanguve township and surrounding areas, achieving a historic
+                100% matric pass rate in 2025.
               </p>
               <div className="flex gap-4 pt-2">
                 <Button
