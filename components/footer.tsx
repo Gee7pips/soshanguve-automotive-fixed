@@ -1,13 +1,21 @@
 import Link from "next/link"
-import { Facebook, Instagram, Mail, Phone, MapPin, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { Facebook, Instagram, Mail, Phone, MapPin, ArrowUpRight, ChevronRight } from "lucide-react"
 
 const quickLinks = [
-  { name: "About", href: "/about" },
+  { name: "About Us", href: "/about" },
   { name: "Programs", href: "/programs" },
   { name: "Achievements", href: "/achievements" },
   { name: "Activities", href: "/activities" },
+  { name: "Staff", href: "/staff" },
   { name: "Contact", href: "/contact" },
+]
+
+const resourceLinks = [
+  { name: "Apply Now", href: "/apply" },
+  { name: "Documents", href: "/documents" },
+  { name: "Partnerships", href: "/partnerships" },
+  { name: "Support Us", href: "/support-us" },
 ]
 
 const socialLinks = [
@@ -15,13 +23,11 @@ const socialLinks = [
     name: "Facebook",
     href: "https://www.facebook.com/SoshaTechnical/",
     icon: Facebook,
-    color: "hover:text-blue-400",
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/technical_matrics?igsh=czMxOTZ1b20wbXNu",
     icon: Instagram,
-    color: "hover:text-pink-500",
   },
 ]
 
@@ -31,75 +37,85 @@ const contactInfo = [
     label: "Email",
     value: "700241314@gdeschools.gov.za",
     href: "mailto:700241314@gdeschools.gov.za",
-    color: "hover:text-blue-300",
   },
   {
     icon: Phone,
     label: "Phone",
     value: "012 797 2118",
     href: "tel:0127972118",
-    color: "hover:text-green-300",
   },
   {
     icon: MapPin,
     label: "Address",
     value: "1669 Block L, Soshanguve",
     href: "https://maps.google.com/?q=1669+Block+L,+Soshanguve",
-    color: "hover:text-red-300",
   },
 ]
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-school-navy via-school-blue to-school-navy" />
+    <footer className="relative bg-school-navy text-white overflow-hidden">
+      {/* Gold top accent bar */}
+      <div className="h-1 w-full bg-school-gold" />
 
-      {/* Decorative elements */}
-      <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-school-navy/80 to-transparent" />
+      {/* Subtle textured overlay */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="container relative z-10 mx-auto py-16 px-4">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* School Info */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Soshanguve Automotive
-              </h3>
-              <p className="mt-2 text-gray-300 leading-relaxed">
-                Empowering future innovators through excellence in automotive and engineering education.
-              </p>
-            </div>
-            <div className="flex space-x-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* Main footer grid */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 py-16 lg:py-20">
+
+          {/* Column 1: Brand */}
+          <div className="lg:col-span-1 space-y-6">
+            <Link href="/" className="flex items-center gap-4 group">
+              <div className="relative h-16 w-16 flex-shrink-0 rounded-xl bg-white/10 border border-school-gold/30 p-1.5 flex items-center justify-center transition-all duration-300 group-hover:border-school-gold/60">
+                <Image
+                  src="/images/soshanguve-logo.jpg"
+                  alt="Soshanguve Automotive S.O.S School Crest"
+                  width={56}
+                  height={56}
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <p className="font-serif text-base font-700 leading-tight text-white">Soshanguve</p>
+                <p className="text-xs font-semibold tracking-widest uppercase text-school-gold">Automotive S.O.S</p>
+              </div>
+            </Link>
+
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
+              Empowering future innovators through excellence in automotive and engineering education since 2019.
+            </p>
+
+            {/* Social links */}
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
-                <Button
+                <Link
                   key={social.name}
-                  asChild
-                  variant="ghost"
-                  size="icon"
-                  className={`rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 ${social.color}`}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="h-9 w-9 flex items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/60 hover:border-school-gold/60 hover:bg-school-gold/10 hover:text-school-gold transition-all duration-300"
                 >
-                  <Link href={social.href} target="_blank" rel="noopener noreferrer">
-                    <social.icon className="h-5 w-5" />
-                    <span className="sr-only">{social.name}</span>
-                  </Link>
-                </Button>
+                  <social.icon className="h-4 w-4" />
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white">Quick Links</h3>
-            <ul className="space-y-3">
+          {/* Column 2: Quick Links */}
+          <div className="space-y-5">
+            <h3 className="text-xs font-bold tracking-[0.18em] uppercase text-school-gold">Quick Links</h3>
+            <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
+                    className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors duration-200"
                   >
-                    <span className="w-2 h-2 rounded-full bg-school-gold mr-2 transform scale-0 group-hover:scale-100 transition-transform duration-200" />
+                    <ChevronRight className="h-3.5 w-3.5 text-school-gold/50 group-hover:text-school-gold group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
                     {link.name}
                   </Link>
                 </li>
@@ -107,62 +123,84 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white">Contact Us</h3>
+          {/* Column 3: Resources */}
+          <div className="space-y-5">
+            <h3 className="text-xs font-bold tracking-[0.18em] uppercase text-school-gold">Resources</h3>
+            <ul className="space-y-2.5">
+              {resourceLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors duration-200"
+                  >
+                    <ChevronRight className="h-3.5 w-3.5 text-school-gold/50 group-hover:text-school-gold group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA block */}
+            <div className="mt-6 pt-6 border-t border-white/10">
+              <p className="text-xs text-white/50 mb-3 leading-relaxed">
+                Help shape the future of technical education in South Africa.
+              </p>
+              <Link
+                href="/support-us"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-school-gold hover:text-white border border-school-gold/40 hover:border-school-gold hover:bg-school-gold px-4 py-2 rounded-full transition-all duration-300"
+              >
+                Become a Sponsor
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div className="space-y-5">
+            <h3 className="text-xs font-bold tracking-[0.18em] uppercase text-school-gold">Contact Us</h3>
             <ul className="space-y-4">
               {contactInfo.map((contact) => (
                 <li key={contact.label}>
                   <Link
                     href={contact.href}
-                    target={contact.icon !== MapPin ? "_blank" : undefined}
+                    target={contact.icon === MapPin ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className={`group flex items-center space-x-3 text-gray-300 ${contact.color} transition-colors duration-200`}
+                    className="group flex items-start gap-3"
                   >
-                    <div className="p-2 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors duration-200">
-                      <contact.icon className="h-4 w-4" />
+                    <span className="flex-shrink-0 h-8 w-8 rounded-lg bg-school-gold/10 border border-school-gold/20 flex items-center justify-center group-hover:bg-school-gold/20 group-hover:border-school-gold/40 transition-all duration-300">
+                      <contact.icon className="h-3.5 w-3.5 text-school-gold" />
+                    </span>
+                    <div>
+                      <p className="text-[10px] font-semibold tracking-widest uppercase text-white/30 mb-0.5">{contact.label}</p>
+                      <p className="text-sm text-white/70 group-hover:text-white transition-colors duration-200 leading-snug">
+                        {contact.value}
+                      </p>
                     </div>
-                    <span>{contact.value}</span>
-                    {contact.icon !== Phone && (
-                      <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    )}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Newsletter/CTA Section */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-white">Support Our Vision</h3>
-            <p className="text-gray-300 leading-relaxed">
-              Join us in shaping the future of technical education in South Africa.
-            </p>
-            <Button
-              asChild
-              className="w-full bg-school-gold hover:bg-yellow-500 text-school-navy font-semibold rounded-full transition-all duration-300 hover:scale-105"
-            >
-              <Link href="/support-us">Become a Sponsor</Link>
-            </Button>
-          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Soshanguve Engineering School of Specialisation. All rights reserved.
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 py-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-xs text-white/35">
+              &copy; {new Date().getFullYear()} Soshanguve Engineering School of Specialisation. All rights reserved.
             </p>
-            <div className="flex space-x-6">
-              <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <div className="flex items-center gap-6">
+              <Link href="/privacy" className="text-xs text-white/35 hover:text-white/70 transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <span className="text-white/15">|</span>
+              <Link href="/terms" className="text-xs text-white/35 hover:text-white/70 transition-colors duration-200">
                 Terms of Service
               </Link>
             </div>
           </div>
         </div>
+
       </div>
     </footer>
   )

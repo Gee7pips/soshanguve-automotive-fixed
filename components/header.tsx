@@ -49,7 +49,7 @@ export function Header() {
               className="relative h-20 w-20 lg:h-24 lg:w-24 rounded-2xl bg-gradient-to-br from-school-navy/10 to-school-gold/10 backdrop-blur-sm p-2 flex items-center justify-center border border-school-gold/20 shadow-lg hover:shadow-xl transition-shadow"
             >
               <Image
-                src="/images/fb-img-1770099205683.jpg"
+                src="/images/soshanguve-logo.jpg"
                 alt="Soshanguve Automotive S.O.S School Crest"
                 width={96}
                 height={96}
@@ -149,7 +149,7 @@ export function Header() {
                     <div className="flex items-center gap-4">
                       <div className="relative h-14 w-14 rounded-xl bg-gradient-to-br from-school-navy/10 to-school-gold/10 p-1.5 flex items-center justify-center border border-school-gold/20">
                         <Image
-                          src="/images/fb-img-1770099205683.jpg"
+                          src="/images/soshanguve-logo.jpg"
                           alt="Soshanguve Automotive S.O.S"
                           width={56}
                           height={56}
