@@ -5,12 +5,14 @@ import { motion } from "framer-motion"
 interface PageHeaderProps {
   title: string
   subtitle?: string
+  description?: string
   backgroundImage?: string
 }
 
 export function PageHeader({
   title,
   subtitle,
+  description,
   backgroundImage = "/placeholder.svg?height=400&width=1920",
 }: PageHeaderProps) {
   return (
@@ -36,6 +38,7 @@ export function PageHeader({
         >
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">{title}</h1>
           {subtitle && <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl">{subtitle}</p>}
+          {description && <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl">{description}</p>}
         </motion.div>
       </div>
     </section>
