@@ -6,6 +6,7 @@ import { WelcomeSection } from "@/components/welcome-section"
 import { CampusLife } from "@/components/campus-life"
 import { AchievementsSection } from "@/components/achievements-section"
 import { InnovationSection } from "@/components/innovation-section"
+import { SubjectOfferings } from "@/components/subject-offerings"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { VideoSection } from "@/components/video-section"
@@ -25,6 +26,7 @@ export default function HomePageClient() {
       <MatricResultsSection />
       <WelcomeSection />
       <InnovationSection />
+      <SubjectOfferings />
       <CampusLife />
 
       {/* About / Stats Section */}
@@ -49,21 +51,21 @@ export default function HomePageClient() {
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance">
-                A Beacon of Excellence in Automotive Education
+                Where Township Ambition Meets World-Class Engineering
               </h2>
 
               <div className="w-12 h-0.5 bg-school-gold" />
 
               <p className="text-gray-600 leading-relaxed text-lg">
-                With a rich history spanning decades in the Tshwane area, our institution underwent a transformative
-                evolution in 2019 when it became Soshanguve Automotive School of Specialisation — one of 39
-                specialisation schools in Gauteng.
+                Born from a decades-long legacy in Tshwane, Soshanguve Automotive SoS was formally designated as one
+                of Gauteng&apos;s 39 specialisation schools in 2019 — a mandate to produce the technical talent that
+                South Africa&apos;s economy demands.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Under the visionary leadership of Principal Mr. TA Mashiane, we&apos;ve established ourselves as a
-                cornerstone of technical education. Our non-fee-paying model ensures quality education remains
-                accessible to all 700 learners from Soshanguve township and surrounding areas, achieving a historic
-                100% matric pass rate in 2025.
+                Under the visionary stewardship of Principal Mr. TA Mashiane, we have built an institution where
+                excellence is non-negotiable and opportunity knows no postal code. Our non-fee-paying model opens
+                world-class technical education to over 700 learners from Soshanguve and surrounding communities —
+                culminating in a historic 100% matric pass rate for the Class of 2025.
               </p>
               <div className="flex gap-4 pt-2">
                 <Button

@@ -101,7 +101,7 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="mx-auto max-w-[620px] text-white/70 md:text-xl leading-relaxed text-pretty font-sans"
               >
-                Empowering future innovators and shaping tomorrow&apos;s leaders through excellence in technical education.
+                Gauteng&apos;s premier technical school — producing world-class engineers, innovators, and entrepreneurs from the heart of Soshanguve since 2019.
               </motion.p>
 
               {/* CTA buttons */}
