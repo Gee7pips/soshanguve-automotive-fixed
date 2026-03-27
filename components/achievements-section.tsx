@@ -60,10 +60,10 @@ export function AchievementsSection() {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance">
-              Our Achievements
+              A Trophy Case Built by Learners
             </h2>
             <p className="text-gray-500 max-w-xs leading-relaxed sm:text-right">
-              Celebrating excellence in innovation, research, and technical education
+              From national championships to international podiums — these milestones belong to every learner who ever stayed late in the workshop
             </p>
           </div>
           <div className="w-12 h-0.5 bg-school-gold mt-5" />
@@ -126,11 +126,11 @@ export function AchievementsSection() {
               Inspiring the Next Generation
             </p>
             <h3 className="font-serif text-2xl lg:text-3xl font-bold text-white mb-3 text-balance">
-              Inspiring Future Innovators
+              The Best is Still Ahead
             </h3>
             <p className="text-white/75 text-base mb-6 max-w-xl leading-relaxed">
-              Our students consistently excel in national and international competitions, showcasing innovative
-              solutions to real-world problems.
+              These achievements are not endpoints — they are proof of what is possible when ambition is met with
+              proper resources, expert guidance, and an unshakeable belief in South Africa&apos;s youth.
             </p>
             <Button
               asChild

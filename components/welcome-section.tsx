@@ -88,22 +88,23 @@ export function WelcomeSection() {
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance">
-                Investing in{" "}
+                Engineering the Future,{" "}
                 <span className="text-school-blue">
-                  Tomorrow&apos;s Innovators
+                  One Learner at a Time
                 </span>
               </h2>
 
               <div className="w-12 h-0.5 bg-school-gold" />
 
               <p className="text-lg text-gray-500 font-medium">
-                Nurturing Dreams, Empowering Futures, One Student at a Time
+                Where Soshanguve&apos;s potential meets the standards of global industry
               </p>
 
               <p className="text-gray-600 leading-relaxed">
-                Our students don&apos;t just learn engineering — they build the future. From electric vehicles to
-                sustainable energy solutions, we&apos;re cultivating the next generation of technical innovators and
-                entrepreneurs who will lead South Africa forward.
+                Our learners do not simply study engineering — they live it. From rebuilding engines at BMW-standard
+                workstations to programming PLCs and constructing solar-powered trains, every day at Soshanguve
+                Automotive SoS is a rehearsal for a high-impact career. We are not producing graduates — we are
+                producing the technicians, engineers, and entrepreneurs who will define South Africa&apos;s next chapter.
               </p>
 
               <div className="flex gap-4 pt-2">
@@ -154,7 +155,7 @@ export function WelcomeSection() {
 
               <div className="text-center space-y-4 mt-8">
                 <p className="text-base text-gray-700 font-semibold font-serif">
-                  Your support fuels the dreams of tomorrow&apos;s innovators.
+                  Every contribution accelerates a learner&apos;s journey from the classroom to the career floor.
                 </p>
                 <motion.div ref={donateButtonRef} whileTap={{ scale: 0.95 }}>
                   <Button

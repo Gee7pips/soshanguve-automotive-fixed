@@ -9,27 +9,27 @@ import { ArrowRight } from "lucide-react"
 const features = [
   {
     index: "01",
-    title: "Award-Winning Innovation",
+    title: "Recognised on the National Stage",
     description:
-      "Our students consistently excel in national and international competitions, bringing recognition and pride to Soshanguve and South Africa as a whole.",
+      "From the SAGE South Africa championship to international clean-tech recognition in Abu Dhabi, our learners compete — and win — at the highest levels. Each trophy is proof that excellence in Soshanguve translates anywhere on earth.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1739093388684.jpg-LZVsV7QLZLLAdDFqCjrCvKGoCEZsjk.jpeg",
     alt: "Students receiving SAGE entrepreneurship awards with ceremonial checks",
   },
   {
     index: "02",
-    title: "Hands-On Experience",
+    title: "Industry-Standard, Hands-On Mastery",
     description:
-      "Real-world training with industry-standard equipment and vehicles prepares our learners for the demands of the modern automotive and engineering sectors.",
+      "Theory without practice is incomplete. Our learners work on real vehicle chassis, programme actual PLCs, and fabricate components on professional-grade machinery — the same equipment they will encounter on the shop floor on their first day of employment.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-02-09-11-30-31-91_a23b203fd3aafc6dcb84e438dda678b6.jpg-yt5q9iMB6WMqsswYXx2nfIzyVxfTrN.jpeg",
     alt: "Students with automotive project",
   },
   {
     index: "03",
-    title: "Cutting-Edge Technology",
+    title: "Technology That Belongs to the Future",
     description:
-      "Access to modern tools including VR and AR technologies provides an immersive learning environment that bridges the gap between classroom theory and industry practice.",
+      "VR Welding Simulators. CAD workstations. Coding and Robotics labs. Soshanguve Automotive SoS does not merely teach the curriculum — we equip learners with the digital fluency demanded by Industry 4.0 and the electrified economy that awaits them.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1739092938017.jpg-wXZYdCdK9Z49HGVIidqamZyRyAwmrS.jpeg",
     alt: "Student using VR technology",
@@ -56,11 +56,11 @@ export function InnovationSection() {
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance max-w-xl">
-              Empowering Tomorrow&apos;s Innovators
+              What Separates Good Schools from Great Ones
             </h2>
             <p className="text-gray-500 max-w-sm leading-relaxed lg:text-right">
-              At Soshanguve Automotive School, we&apos;re not just teaching — we&apos;re shaping the future of
-              technology and innovation in South Africa.
+              At Soshanguve Automotive SoS, we do not simply offer an education — we construct the conditions in which
+              extraordinary young people can discover what they are truly capable of.
             </p>
           </div>
           <div className="w-12 h-0.5 bg-school-gold mt-6" />
