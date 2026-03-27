@@ -4,25 +4,32 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 const features = [
   {
+    index: "01",
     title: "Award-Winning Innovation",
-    description: "Our students consistently excel in national and international competitions",
+    description:
+      "Our students consistently excel in national and international competitions, bringing recognition and pride to Soshanguve and South Africa as a whole.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1739093388684.jpg-LZVsV7QLZLLAdDFqCjrCvKGoCEZsjk.jpeg",
     alt: "Students receiving SAGE entrepreneurship awards with ceremonial checks",
   },
   {
-    title: "Hands-on Experience",
-    description: "Real-world training with industry-standard equipment and vehicles",
+    index: "02",
+    title: "Hands-On Experience",
+    description:
+      "Real-world training with industry-standard equipment and vehicles prepares our learners for the demands of the modern automotive and engineering sectors.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot_2025-02-09-11-30-31-91_a23b203fd3aafc6dcb84e438dda678b6.jpg-yt5q9iMB6WMqsswYXx2nfIzyVxfTrN.jpeg",
     alt: "Students with automotive project",
   },
   {
+    index: "03",
     title: "Cutting-Edge Technology",
-    description: "Access to modern tools including VR/AR for enhanced learning",
+    description:
+      "Access to modern tools including VR and AR technologies provides an immersive learning environment that bridges the gap between classroom theory and industry practice.",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1739092938017.jpg-wXZYdCdK9Z49HGVIidqamZyRyAwmrS.jpeg",
     alt: "Student using VR technology",
@@ -31,74 +38,92 @@ const features = [
 
 export function InnovationSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="container">
+    <section className="py-24 lg:py-32 bg-white overflow-hidden">
+      <div className="container max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-school-navy to-school-blue bg-clip-text text-transparent mb-6">
-            Empowering Tomorrow's Innovators
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            At Soshanguve Engineering School, we're not just teaching – we're shaping the future of technology and
-            innovation in South Africa.
-          </p>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="h-px w-8 bg-school-gold" />
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-school-gold">
+              What Sets Us Apart
+            </span>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance max-w-xl">
+              Empowering Tomorrow&apos;s Innovators
+            </h2>
+            <p className="text-gray-500 max-w-sm leading-relaxed lg:text-right">
+              At Soshanguve Automotive School, we&apos;re not just teaching — we&apos;re shaping the future of
+              technology and innovation in South Africa.
+            </p>
+          </div>
+          <div className="w-12 h-0.5 bg-school-gold mt-6" />
         </motion.div>
 
-        <div className="grid gap-16 md:gap-24">
+        {/* Feature rows */}
+        <div className="grid gap-20 lg:gap-28">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 48 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+              }`}
             >
-              <div className={`space-y-6 ${index % 2 === 1 ? "md:order-2" : ""}`}>
-                <motion.h3
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="text-3xl font-bold text-school-navy"
-                >
-                  {feature.title}
-                </motion.h3>
-                <motion.p
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-gray-600"
-                >
-                  {feature.description}
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="flex gap-4"
-                >
+              {/* Text side */}
+              <div className="space-y-5">
+                {/* Editorial number */}
+                <span className="font-serif text-7xl font-bold text-school-navy/8 leading-none select-none">
+                  {feature.index}
+                </span>
+
+                <div className="-mt-8">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-school-navy mb-4 leading-tight">
+                    {feature.title}
+                  </h3>
+                  <div className="w-8 h-0.5 bg-school-gold mb-5" />
+                  <p className="text-gray-600 leading-relaxed text-lg">
+                    {feature.description}
+                  </p>
+                </div>
+
+                <div className="pt-2">
                   <Button
                     asChild
-                    className="bg-gradient-to-r from-school-navy to-school-blue hover:from-school-blue hover:to-school-navy text-white rounded-full"
+                    variant="ghost"
+                    className="group px-0 text-school-navy hover:text-school-blue hover:bg-transparent font-semibold"
                   >
-                    <Link href="/learn-more">Learn More</Link>
+                    <Link href="/programs" className="flex items-center gap-2">
+                      Discover Programs
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                    </Link>
                   </Button>
-                </motion.div>
+                </div>
               </div>
+
+              {/* Image side */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.93 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className={`relative ${index % 2 === 1 ? "md:order-1" : ""}`}
+                transition={{ duration: 0.6 }}
+                className="relative"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                  {/* Gold top bar on image */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-school-gold z-10" />
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.5 }}
                     className="relative aspect-[4/3]"
                   >
                     <Image
@@ -108,24 +133,16 @@ export function InnovationSection() {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="absolute inset-0 flex items-end p-6"
-                  >
-                    <p className="text-white text-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {feature.description}
-                    </p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-school-navy/50 via-school-navy/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                   </motion.div>
                 </div>
-                <div className="absolute -inset-4 bg-gradient-to-r from-school-navy to-school-blue opacity-10 blur-2xl rounded-3xl -z-10" />
+                {/* Subtle navy shadow blob */}
+                <div className="absolute -inset-4 bg-school-navy/6 blur-3xl rounded-3xl -z-10" />
               </motion.div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   )

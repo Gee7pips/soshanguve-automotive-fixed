@@ -111,6 +111,11 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        display: ["var(--font-playfair)", "Georgia", "serif"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
