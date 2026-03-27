@@ -35,13 +35,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
-  themeColor: "#1E3A8A",
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
@@ -87,6 +80,14 @@ export const metadata: Metadata = {
     google: "google-site-verification-code",
   },
   generator: 'v0.app'
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#1E3A8A",
 }
 
 export default function RootLayout({
