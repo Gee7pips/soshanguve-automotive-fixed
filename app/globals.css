@@ -68,11 +68,10 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     width: 100%;
-    padding-top: 4rem; /* Adjust based on your header height */
   }
 
   main {
-    min-height: calc(100vh - 4rem); /* Adjust based on your header height */
+    min-height: calc(100vh - 6rem);
   }
 
   /* Improve mobile orientation changes */

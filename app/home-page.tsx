@@ -3,6 +3,7 @@
 import { Hero } from "@/components/hero"
 import { MatricResultsSection } from "@/components/matric-results-section"
 import { WelcomeSection } from "@/components/welcome-section"
+import { PrincipalWelcome } from "@/components/principal-welcome"
 import { CampusLife } from "@/components/campus-life"
 import { AchievementsSection } from "@/components/achievements-section"
 import { InnovationSection } from "@/components/innovation-section"
@@ -25,6 +26,7 @@ export default function HomePageClient() {
       <Hero />
       <MatricResultsSection />
       <WelcomeSection />
+      <PrincipalWelcome />
       <InnovationSection />
       <SubjectOfferings />
       <CampusLife />
