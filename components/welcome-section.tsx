@@ -148,7 +148,6 @@ export function WelcomeSection() {
                   width={600}
                   height={400}
                   className="w-full object-cover transform transition-transform duration-700 hover:scale-105"
-                  loading="eager"
                   priority
                 />
               </div>
