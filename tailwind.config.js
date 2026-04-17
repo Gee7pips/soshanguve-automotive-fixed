@@ -107,14 +107,14 @@ module.exports = {
           to: { height: 0 },
         },
         ticker: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-33.333%)" },
+          "0%":   { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-33.3333%)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        ticker: "ticker 90s linear infinite",
+        "accordion-up":   "accordion-up 0.2s ease-out",
+        ticker: "ticker 65s linear infinite",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
