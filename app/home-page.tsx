@@ -6,7 +6,9 @@ import { WelcomeSection } from "@/components/welcome-section"
 import { PrincipalWelcome } from "@/components/principal-welcome"
 import { CampusLife } from "@/components/campus-life"
 import { AchievementsSection } from "@/components/achievements-section"
+import { NewsAndUpdates2026 } from "@/components/news-and-updates-2026"
 import { InnovationSection } from "@/components/innovation-section"
+import { AirplaneInnovation } from "@/components/airplane-innovation"
 import { SubjectOfferings } from "@/components/subject-offerings"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -28,6 +30,7 @@ export default function HomePageClient() {
       <WelcomeSection />
       <PrincipalWelcome />
       <InnovationSection />
+      <AirplaneInnovation />
       <SubjectOfferings />
       <CampusLife />
 
@@ -123,6 +126,7 @@ export default function HomePageClient() {
       </section>
 
       <AchievementsSection />
+      <NewsAndUpdates2026 />
       <VideoSection />
     </div>
   )
