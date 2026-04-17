@@ -8,11 +8,22 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Facebook, Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react"
-import { submitContact } from "@/app/actions"
+import {
+  Facebook,
+  Mail,
+  MapPin,
+  Phone,
+  Loader2,
+  CheckCircle2,
+  MessageCircle,
+  Send,
+  ChevronDown,
+} from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { PageTransition } from "@/components/page-transition"
-import type React from "react" // Added import for React
+import type React from "react"
+
+const WA_NUMBER = "27820985985"
 
 const contactInfo = [
   {
@@ -28,6 +39,12 @@ const contactInfo = [
     href: "tel:0127972118",
   },
   {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    value: "082 098 5985",
+    href: `https://wa.me/${WA_NUMBER}`,
+  },
+  {
     icon: MapPin,
     title: "Address",
     value: "1669 Block L, Soshanguve, Pretoria",
@@ -41,205 +58,303 @@ const contactInfo = [
   },
 ]
 
+type Enquiry = "general" | "admission" | "partnership" | "media"
+
+const enquiryLabels: Record<Enquiry, string> = {
+  general: "General Enquiry",
+  admission: "Admission / Enrolment",
+  partnership: "Partnership / Sponsorship",
+  media: "Media / Press",
+}
+
+interface FormState {
+  name: string
+  email: string
+  phone: string
+  subject: Enquiry
+  message: string
+}
+
+const empty: FormState = { name: "", email: "", phone: "", subject: "general", message: "" }
+
+function buildWhatsAppUrl(f: FormState) {
+  const body =
+    `Hello Soshanguve Automotive SoS,%0A%0A` +
+    `*Enquiry Type:* ${enquiryLabels[f.subject]}%0A` +
+    `*Name:* ${encodeURIComponent(f.name)}%0A` +
+    `*Email:* ${encodeURIComponent(f.email)}%0A` +
+    (f.phone ? `*Phone:* ${encodeURIComponent(f.phone)}%0A` : "") +
+    `%0A*Message:*%0A${encodeURIComponent(f.message)}`
+  return `https://wa.me/${WA_NUMBER}?text=${body}`
+}
+
+function buildMailtoUrl(f: FormState) {
+  const subject = encodeURIComponent(`[${enquiryLabels[f.subject]}] from ${f.name}`)
+  const body = encodeURIComponent(
+    `Enquiry Type: ${enquiryLabels[f.subject]}\nName: ${f.name}\nEmail: ${f.email}${f.phone ? `\nPhone: ${f.phone}` : ""}\n\nMessage:\n${f.message}`
+  )
+  return `mailto:soshanguve.technical@gmail.com?subject=${subject}&body=${body}`
+}
+
 export default function ContactPage() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [form, setForm] = useState<FormState>(empty)
+  const [submitting, setSubmitting] = useState(false)
+  const [success, setSuccess] = useState(false)
   const { toast } = useToast()
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const set = (key: keyof FormState, val: string) =>
+    setForm((prev) => ({ ...prev, [key]: val }))
+
+  const handleEmail = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    try {
-      const result = await submitContact(formState)
-      if (result.success) {
-        setIsSuccess(true)
-        toast({
-          title: "Message Sent",
-          description: "Thank you for contacting us. We'll get back to you soon.",
-        })
-        setFormState({ name: "", email: "", message: "" })
-        setTimeout(() => setIsSuccess(false), 3000)
-      } else {
-        throw new Error(result.error || "Failed to send message")
-      }
-    } catch (error) {
-      console.error("Error submitting contact form:", error)
-      toast({
-        title: "Error",
-        description:
-          error instanceof Error ? error.message : "There was an error sending your message. Please try again.",
-        variant: "destructive",
-      })
-    } finally {
-      setIsSubmitting(false)
+    if (!form.name || !form.email || !form.message) {
+      toast({ title: "Missing fields", description: "Please fill in all required fields.", variant: "destructive" })
+      return
     }
+    setSubmitting(true)
+    // Open default mail client with pre-filled content
+    window.location.href = buildMailtoUrl(form)
+    setTimeout(() => {
+      setSubmitting(false)
+      setSuccess(true)
+      toast({ title: "Email client opened", description: "Your message has been pre-filled. Please click Send." })
+      setForm(empty)
+      setTimeout(() => setSuccess(false), 4000)
+    }, 800)
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+  const handleWhatsApp = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!form.name || !form.message) {
+      toast({ title: "Missing fields", description: "Please fill in your name and message.", variant: "destructive" })
+      return
+    }
+    window.open(buildWhatsAppUrl(form), "_blank", "noopener,noreferrer")
   }
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
+  const inputCls =
+    "border-gray-200 focus:border-school-blue focus:ring-2 focus:ring-school-blue/20 rounded-xl transition-all duration-200"
 
   return (
     <PageTransition>
       <PageHeader
         title="Get in Touch"
-        subtitle="We'd love to hear from you. Reach out for any inquiries or partnership opportunities."
+        subtitle="We would love to hear from you. Reach out for enquiries, partnerships, or admission questions."
         backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-yGlKhAhQg39EA6QQPltIMWzC1vXCas.jpeg"
       />
 
-      <section className="py-20 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-grid-gray-900/[0.04] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]" />
-        </div>
+      {/* Contact info cards */}
+      <section className="py-20 bg-white">
+        <div className="container max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-14">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <span className="h-px w-8 bg-school-gold" />
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-school-gold">
+                  Reach Us
+                </span>
+                <span className="h-px w-8 bg-school-gold" />
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-school-navy text-balance">
+                Contact Information
+              </h2>
+            </div>
+          </ScrollAnimation>
 
-        <div className="container relative">
-          <div className="grid gap-12 md:grid-cols-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-20">
+            {contactInfo.map((item, i) => (
+              <ScrollAnimation key={i}>
+                <motion.a
+                  href={item.href}
+                  target={item.icon !== MapPin ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4 }}
+                  className="group flex flex-col items-center text-center gap-3 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-school-navy/5 group-hover:bg-school-navy/10 transition-colors">
+                    <item.icon className="h-5 w-5 text-school-navy" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-school-gold mb-1">{item.title}</p>
+                    <p className="text-sm text-gray-600 group-hover:text-school-blue transition-colors leading-snug">
+                      {item.value}
+                    </p>
+                  </div>
+                </motion.a>
+              </ScrollAnimation>
+            ))}
+          </div>
+
+          {/* Dual-submit form */}
+          <div className="grid gap-8 lg:grid-cols-2 items-start">
+
+            {/* Left: form fields */}
             <ScrollAnimation>
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold tracking-tighter text-school-navy">Contact Information</h2>
-                <p className="text-gray-600">
-                  Feel free to reach out to us using any of the following methods. We're here to answer your questions
-                  and provide support.
-                </p>
-                <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-4">
-                  {contactInfo.map((item, index) => (
-                    <motion.div key={index} variants={itemVariants} whileHover={{ scale: 1.02 }} className="group">
-                      <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
-                        <CardContent className="p-6">
-                          <a
-                            href={item.href}
-                            target={item.icon !== MapPin ? "_blank" : undefined}
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-4"
-                          >
-                            <div className="p-3 rounded-full bg-school-navy/5 group-hover:bg-school-navy/10 transition-colors">
-                              <item.icon className="w-6 h-6 text-school-navy" />
-                            </div>
-                            <div>
-                              <p className="font-bold text-school-navy">{item.title}</p>
-                              <p className="text-gray-600 group-hover:text-school-blue transition-colors">
-                                {item.value}
-                              </p>
-                            </div>
-                          </a>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </motion.div>
+              <div className="space-y-5">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="h-px w-6 bg-school-gold" />
+                  <h3 className="font-serif text-2xl font-bold text-school-navy">Send a Message</h3>
+                </div>
+
+                {/* Enquiry type selector */}
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Enquiry Type <span className="text-red-500">*</span></label>
+                  <div className="relative">
+                    <select
+                      value={form.subject}
+                      onChange={(e) => set("subject", e.target.value as Enquiry)}
+                      className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 focus:border-school-blue focus:outline-none focus:ring-2 focus:ring-school-blue/20 transition-all duration-200 pr-10"
+                    >
+                      {Object.entries(enquiryLabels).map(([v, l]) => (
+                        <option key={v} value={v}>{l}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  </div>
+                </div>
+
+                {/* Name */}
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Full Name <span className="text-red-500">*</span></label>
+                  <Input
+                    value={form.name}
+                    onChange={(e) => set("name", e.target.value)}
+                    placeholder="e.g. Thabo Dlamini"
+                    className={inputCls}
+                    required
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Email Address <span className="text-red-500">*</span></label>
+                  <Input
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => set("email", e.target.value)}
+                    placeholder="you@example.com"
+                    className={inputCls}
+                    required
+                  />
+                </div>
+
+                {/* Phone (optional) */}
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Phone Number <span className="text-gray-400 font-normal">(optional)</span></label>
+                  <Input
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => set("phone", e.target.value)}
+                    placeholder="e.g. 083 123 4567"
+                    className={inputCls}
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold text-gray-700">Message <span className="text-red-500">*</span></label>
+                  <Textarea
+                    value={form.message}
+                    onChange={(e) => set("message", e.target.value)}
+                    placeholder="Tell us how we can help..."
+                    className={`min-h-[140px] ${inputCls}`}
+                    required
+                  />
+                </div>
               </div>
             </ScrollAnimation>
 
+            {/* Right: submit options */}
             <ScrollAnimation>
-              <Card className="overflow-hidden">
-                <CardContent className="p-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <h3 className="text-2xl font-bold text-school-navy mb-6">Send us a Message</h3>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-gray-700">
-                          Name
-                        </label>
-                        <Input
-                          id="name"
-                          value={formState.name}
-                          onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                          className="transition-all duration-300 focus:ring-2 focus:ring-school-blue/20"
-                          required
-                        />
+              <Card className="border-0 shadow-lg rounded-2xl overflow-hidden h-full">
+                <div className="h-1.5 w-full bg-school-gold" />
+                <CardContent className="p-8 flex flex-col gap-6 h-full">
+
+                  <div>
+                    <h4 className="font-serif text-xl font-bold text-school-navy mb-2">How would you like to send?</h4>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Choose to send via your email client with a structured, pre-filled message — or open WhatsApp
+                      with the same details ready to go.
+                    </p>
+                  </div>
+
+                  <div className="h-px bg-gray-100" />
+
+                  {/* Email CTA */}
+                  <form onSubmit={handleEmail} className="space-y-3">
+                    <div className="flex items-start gap-3 p-4 rounded-xl bg-school-navy/3 border border-school-navy/10">
+                      <Mail className="h-5 w-5 text-school-navy mt-0.5 shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-school-navy">Send via Email</p>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          Opens your mail app with a structured message pre-filled and addressed to{" "}
+                          <span className="font-medium">soshanguve.technical@gmail.com</span>
+                        </p>
                       </div>
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                          Email
-                        </label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formState.email}
-                          onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                          className="transition-all duration-300 focus:ring-2 focus:ring-school-blue/20"
-                          required
-                        />
+                    </div>
+                    <Button
+                      type="submit"
+                      disabled={submitting}
+                      className="w-full bg-school-navy hover:bg-school-blue text-white rounded-xl font-semibold py-3 flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                    >
+                      {submitting ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : success ? (
+                        <CheckCircle2 className="h-4 w-4" />
+                      ) : (
+                        <Send className="h-4 w-4" />
+                      )}
+                      {submitting ? "Opening mail app..." : success ? "Email client opened!" : "Send via Email"}
+                    </Button>
+                  </form>
+
+                  <div className="flex items-center gap-3 text-xs text-gray-400">
+                    <span className="flex-1 h-px bg-gray-100" />
+                    <span>or</span>
+                    <span className="flex-1 h-px bg-gray-100" />
+                  </div>
+
+                  {/* WhatsApp CTA */}
+                  <form onSubmit={handleWhatsApp} className="space-y-3">
+                    <div className="flex items-start gap-3 p-4 rounded-xl bg-[#25D366]/5 border border-[#25D366]/20">
+                      <MessageCircle className="h-5 w-5 text-[#25D366] mt-0.5 shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800">Send via WhatsApp</p>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          Opens WhatsApp with your enquiry pre-filled to{" "}
+                          <span className="font-medium">082 098 5985</span>. Fastest response guaranteed.
+                        </p>
                       </div>
-                      <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium text-gray-700">
-                          Message
-                        </label>
-                        <Textarea
-                          id="message"
-                          value={formState.message}
-                          onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                          className="min-h-[150px] transition-all duration-300 focus:ring-2 focus:ring-school-blue/20"
-                          required
-                        />
-                      </div>
-                      <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-school-navy to-school-blue hover:from-school-blue hover:to-school-navy
-                                 text-white rounded-full relative overflow-hidden group"
-                      >
-                        <span className="relative z-10 flex items-center justify-center">
-                          {isSubmitting ? (
-                            <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                          ) : isSuccess ? (
-                            <CheckCircle2 className="w-5 h-5 mr-2" />
-                          ) : null}
-                          {isSubmitting ? "Sending..." : isSuccess ? "Message Sent!" : "Send Message"}
-                        </span>
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20"
-                          animate={{
-                            x: [-500, 500],
-                          }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                          }}
-                        />
-                      </Button>
-                    </form>
-                  </motion.div>
+                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full bg-[#25D366] hover:bg-[#1ebe5c] text-white rounded-xl font-semibold py-3 flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      Send via WhatsApp
+                    </Button>
+                  </form>
+
+                  <p className="text-xs text-gray-400 text-center mt-auto">
+                    We typically respond within 24 hours on school days.
+                  </p>
                 </CardContent>
               </Card>
             </ScrollAnimation>
           </div>
         </div>
       </section>
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="container">
+
+      {/* Map */}
+      <section className="py-20 bg-gray-50">
+        <div className="container max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollAnimation className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-school-navy mb-4">Find Us</h2>
-            <p className="text-gray-600">Visit our campus and see our facilities firsthand</p>
+            <h2 className="font-serif text-3xl font-bold text-school-navy mb-3">Find Us</h2>
+            <p className="text-gray-500">Visit our campus and see our world-class facilities firsthand</p>
           </ScrollAnimation>
 
           <ScrollAnimation>
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden rounded-2xl shadow-lg border-0">
               <CardContent className="p-0">
                 <div className="aspect-video w-full relative">
                   <iframe
@@ -251,25 +366,25 @@ export default function ContactPage() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="absolute inset-0"
+                    title="Soshanguve Automotive SoS location on Google Maps"
                   />
                 </div>
-                <div className="p-6 bg-gradient-to-b from-gray-50 to-white">
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 rounded-full bg-school-navy/5">
-                      <MapPin className="w-6 h-6 text-school-navy" />
+                <div className="p-6 bg-white">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-full bg-school-navy/5 shrink-0">
+                      <MapPin className="h-5 w-5 text-school-navy" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Our Location</h3>
-                      <p className="text-gray-600">1669 Block L, Soshanguve, 0152, Tshwane</p>
-                      <p className="text-gray-600 mt-2">
-                        Located in the heart of Soshanguve, our campus is easily accessible via public transport and
-                        major routes.
+                      <h3 className="font-semibold text-lg text-school-navy mb-1">Our Location</h3>
+                      <p className="text-gray-600 text-sm">1669 Block L, Soshanguve, 0152, Tshwane</p>
+                      <p className="text-gray-500 text-sm mt-2 leading-relaxed">
+                        Easily accessible via public transport and major routes through Soshanguve and Pretoria North.
                       </p>
                       <div className="mt-4">
                         <Button
                           asChild
                           variant="outline"
-                          className="rounded-full hover:bg-school-navy hover:text-white transition-colors"
+                          className="rounded-full border-school-navy/30 text-school-navy hover:bg-school-navy hover:text-white transition-all duration-300"
                         >
                           <a
                             href="https://www.google.com/maps/dir//Soshanguve+Engineering+School+of+Specialisation"

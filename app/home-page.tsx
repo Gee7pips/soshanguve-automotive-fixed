@@ -13,6 +13,7 @@ import { SubjectOfferings } from "@/components/subject-offerings"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { VideoSection } from "@/components/video-section"
+import { LiveTicker } from "@/components/live-ticker"
 import { motion } from "framer-motion"
 
 const stats = [
@@ -26,6 +27,7 @@ export default function HomePageClient() {
   return (
     <div className="bg-white">
       <Hero />
+      <LiveTicker />
       <MatricResultsSection />
       <WelcomeSection />
       <PrincipalWelcome />
