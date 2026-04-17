@@ -72,8 +72,8 @@ export function PrincipalWelcome() {
               <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-school-gold/40 via-school-gold/10 to-transparent" />
               <div className="relative rounded-2xl overflow-hidden bg-school-navy aspect-[4/5] max-w-sm">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1739092938017.jpg-wXZYdCdK9Z49HGVIidqamZyRyAwmrS.jpeg"
-                  alt="Mr. TA Mashiane — Principal, Soshanguve Automotive School of Specialisation"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1776384761271-xjUufMTvlcevshZ163NuZ9MaXZesk4.jpg"
+                  alt="Mr. TA Mashiane — Principal of Soshanguve Automotive SoS, speaking at an awards ceremony holding a crystal trophy"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, 400px"
