@@ -17,8 +17,8 @@ export function LiveTicker() {
   const [paused, setPaused] = useState(false)
   const trackRef = useRef<HTMLDivElement>(null)
 
-  // Duplicate items so the seamless loop works
-  const allItems = [...tickerItems, ...tickerItems]
+  // Create a continuous loop by duplicating items multiple times
+  const allItems = Array(3).fill(tickerItems).flat()
 
   return (
     <div
@@ -43,19 +43,19 @@ export function LiveTicker() {
       <div className="pl-[60px] sm:pl-[132px] py-3 overflow-hidden">
         <div
           ref={trackRef}
-          className="flex whitespace-nowrap"
+          className="flex whitespace-nowrap gap-12"
           style={{
-            animation: `ticker 48s linear infinite`,
+            animation: paused ? "none" : `ticker 90s linear infinite`,
             animationPlayState: paused ? "paused" : "running",
           }}
         >
           {allItems.map((item, i) => (
-            <span key={i} className="inline-flex items-center gap-3 mr-12">
+            <span key={i} className="inline-flex items-center gap-3 flex-shrink-0">
               <span className="inline-block bg-school-gold text-school-navy text-[10px] font-black tracking-widest px-2 py-0.5 rounded-sm">
                 {item.label}
               </span>
               <span className="text-white/85 text-sm font-medium">{item.text}</span>
-              <span className="text-school-gold/40 mx-2 text-lg leading-none">&#9670;</span>
+              <span className="text-school-gold/40 text-lg leading-none">&#9670;</span>
             </span>
           ))}
         </div>
