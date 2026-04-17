@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion"
 import { StructuredData } from "@/components/structured-data"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { FloatingContacts } from "@/components/floating-contacts"
 import { usePathname } from "next/navigation"
 
 export function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -51,6 +52,7 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
       </AnimatePresence>
       {mounted && <Footer />}
       {mounted && <StructuredData />}
+      {mounted && <FloatingContacts />}
     </>
   )
 }
