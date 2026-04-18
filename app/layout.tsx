@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.soshanguve-automotive.edu.za"),
+  metadataBase: new URL("https://sosha-automotive.org"),
   title: {
     default: "Soshanguve Automotive School of Specialisation",
     template: "%s | Soshanguve Automotive School",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_ZA",
-    url: "https://www.soshanguve-automotive.edu.za",
+    url: "https://sosha-automotive.org",
     title: "Soshanguve Automotive School of Specialisation",
     description: "Empowering Future Innovators in Automotive and Engineering Education",
     siteName: "Soshanguve Automotive School",
