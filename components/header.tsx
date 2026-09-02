@@ -54,11 +54,11 @@ export function Header() {
         <div className="relative flex h-[68px] items-center rounded-[22px] border border-white/70 bg-white/90 px-3 shadow-[0_18px_50px_rgba(15,35,75,0.14)] backdrop-blur-2xl ring-1 ring-black/[0.03] sm:px-4 lg:h-[74px]">
           <Link href="/" className="group flex shrink-0 items-center gap-2.5 rounded-2xl px-1.5 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-school-gold">
             <motion.div whileHover={{ scale: 1.04, rotate: -2 }} whileTap={{ scale: 0.97 }} className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-school-navy/10 to-school-gold/15 p-1 ring-1 ring-school-gold/20 shadow-sm sm:h-12 sm:w-12">
-              <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Automotive S.O.S School Crest" width={48} height={48} className="h-full w-full object-contain" priority />
+              <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School Of Specialisation crest" width={48} height={48} className="h-full w-full object-contain" priority />
             </motion.div>
             <div className="hidden sm:block">
-              <p className="font-display text-[15px] font-semibold leading-none tracking-[-0.02em] text-school-navy lg:text-base">Soshanguve</p>
-              <p className="mt-1 font-sans text-[9px] font-extrabold uppercase tracking-[0.18em] text-school-gold lg:text-[10px]">Automotive S.O.S</p>
+              <p className="font-display text-[15px] font-semibold leading-none tracking-[-0.02em] text-school-navy lg:text-base">Soshanguve Engineering</p>
+              <p className="mt-1 font-sans text-[9px] font-extrabold uppercase tracking-[0.18em] text-school-gold lg:text-[10px]">School Of Specialisation</p>
             </div>
           </Link>
 
@@ -97,11 +97,11 @@ export function Header() {
                     <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-school-gold/10 blur-3xl" />
                     <div className="flex items-center gap-3">
                       <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white p-1 ring-2 ring-school-gold/30 shadow-lg">
-                        <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Automotive S.O.S" width={48} height={48} className="h-full w-full object-contain" />
+                        <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School Of Specialisation" width={48} height={48} className="h-full w-full object-contain" />
                       </div>
                       <div>
-                        <p className="font-display text-lg font-semibold tracking-[-0.02em]">Soshanguve</p>
-                        <p className="mt-1 font-sans text-[9px] font-extrabold uppercase tracking-[0.2em] text-school-gold">Automotive S.O.S</p>
+                        <p className="font-display text-lg font-semibold tracking-[-0.02em]">Soshanguve Engineering</p>
+                        <p className="mt-1 font-sans text-[9px] font-extrabold uppercase tracking-[0.2em] text-school-gold">School Of Specialisation</p>
                       </div>
                     </div>
                     <div className="mt-6 flex items-end justify-between">
