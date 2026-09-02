@@ -1,3 +1,5 @@
 Preview deployment trigger.
 Performance and codebase cleanup validation.
 Force fresh Vercel preview build.
+Fix Radix Scroll Area dependency version for Vercel.
+Typography and premium heading enhancement validation.
