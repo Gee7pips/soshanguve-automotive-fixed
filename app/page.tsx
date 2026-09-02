@@ -3,11 +3,11 @@ import HomePageClient from "./home-page"
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Soshanguve Automotive School of Specialisation - Empowering Future Innovators in Automotive and Engineering Education",
+  description: "Soshanguve Engineering School Of Specialisation - Empowering Future Innovators through engineering and technical education",
   alternates: { canonical: "https://sosha-automotive.org" },
   openGraph: {
-    title: "Soshanguve Automotive School of Specialisation",
-    description: "Empowering Future Innovators in Automotive and Engineering Education",
+    title: "Soshanguve Engineering School Of Specialisation",
+    description: "Empowering Future Innovators through engineering and technical education",
     url: "https://sosha-automotive.org",
     type: "website",
   },
