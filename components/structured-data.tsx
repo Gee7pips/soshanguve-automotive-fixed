@@ -6,8 +6,8 @@ export function StructuredData() {
     "@type": "EducationalOrganization",
     name: "Soshanguve Automotive School of Specialisation",
     alternateName: "Soshanguve Automotive",
-    url: "https://www.soshanguve-engineering.edu.za",
-    logo: "https://www.soshanguve-engineering.edu.za/logo.png",
+    url: "https://sosha-automotive.org",
+    logo: "https://sosha-automotive.org/icon.svg",
     sameAs: [
       "https://www.facebook.com/SoshanguveEngineering",
       "https://twitter.com/SoshanguveEng",
@@ -22,24 +22,11 @@ export function StructuredData() {
       addressCountry: "ZA",
     },
     telephone: "+27 12 797 2118",
-    email: "info@soshanguve-engineering.edu.za",
-    description:
-      "Soshanguve Engineering School of Specialisation is a leading institution in automotive and engineering education, empowering future innovators and shaping tomorrow's leaders.",
+    email: "soshanguve.technical@gmail.com",
+    description: "Soshanguve Automotive School of Specialisation empowers future innovators through automotive and engineering education.",
     areaServed: "Tshwane",
     foundingDate: "2019",
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      value: "50+",
-    },
-    alumni: {
-      "@type": "QuantitativeValue",
-      value: "1000+",
-    },
   }
 
-  return (
-    <Script id="structured-data" type="application/ld+json">
-      {JSON.stringify(structuredData)}
-    </Script>
-  )
+  return <Script id="structured-data" type="application/ld+json">{JSON.stringify(structuredData)}</Script>
 }
