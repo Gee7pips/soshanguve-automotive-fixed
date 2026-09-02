@@ -20,10 +20,10 @@ import { ArrowUpRight, CheckCircle2, Compass, Cpu, GraduationCap, Wrench } from 
 import { SectionDivider } from "@/components/section-motion"
 
 const stats = [
-  { label: "Matric Pass Rate", value: "100%", description: "2025 Results" },
-  { label: "Student Capacity", value: "700+", description: "Annual Enrollment" },
-  { label: "Specialized Programs", value: "9", description: "Technical Fields" },
-  { label: "Years of Excellence", value: "5+", description: "Since Establishment" },
+  { label: "Matric Pass Rate", value: "99.3%", description: "2024 Results" },
+  { label: "Student Capacity", value: "700+", description: "Learners" },
+  { label: "Specialized Programs", value: "Technical", description: "Engineering & Technology" },
+  { label: "Years of Excellence", value: "7+", description: "Since 2019" },
 ]
 
 const pillars = [
@@ -82,8 +82,8 @@ export default function HomePageClient() {
 
           <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
             <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.7 }} className="space-y-6">
-              <p className="max-w-2xl text-lg font-medium leading-relaxed text-school-navy/75">Born from a decades-long legacy in Tshwane, Soshanguve Engineering School Of Specialisation was formally designated as one of Gauteng&apos;s 39 specialisation schools in 2019 — a mandate to produce the technical talent that South Africa&apos;s economy demands.</p>
-              <p className="max-w-2xl text-base leading-8 text-slate-600">Under the visionary stewardship of Principal Mr. TA Mashiane, we have built an institution where excellence is non-negotiable and opportunity knows no postal code. Our non-fee-paying model opens world-class technical education to over 700 learners from Soshanguve and surrounding communities — culminating in a historic 100% matric pass rate for the Class of 2025.</p>
+              <p className="max-w-2xl text-lg font-medium leading-relaxed text-school-navy/75">With a long educational legacy in Tshwane, Soshanguve Engineering School Of Specialisation was formally relaunched as an engineering School of Specialisation in 2019, with a focus on automotive and technical education.</p>
+              <p className="max-w-2xl text-base leading-8 text-slate-600">The school provides technical and engineering education for learners from Soshanguve and surrounding communities. Its practical focus includes automotive, mechanical, civil and electrical technology, supported by mathematics, sciences and project-based learning.</p>
               <div className="flex flex-wrap gap-3 pt-2"><Button asChild className="group rounded-full bg-school-navy px-7 text-white shadow-lg shadow-school-navy/15 transition-all duration-300 hover:-translate-y-1 hover:bg-school-blue"><Link href="/about" className="flex items-center gap-2">Learn More <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link></Button><Button asChild variant="outline" className="rounded-full border-school-navy/20 px-7 text-school-navy transition-all duration-300 hover:-translate-y-1 hover:bg-school-navy hover:text-white"><Link href="/contact">Contact Us</Link></Button></div>
               <div className="grid max-w-2xl grid-cols-2 gap-3 pt-3 sm:grid-cols-4">{pillars.map((pillar, index) => { const Icon = pillar.icon; return <motion.div key={pillar.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }} className="rounded-2xl border border-school-navy/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-lg"><Icon className="h-5 w-5 text-school-gold" /><p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-school-navy">{pillar.label}</p><p className="mt-1 text-[11px] leading-5 text-slate-500">{pillar.text}</p></motion.div> })}</div>
             </motion.div>
