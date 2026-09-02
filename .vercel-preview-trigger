@@ -1,2 +1,3 @@
-Preview deployment trigger. Safe to remove after deployment verification.
+Preview deployment trigger.
 Performance and codebase cleanup validation.
+Force fresh Vercel preview build.
