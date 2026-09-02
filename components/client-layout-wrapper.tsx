@@ -13,21 +13,14 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
 
-  // Handle orientation changes only
   useEffect(() => {
     const handleResize = () => {
-      // Force layout recalculation after orientation change
       document.documentElement.style.height = `${window.innerHeight}px`
     }
 
-    // Initial setup
     handleResize()
-
-    // Listen for orientation changes and resize events
     window.addEventListener("resize", handleResize)
     window.addEventListener("orientationchange", handleResize)
-
-    // Set mounted state
     setMounted(true)
 
     return () => {
@@ -36,13 +29,25 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
     }
   }, [])
 
-  // Handle page transitions only
   useEffect(() => {
-    if (mounted && pathname) {
-      // Scroll to top only on page change
-      window.scrollTo(0, 0)
-    }
+    if (mounted && pathname) window.scrollTo(0, 0)
   }, [pathname, mounted])
+
+  useEffect(() => {
+    if (!mounted || pathname !== "/") return
+    const headings = Array.from(document.querySelectorAll<HTMLElement>("main h1, main h2, main h3, main h4, main h5, main h6"))
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const activate = (heading: HTMLElement) => {
+      const chars = Math.max(12, heading.textContent?.trim().length ?? 12)
+      heading.style.setProperty("--typewriter-steps", String(chars))
+      heading.classList.add("typewriter-heading-active")
+    }
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { activate(entry.target as HTMLElement); observer.unobserve(entry.target) }
+    }), { rootMargin: "0px 0px -8% 0px", threshold: 0.15 })
+    headings.forEach((heading) => observer.observe(heading))
+    return () => observer.disconnect()
+  }, [mounted, pathname])
 
   return (
     <>
@@ -52,7 +57,8 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
       </AnimatePresence>
       {mounted && <Footer />}
       {mounted && <StructuredData />}
-      {mounted && <FloatingContacts />}
+      {/* Keep contact actions mounted independently of page animation/layout state. */}
+      <FloatingContacts />
     </>
   )
 }
