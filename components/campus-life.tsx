@@ -18,24 +18,22 @@ export function CampusLife() {
       <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : -28 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7 }}>
-            <div className="mb-5 flex items-center gap-3"><span className="h-px w-9 bg-school-gold" /><span className="text-[11px] font-bold uppercase tracking-[0.22em] text-school-gold">Campus Life</span></div>
-            <h2 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">More Than an Education — A Complete Community</h2>
-            <div className="my-6 h-0.5 w-14 bg-school-gold" />
-            <p className="text-lg leading-relaxed text-white/70">Excellence extends beyond the workshop floor. Learners compete, collaborate and create through sport, clubs and activities that build confidence alongside technical mastery.</p>
+            <div className="eyebrow mb-5 flex items-center gap-3 text-school-gold"><span className="h-px w-9 bg-school-gold" /> Campus Life</div>
+            <h2 className="premium-heading premium-heading-dark text-3xl text-white sm:text-4xl lg:text-6xl">More Than an Education — A Complete Community</h2>
+            <div className="my-7 h-0.5 w-14 bg-school-gold" />
+            <p className="subheading-premium subheading-premium-dark text-white/75">Excellence extends beyond the workshop floor. Learners compete, collaborate and create through sport, clubs and activities that build confidence alongside technical mastery.</p>
             <p className="mt-4 leading-relaxed text-white/50">A healthy body and active mind help our learners become resilient problem-solvers, teammates and future leaders.</p>
-            <div className="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-6">
-              {[['03','Featured activities'],['01','Community'],['∞','Possibilities']].map(([value,label]) => <div key={label}><div className="font-serif text-2xl font-bold text-school-gold">{value}</div><div className="mt-1 text-[9px] uppercase tracking-wider text-white/40">{label}</div></div>)}
-            </div>
+            <div className="mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-6">{[['03','Featured activities'],['01','Community'],['∞','Possibilities']].map(([value,label]) => <div key={label}><div className="font-serif text-2xl font-bold text-school-gold">{value}</div><div className="mt-1 font-technical text-[9px] uppercase tracking-wider text-white/40">{label}</div></div>)}</div>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {galleryItems.map((item, index) => (
-              <motion.div key={item.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.55, delay: reduceMotion ? 0 : index * 0.1 }} className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl ${item.className}`}>
-                <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 1024px) 50vw, 40vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-school-navy/90 via-school-navy/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 md:p-5">
-                  <div><span className="text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Student Life</span><h3 className="mt-1 font-serif text-lg font-bold text-white">{item.label}</h3></div>
-                  <span className="rounded-full border border-white/20 bg-white/10 p-2 text-white backdrop-blur-md transition-all group-hover:border-school-gold/50 group-hover:bg-school-gold group-hover:text-school-navy"><ArrowUpRight className="h-4 w-4" /></span>
+              <motion.div key={item.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.55, delay: reduceMotion ? 0 : index * 0.1 }} className={`group relative overflow-hidden rounded-[1.65rem] border border-school-gold/20 bg-white/5 p-1.5 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.8)] transition-transform duration-500 hover:-translate-y-1 ${item.className}`}>
+                <div className="image-surface h-full min-h-[inherit]">
+                  <Image src={item.src} alt={item.alt} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 40vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-school-navy/95 via-school-navy/10 to-transparent" />
+                  <div className="absolute left-3 top-3 h-8 w-8 border-l border-t border-school-gold/70" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 md:p-5"><div><span className="font-technical text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Student Life</span><h3 className="premium-heading premium-heading-dark mt-1 text-lg text-white">{item.label}</h3></div><span className="rounded-full border border-white/20 bg-white/10 p-2 text-white backdrop-blur-md transition-all group-hover:border-school-gold/50 group-hover:bg-school-gold group-hover:text-school-navy"><ArrowUpRight className="h-4 w-4" /></span></div>
                 </div>
               </motion.div>
             ))}
