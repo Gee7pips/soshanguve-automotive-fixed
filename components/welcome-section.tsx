@@ -1,7 +1,6 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { SEOImage } from "@/components/seo-image"
@@ -11,14 +10,11 @@ import { ArrowUpRight, Check, Crosshair, Sparkles } from "lucide-react"
 const stats = [["2019", "Established"], ["700+", "Learners"], ["9", "Programs"]]
 
 export function WelcomeSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
   const reduceMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] })
-  const imageY = useTransform(scrollYProgress, [0, 1], [reduceMotion ? 0 : 28, reduceMotion ? 0 : -28])
 
   return (
     <ErrorBoundary fallback={<div>Something went wrong</div>}>
-      <section ref={containerRef} className="relative overflow-hidden bg-white py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(30,58,138,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.045)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="pointer-events-none absolute -left-40 top-24 h-80 w-80 rounded-full bg-school-blue/10 blur-3xl" />
         <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -31,7 +27,13 @@ export function WelcomeSection() {
           </div>
 
           <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-            <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.7 }} className="relative">
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, x: -24 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: reduceMotion ? 0 : 0.55, ease: "easeOut" }}
+              className="relative"
+            >
               <h2 className="max-w-3xl font-serif text-4xl font-bold leading-[1.04] tracking-[-0.035em] text-school-navy sm:text-5xl lg:text-6xl">
                 Engineering the Future, <span className="text-school-blue">One Learner at a Time.</span>
               </h2>
@@ -44,7 +46,7 @@ export function WelcomeSection() {
                 <Button asChild variant="outline" className="rounded-full border-school-navy/20 px-7 text-school-navy transition-all hover:-translate-y-1 hover:bg-school-navy hover:text-white"><Link href="/programs">Explore Programs</Link></Button>
               </div>
 
-              <div className="mt-10 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border border-school-navy/10 bg-white/80 shadow-sm backdrop-blur">
+              <div className="mt-10 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border border-school-navy/10 bg-white shadow-sm">
                 {stats.map(([value, label], index) => (
                   <div key={label} className={`relative px-4 py-5 ${index < 2 ? "border-r border-school-navy/10" : ""}`}>
                     <div className="absolute left-0 top-0 h-0.5 w-8 bg-school-gold" />
@@ -55,20 +57,26 @@ export function WelcomeSection() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : 0.1 }} className="relative">
-              <motion.div style={{ y: imageY }} className="relative rounded-[2rem] border border-school-navy/10 bg-school-navy p-2 shadow-2xl shadow-school-navy/20">
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, x: 24 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.08, ease: "easeOut" }}
+              className="relative"
+            >
+              <div className="relative rounded-[2rem] border border-school-navy/10 bg-school-navy p-2 shadow-2xl shadow-school-navy/20">
                 <div className="relative overflow-hidden rounded-[1.55rem]">
-                  <SEOImage src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250203-WA0010.jpg-8fDZJnnxBBSs11CDSSdQi7ZzVqoby6.jpeg" alt="Students showcasing their innovative electric car project" width={800} height={540} className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105" priority />
+                  <SEOImage src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250203-WA0010.jpg-8fDZJnnxBBSs11CDSSdQi7ZzVqoby6.jpeg" alt="Students showcasing their innovative electric car project" width={800} height={540} sizes="(max-width: 1024px) 100vw, 52vw" className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105" priority />
                   <div className="absolute inset-0 bg-gradient-to-t from-school-navy via-school-navy/5 to-transparent" />
-                  <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-school-navy/45 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-school-gold" /> Live learning</div>
+                  <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-school-navy/45 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-school-gold" /> Live learning</div>
                   <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
                     <div><div className="text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Hands-on innovation</div><p className="mt-1 max-w-xs font-serif text-xl font-semibold leading-tight text-white">Ideas become machines, systems and solutions.</p></div>
-                    <div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 backdrop-blur sm:flex"><Sparkles className="h-5 w-5 text-school-gold" /></div>
+                    <div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 sm:flex"><Sparkles className="h-5 w-5 text-school-gold" /></div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: reduceMotion ? 0 : 0.45 }} className="absolute -bottom-6 -left-5 hidden rounded-2xl border border-school-gold/30 bg-white p-4 shadow-xl sm:block">
+              <motion.div initial={reduceMotion ? false : { opacity: 0, y: 12 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: reduceMotion ? 0 : 0.35 }} className="absolute -bottom-6 -left-5 hidden rounded-2xl border border-school-gold/30 bg-white p-4 shadow-xl sm:block">
                 <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400"><Check className="h-3 w-3 text-school-gold" /> Learner mindset</div>
                 <div className="mt-1 font-serif font-bold text-school-navy">Build. Test. Improve.</div>
               </motion.div>
