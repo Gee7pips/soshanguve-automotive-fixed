@@ -5,7 +5,7 @@ import "./globals.css"
 import { ClientLayoutWrapper } from "@/components/client-layout-wrapper"
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" })
-const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair", weight: ["400", "500", "600", "700", "800", "900"] })
+const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair", weight: ["400", "600", "700"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sosha-automotive.org"),
