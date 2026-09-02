@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/api"],
     },
-    sitemap: "https://www.soshanguve-automotive.edu.za/sitemap.xml",
+    sitemap: "https://sosha-automotive.org/sitemap.xml",
   }
 }
