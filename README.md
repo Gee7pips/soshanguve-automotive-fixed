@@ -4,7 +4,7 @@ Premium school website for Soshanguve Engineering School Of Specialisation.
 
 ## Preview
 
-The `preview/school-site` branch is deployed through the Vercel Git integration for preview validation.
+The `preview/school-site` branch is the validation branch for the Vercel preview deployment. The latest branch changes include the 2025 matric achievement and globally mounted floating WhatsApp, phone and Gmail contact controls.
 
 ## Contact architecture
 
