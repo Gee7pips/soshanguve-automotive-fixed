@@ -64,7 +64,6 @@ export default function HomePageClient() {
       <CampusLife />
       <SectionDivider label="Our Story" />
 
-      {/* About / Stats Section */}
       <section className="relative overflow-hidden bg-white py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(30,58,138,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.05)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-school-gold/10 blur-3xl" />
@@ -85,15 +84,9 @@ export default function HomePageClient() {
           </div>
 
           <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-            <motion.div
-              initial={{ opacity: 0, x: reduceMotion ? 0 : -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: reduceMotion ? 0 : 0.7 }}
-              className="space-y-6"
-            >
+            <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.7 }} className="space-y-6">
               <p className="max-w-2xl text-lg font-medium leading-relaxed text-school-navy/75">
-                Born from a decades-long legacy in Tshwane, Soshanguve Automotive SoS was formally designated as one
+                Born from a decades-long legacy in Tshwane, Soshanguve Engineering School Of Specialisation was formally designated as one
                 of Gauteng&apos;s 39 specialisation schools in 2019 — a mandate to produce the technical talent that
                 South Africa&apos;s economy demands.
               </p>
@@ -105,61 +98,20 @@ export default function HomePageClient() {
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <Button asChild className="group rounded-full bg-school-navy px-7 text-white shadow-lg shadow-school-navy/15 transition-all duration-300 hover:-translate-y-1 hover:bg-school-blue">
-                  <Link href="/about" className="flex items-center gap-2">
-                    Learn More <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="rounded-full border-school-navy/20 px-7 text-school-navy transition-all duration-300 hover:-translate-y-1 hover:bg-school-navy hover:text-white">
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
+                <Button asChild className="group rounded-full bg-school-navy px-7 text-white shadow-lg shadow-school-navy/15 transition-all duration-300 hover:-translate-y-1 hover:bg-school-blue"><Link href="/about" className="flex items-center gap-2">Learn More <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link></Button>
+                <Button asChild variant="outline" className="rounded-full border-school-navy/20 px-7 text-school-navy transition-all duration-300 hover:-translate-y-1 hover:bg-school-navy hover:text-white"><Link href="/contact">Contact Us</Link></Button>
               </div>
 
               <div className="grid max-w-2xl grid-cols-2 gap-3 pt-3 sm:grid-cols-4">
                 {pillars.map((pillar, index) => {
                   const Icon = pillar.icon
-                  return (
-                    <motion.div
-                      key={pillar.label}
-                      initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }}
-                      className="rounded-2xl border border-school-navy/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-lg"
-                    >
-                      <Icon className="h-5 w-5 text-school-gold" />
-                      <p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-school-navy">{pillar.label}</p>
-                      <p className="mt-1 text-[11px] leading-5 text-slate-500">{pillar.text}</p>
-                    </motion.div>
-                  )
+                  return <motion.div key={pillar.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }} className="rounded-2xl border border-school-navy/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-lg"><Icon className="h-5 w-5 text-school-gold" /><p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-school-navy">{pillar.label}</p><p className="mt-1 text-[11px] leading-5 text-slate-500">{pillar.text}</p></motion.div>
                 })}
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.1 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.08 }}
-                  className="group relative overflow-hidden rounded-2xl border border-school-navy/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-xl"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-school-gold/80" />
-                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-school-gold/10 blur-2xl transition-transform duration-500 group-hover:scale-150" />
-                  <p className="relative font-serif text-4xl font-bold leading-none text-school-navy sm:text-5xl">{stat.value}</p>
-                  <p className="relative mt-3 text-sm font-bold text-school-navy">{stat.label}</p>
-                  <p className="relative mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{stat.description}</p>
-                  <CheckCircle2 className="absolute bottom-5 right-5 h-4 w-4 text-school-gold/60" />
-                </motion.div>
-              ))}
+            <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.1 }} className="grid grid-cols-2 gap-4">
+              {stats.map((stat, index) => <motion.div key={stat.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.08 }} className="group relative overflow-hidden rounded-2xl border border-school-navy/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-xl"><div className="absolute inset-x-0 top-0 h-1 bg-school-gold/80" /><div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-school-gold/10 blur-2xl transition-transform duration-500 group-hover:scale-150" /><p className="relative font-serif text-4xl font-bold leading-none text-school-navy sm:text-5xl">{stat.value}</p><p className="relative mt-3 text-sm font-bold text-school-navy">{stat.label}</p><p className="relative mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{stat.description}</p><CheckCircle2 className="absolute bottom-5 right-5 h-4 w-4 text-school-gold/60" /></motion.div>)}
             </motion.div>
           </div>
         </div>
