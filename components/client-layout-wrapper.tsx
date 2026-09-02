@@ -76,6 +76,7 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
       </AnimatePresence>
       {mounted && <Footer />}
       {mounted && <StructuredData />}
+      {/* Global contact actions: WhatsApp, phone call and Gmail compose. */}
       {mounted && <FloatingContacts />}
     </>
   )
