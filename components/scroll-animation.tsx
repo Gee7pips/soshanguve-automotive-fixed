@@ -1,7 +1,6 @@
 "use client"
 
-import { useSpring, animated } from "react-spring"
-import { useInView } from "react-intersection-observer"
+import { useEffect, useRef, useState } from "react"
 import type React from "react"
 
 interface ScrollAnimationProps {
@@ -10,20 +9,35 @@ interface ScrollAnimationProps {
 }
 
 export function ScrollAnimation({ children, className }: ScrollAnimationProps) {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
 
-  const props = useSpring({
-    opacity: inView ? 1 : 0,
-    y: inView ? 0 : 20,
-    config: { duration: 500 },
-  })
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <animated.div ref={ref} style={props} className={className}>
+    <div ref={ref} className={`scroll-reveal ${visible ? "scroll-reveal-visible" : ""} ${className ?? ""}`}>
       {children}
-    </animated.div>
+    </div>
   )
 }
