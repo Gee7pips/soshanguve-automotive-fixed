@@ -1,11 +1,22 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
+import { Manrope, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { ClientLayoutWrapper } from "@/components/client-layout-wrapper"
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" })
-const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair", weight: ["400", "600", "700"] })
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"],
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+  weight: ["400", "600", "700"],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sosha-automotive.org"),
@@ -31,5 +42,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 5, userScalable: true, themeColor: "#1E3A8A" }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" className={`${inter.variable} ${playfair.variable}`}><body className={`${inter.className} min-h-screen flex flex-col antialiased`}><ClientLayoutWrapper>{children}</ClientLayoutWrapper></body></html>
+  return <html lang="en" className={`${manrope.variable} ${playfair.variable}`}><body className={`${manrope.className} min-h-screen flex flex-col antialiased`}> <ClientLayoutWrapper>{children}</ClientLayoutWrapper></body></html>
 }
