@@ -68,7 +68,22 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     width: 100%;
+    letter-spacing: -0.012em;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  h1 { line-height: 0.98; }
+  h2 { line-height: 1.02; }
+  h3, h4 { line-height: 1.1; }
+
+  p, li { text-wrap: pretty; }
+  a, button, input, textarea, select { font-family: var(--font-manrope), system-ui, sans-serif; }
 
   main { min-height: calc(100vh - 6rem); }
 
@@ -80,6 +95,23 @@
 @layer components {
   .font-sans { font-family: var(--font-manrope), system-ui, sans-serif; }
   .font-display, .font-serif { font-family: var(--font-playfair), Georgia, serif; }
+
+  .eyebrow {
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .display-title {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 0.96;
+    text-wrap: balance;
+  }
 }
 
 @layer utilities {
@@ -87,6 +119,7 @@
   .transition-gpu { transform: translateZ(0); backface-visibility: hidden; }
   .animate-gpu { transform: translateZ(0); backface-visibility: hidden; }
   .content-lazy { content-visibility: auto; contain-intrinsic-size: 1px 700px; }
+  .tracking-premium { letter-spacing: 0.14em; }
 }
 
 img {
