@@ -84,7 +84,6 @@
 
   p, li { text-wrap: pretty; }
   a, button, input, textarea, select { font-family: var(--font-manrope), system-ui, sans-serif; }
-
   main { min-height: calc(100vh - 6rem); }
 
   @media screen and (orientation: landscape) {
@@ -120,6 +119,27 @@
   .animate-gpu { transform: translateZ(0); backface-visibility: hidden; }
   .content-lazy { content-visibility: auto; contain-intrinsic-size: 1px 700px; }
   .tracking-premium { letter-spacing: 0.14em; }
+
+  /* Premium precision typewriter reveal. Text remains in the DOM untouched for SEO/accessibility. */
+  .typewriter-heading-active {
+    animation: premium-typewriter 1.15s steps(var(--typewriter-steps), end) both;
+    will-change: clip-path;
+  }
+}
+
+@keyframes premium-typewriter {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes premium-ticker-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-33.333333%, 0, 0); }
+}
+
+@keyframes premium-ticker-scan {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(300%); }
 }
 
 img {
