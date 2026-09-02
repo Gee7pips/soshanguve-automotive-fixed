@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { SeoStructuredData } from "@/components/seo-structured-data"
 
 export const metadata: Metadata = {
   title: "Innovation Lab & Student Engineering Projects",
@@ -7,4 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://sosha-automotive.org/innovations" },
   openGraph: { title: "Innovation Lab | Soshanguve Engineering School", description: "Explore aerospace, electric mobility, robotics and other student engineering projects.", url: "https://sosha-automotive.org/innovations", type: "website" },
 }
-export default function InnovationsLayout({ children }: { children: React.ReactNode }) { return children }
+
+export default function InnovationsLayout({ children }: { children: React.ReactNode }) {
+  return <><SeoStructuredData title="Innovation Lab & Student Engineering Projects | Soshanguve Engineering School Of Specialisation" description={metadata.description as string} path="/innovations" breadcrumbs={[{ name: "Home", path: "" }, { name: "Innovations", path: "/innovations" }]} />{children}</>
+}
