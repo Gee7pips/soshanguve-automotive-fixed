@@ -5,80 +5,31 @@ import "./globals.css"
 import { ClientLayoutWrapper } from "@/components/client-layout-wrapper"
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" })
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700", "800", "900"],
-})
+const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair", weight: ["400", "500", "600", "700", "800", "900"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sosha-automotive.org"),
-  title: {
-    default: "Soshanguve Automotive School of Specialisation",
-    template: "%s | Soshanguve Automotive School",
-  },
+  title: { default: "Soshanguve Automotive School of Specialisation", template: "%s | Soshanguve Automotive School" },
   description: "Empowering Future Innovators in Automotive and Engineering Education",
-  keywords: [
-    "automotive school",
-    "technical education",
-    "engineering school",
-    "Soshanguve",
-    "specialisation school",
-    "STEM education",
-    "South Africa education",
-  ],
+  keywords: ["automotive school", "technical education", "engineering school", "Soshanguve", "specialisation school", "STEM education", "South Africa education"],
   authors: [{ name: "Soshanguve Automotive School" }],
   creator: "Soshanguve Automotive School",
   publisher: "Soshanguve Automotive School",
   formatDetection: { email: false, address: false, telephone: false },
-  manifest: "/manifest.json",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
+  icons: { icon: "/icon-light-32x32.png", apple: "/apple-icon.png" },
   openGraph: {
-    type: "website",
-    locale: "en_ZA",
-    url: "https://sosha-automotive.org",
+    type: "website", locale: "en_ZA", url: "https://sosha-automotive.org",
     title: "Soshanguve Automotive School of Specialisation",
     description: "Empowering Future Innovators in Automotive and Engineering Education",
     siteName: "Soshanguve Automotive School",
-    images: [{
-      url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg",
-      width: 1200,
-      height: 630,
-      alt: "Soshanguve Automotive School",
-    }],
+    images: [{ url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg", width: 1200, height: 630, alt: "Soshanguve Automotive School" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Soshanguve Automotive School of Specialisation",
-    description: "Empowering Future Innovators in Automotive and Engineering Education",
-    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
-  },
+  twitter: { card: "summary_large_image", title: "Soshanguve Automotive School of Specialisation", description: "Empowering Future Innovators in Automotive and Engineering Education", images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg"] },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
 }
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: "#1E3A8A",
-}
+export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 5, userScalable: true, themeColor: "#1E3A8A" }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className={`${inter.className} min-h-screen flex flex-col antialiased`}>
-        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
-      </body>
-    </html>
-  )
+  return <html lang="en" className={`${inter.variable} ${playfair.variable}`}><body className={`${inter.className} min-h-screen flex flex-col antialiased`}><ClientLayoutWrapper>{children}</ClientLayoutWrapper></body></html>
 }
