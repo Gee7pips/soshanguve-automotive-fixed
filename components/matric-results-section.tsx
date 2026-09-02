@@ -1,241 +1,32 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
+import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
-import { Star, Heart, Users, BookOpen, Award } from "lucide-react"
+import { Star, Heart, Users, BookOpen, Award, Trophy, ArrowUpRight } from "lucide-react"
 
 const thankYouCards = [
-  {
-    icon: Users,
-    title: "Our Learners",
-    description:
-      "Your resilience, brilliance, and late-night sacrifices made this possible. You showed up every day and gave everything.",
-  },
-  {
-    icon: BookOpen,
-    title: "Our Teachers",
-    description:
-      "Thank you for going beyond the classroom — for your patience, dedication, and unwavering belief in every learner.",
-  },
-  {
-    icon: Heart,
-    title: "Parents & Families",
-    description:
-      "Your prayers, support, and encouragement carried these young people through their most challenging moments.",
-  },
-  {
-    icon: Star,
-    title: "Our Community",
-    description:
-      "Soshanguve stood behind its children. This achievement is a reflection of a community that refuses to give up.",
-  },
-  {
-    icon: Award,
-    title: "The GDE",
-    description:
-      "We are grateful to the Gauteng Department of Education for continued partnership, resources, and guidance throughout this journey.",
-  },
+  { icon: Users, title: "Our Learners", description: "Your resilience, brilliance, and late-night sacrifices made this possible. You showed up every day and gave everything." },
+  { icon: BookOpen, title: "Our Teachers", description: "Thank you for going beyond the classroom — for your patience, dedication, and unwavering belief in every learner." },
+  { icon: Heart, title: "Parents & Families", description: "Your prayers, support, and encouragement carried these young people through their most challenging moments." },
+  { icon: Star, title: "Our Community", description: "Soshanguve stood behind its children. This achievement is a reflection of a community that refuses to give up." },
+  { icon: Award, title: "The GDE", description: "We are grateful to the Gauteng Department of Education for continued partnership, resources, and guidance throughout this journey." },
 ]
 
 export function MatricResultsSection() {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
-  const [cardsRef, cardsInView] = useInView({ threshold: 0.05, triggerOnce: true })
+  const reduceMotion = useReducedMotion()
+  const reveal = (delay = 0) => ({ initial: reduceMotion ? false : { opacity: 0, y: 16 }, whileInView: reduceMotion ? undefined : { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.12 }, transition: { duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : delay, ease: "easeOut" as const } })
 
   return (
-    <section className="relative overflow-hidden bg-school-navy" ref={ref}>
-      {/* Subtle grid texture overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 0h1v40H0zm40 0h-1v40h1zM0 0v1h40V0zm0 40v-1h40v1z'/%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* ── TOP BLOCK: headline + image ── */}
-      <div className="relative z-10 pt-20 pb-16 px-6">
-        <div className="max-w-5xl mx-auto text-center">
-
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <span className="h-px w-10 bg-school-gold" />
-            <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-school-gold">
-              Official Results — 2025
-            </span>
-            <span className="h-px w-10 bg-school-gold" />
-          </motion.div>
-
-          {/* Main headline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight text-balance mb-4"
-          >
-            🎓 SOSHANGUVE ENGINEERING SOS:{" "}
-            <span className="text-school-gold">CLASS OF 2025</span> 🎓
-          </motion.h2>
-
-          {/* Gold rule */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="w-24 h-0.5 bg-school-gold mx-auto mb-10 origin-center"
-          />
-
-          {/* 100% Pass Rate badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="inline-flex flex-col items-center gap-1 px-10 py-6 rounded-2xl border-2 border-school-gold bg-school-gold/10 mb-10"
-          >
-            <span className="font-serif text-6xl sm:text-7xl font-black text-school-gold leading-none tracking-tight">
-              100%
-            </span>
-            <span className="text-white font-bold text-lg uppercase tracking-widest">
-              Pass Rate
-            </span>
-          </motion.div>
-
-          {/* Intro paragraph */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto mb-14"
-          >
-            We are incredibly proud to announce that the{" "}
-            <span className="text-white font-semibold">Class of 2025</span> achieved a{" "}
-            <span className="text-school-gold font-bold">100% matric pass rate</span> — a testament
-            to your resilience, brilliance, and every late-night study session that brought you to
-            this extraordinary milestone.
-          </motion.p>
-
-          {/* Hero celebration image */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative rounded-2xl overflow-hidden shadow-2xl border border-school-gold/30 max-w-3xl mx-auto"
-          >
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1774649920765-lfbyIQmPmwM2W9yYP54Zv87DmjZmZM.jpg"
-              alt="Class of 2025 — 100% Pass Rate — Soshanguve Engineering SoS graduates"
-              width={900}
-              height={506}
-              className="w-full h-auto object-cover"
-              priority
-            />
-            {/* Image caption bar */}
-            <div className="absolute bottom-0 inset-x-0 bg-black/60 backdrop-blur-sm py-3 px-5 text-center">
-              <p className="text-white font-semibold text-sm tracking-wide">
-                Congratulations to the Class of 2025 — Soshanguve Engineering SoS
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* ── DIVIDER ── */}
-      <div className="relative z-10 h-px bg-school-gold/20 max-w-5xl mx-auto" />
-
-      {/* ── THANK YOU SECTION ── */}
-      <div className="relative z-10 py-16 px-6" ref={cardsRef}>
-        <div className="max-w-5xl mx-auto">
-
-          {/* Section heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={cardsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="h-px w-8 bg-school-gold" />
-              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-school-gold">
-                With Gratitude
-              </span>
-              <span className="h-px w-8 bg-school-gold" />
-            </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">
-              It Takes a Village
-            </h3>
-            <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed">
-              This achievement did not happen in isolation. We extend our deepest gratitude to everyone
-              who poured their hearts into the Class of 2025.
-            </p>
-          </motion.div>
-
-          {/* Thank-you cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {thankYouCards.map((card, index) => {
-              const Icon = card.icon
-              return (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={cardsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.55, delay: index * 0.1 }}
-                  className="group relative rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-school-gold/40 transition-all duration-300 p-6 flex gap-4"
-                >
-                  {/* Gold left accent line */}
-                  <div className="absolute left-0 top-4 bottom-4 w-0.5 bg-school-gold/60 rounded-full group-hover:bg-school-gold transition-colors duration-300" />
-
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-school-gold/15 flex items-center justify-center group-hover:bg-school-gold/25 transition-colors duration-300">
-                    <Icon className="w-5 h-5 text-school-gold" />
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-white text-sm mb-1.5">{card.title}</h4>
-                    <p className="text-white/60 text-sm leading-relaxed">{card.description}</p>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* ── CLOSING QUOTE ── */}
-      <div className="relative z-10 pb-20 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          {/* Gold divider */}
-          <div className="flex items-center gap-4 mb-10">
-            <div className="flex-1 h-px bg-school-gold/25" />
-            <div className="w-2 h-2 rounded-full bg-school-gold" />
-            <div className="flex-1 h-px bg-school-gold/25" />
-          </div>
-
-          {/* Opening quote mark */}
-          <p className="font-serif text-school-gold text-6xl leading-none mb-2 select-none">&ldquo;</p>
-
-          <p className="font-serif text-xl sm:text-2xl lg:text-3xl text-white font-medium leading-snug text-balance mb-6">
-            These results belong to all of us. Let&apos;s celebrate this{" "}
-            <span className="text-school-gold">historic achievement</span> together!
-          </p>
-
-          {/* Attribution */}
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <span className="h-px w-6 bg-school-gold/50" />
-            <span className="text-white/50 text-sm font-medium tracking-wider uppercase">
-              Soshanguve Engineering SoS — Class of 2025
-            </span>
-            <span className="h-px w-6 bg-school-gold/50" />
-          </div>
-        </motion.div>
+    <section className="relative overflow-hidden bg-school-navy py-20 sm:py-24 lg:py-28">
+      <div className="absolute inset-0 opacity-[0.045]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 0h1v40H0zm40 0h-1v40h1zM0 0v1h40V0zm0 40v-1h40v1z'/%3E%3C/g%3E%3C/svg%3E")` }} />
+      <div className="absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-school-gold/10 blur-3xl" />
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <motion.div {...reveal()} className="mb-8 flex items-center justify-center gap-3"><span className="h-px w-10 bg-school-gold" /><span className="eyebrow text-school-gold">Academic Excellence · Verified Achievement</span><span className="h-px w-10 bg-school-gold" /></motion.div>
+        <motion.div {...reveal(0.06)} className="mx-auto max-w-5xl text-center"><p className="mb-3 font-technical text-xs font-semibold uppercase tracking-[0.28em] text-white/50">Matric Results · Class of 2025</p><h2 className="premium-heading premium-heading-dark text-4xl font-semibold text-white sm:text-5xl lg:text-7xl">A <span className="heading-accent text-school-gold">100% Pass Rate.</span><br className="hidden sm:block" /> Excellence, Delivered.</h2><div className="mx-auto mt-7 h-px w-28 bg-gradient-to-r from-transparent via-school-gold to-transparent" /><p className="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg lg:text-xl">The Class of 2025 achieved a <strong className="text-white">100% matric pass rate</strong> — a defining mark of academic excellence, determination and collective commitment at Soshanguve Engineering School Of Specialisation.</p></motion.div>
+        <motion.div {...reveal(0.14)} className="mx-auto mt-12 max-w-5xl rounded-[2rem] border border-school-gold/30 bg-white/[0.045] p-2 shadow-2xl shadow-black/30 backdrop-blur-sm sm:p-3"><div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20"><Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1774649920765-lfbyIQmPmwM2W9yYP54Zv87DmjZmZM.jpg" alt="Soshanguve Engineering School Of Specialisation matric results celebration" width={1200} height={675} sizes="(max-width: 768px) 100vw, 1024px" className="h-auto w-full object-cover" priority /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-5 pb-5 pt-16 sm:px-8 sm:pb-8"><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow text-school-gold">Class of 2025</p><p className="mt-2 font-serif text-xl font-semibold text-white sm:text-2xl">A result worth celebrating.</p></div><div className="rounded-full border border-school-gold/50 bg-school-navy/80 px-4 py-2 font-technical text-xs font-bold uppercase tracking-[0.2em] text-school-gold backdrop-blur">100% · Matric Pass Rate</div></div></div></div></motion.div>
+        <motion.div {...reveal(0.2)} className="mx-auto mt-8 grid max-w-5xl grid-cols-2 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] sm:grid-cols-4">{[{ value: "100%", label: "Pass Rate" }, { value: "2025", label: "Matric Cohort" }, { value: "EXCELLENCE", label: "Standard" }, { value: "SOS", label: "Engineering" }].map((item) => <div key={item.label} className="border-white/10 p-5 text-center even:border-l sm:border-l sm:first:border-l-0"><p className="font-display text-2xl font-semibold text-school-gold sm:text-3xl">{item.value}</p><p className="mt-1 font-technical text-[10px] font-bold uppercase tracking-[0.18em] text-white/50">{item.label}</p></div>)}</motion.div>
+        <div className="mx-auto mt-20 max-w-5xl border-t border-white/10 pt-16"><motion.div {...reveal()} className="mb-10 text-center"><div className="mb-4 flex items-center justify-center gap-3"><span className="h-px w-8 bg-school-gold" /><span className="eyebrow text-school-gold">With Gratitude</span><span className="h-px w-8 bg-school-gold" /></div><h3 className="premium-heading premium-heading-dark text-3xl font-semibold text-white sm:text-4xl">It Takes a Village.</h3><p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/65">This achievement did not happen in isolation. We extend our deepest gratitude to everyone who supported our learners.</p></motion.div><div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">{thankYouCards.map((card, index) => { const Icon = card.icon; return <motion.div key={card.title} initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.06 }} className="group relative rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/40 hover:bg-white/[0.07]"><div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-school-gold/20 bg-school-gold/10"><Icon className="h-5 w-5 text-school-gold" /></div><h4 className="premium-heading-dark mb-2 text-lg font-semibold text-white">{card.title}</h4><p className="text-sm leading-relaxed text-white/60">{card.description}</p></motion.div> })}</div></div>
+        <motion.div {...reveal()} className="mx-auto mt-16 max-w-3xl text-center"><div className="mb-8 flex items-center gap-4"><div className="h-px flex-1 bg-school-gold/20" /><Trophy className="h-5 w-5 text-school-gold" /><div className="h-px flex-1 bg-school-gold/20" /></div><p className="font-serif text-2xl font-medium leading-snug text-white sm:text-3xl">Strong results are built by <span className="text-school-gold">learners, teachers and community</span> working together.</p><div className="mt-7 inline-flex items-center gap-2 font-technical text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">Soshanguve Engineering School Of Specialisation <ArrowUpRight className="h-3.5 w-3.5" /></div></motion.div>
       </div>
     </section>
   )

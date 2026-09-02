@@ -1,172 +1,59 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { SEOImage } from "@/components/seo-image"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ErrorBoundary } from "react-error-boundary"
-import { useInView } from "react-intersection-observer"
+import { ArrowUpRight, Check, Crosshair, Sparkles } from "lucide-react"
 
-gsap.registerPlugin(ScrollTrigger)
+const stats = [["2019", "Established"], ["700+", "Learners"], ["9", "Programs"]]
 
 export function WelcomeSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const carImageRef = useRef<HTMLDivElement>(null)
-  const donateButtonRef = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.8])
-
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  })
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (carImageRef.current && donateButtonRef.current) {
-        gsap.from(carImageRef.current, {
-          duration: 1,
-          x: "50%",
-          opacity: 0,
-          scale: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: carImageRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        })
-
-        gsap.from(donateButtonRef.current, {
-          duration: 0.8,
-          y: 30,
-          opacity: 0,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: donateButtonRef.current,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        })
-      }
-    })
-
-    return () => ctx.revert()
-  }, [])
+  const reduceMotion = useReducedMotion()
 
   return (
     <ErrorBoundary fallback={<div>Something went wrong</div>}>
-      <section ref={containerRef} className="py-24 lg:py-32 bg-gray-50/60 relative z-0">
-        <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-16">
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(30,58,138,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.045)_1px,transparent_1px)] [background-size:64px_64px]" />
+        <div className="pointer-events-none absolute -left-40 top-24 h-80 w-80 rounded-full bg-school-blue/10 blur-3xl" />
+        <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-12 flex items-center justify-between border-b border-school-navy/10 pb-5">
+            <div className="eyebrow flex items-center gap-3 text-school-gold"><span className="flex h-7 w-7 items-center justify-center rounded-full border border-school-gold/30 bg-school-gold/5"><Crosshair className="h-3.5 w-3.5" /></span>Our Mission</div>
+            <span className="hidden font-technical text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-400 sm:block">SOS / MISSION 01</span>
+          </div>
 
-            {/* Left: Text content */}
-            <motion.div
-              ref={ref}
-              initial={{ opacity: 0, x: -24 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7 }}
-              className="flex-1 space-y-6"
-              style={{ y, opacity }}
-            >
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3">
-                <span className="h-px w-8 bg-school-gold" />
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-school-gold">
-                  Our Mission
-                </span>
+          <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
+            <motion.div initial={reduceMotion ? false : { opacity: 0, x: -24 }} whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.55, ease: "easeOut" }} className="relative">
+              <h2 className="premium-heading max-w-3xl text-4xl font-semibold text-school-navy sm:text-5xl lg:text-7xl">Engineering the Future, <span className="heading-accent text-school-blue">One Learner at a Time.</span></h2>
+              <div className="mt-8 flex items-center gap-3"><span className="h-1 w-16 bg-school-gold" /><span className="h-px w-24 bg-school-navy/15" /></div>
+              <p className="subheading-premium mt-7 max-w-xl text-school-navy/75">Where Soshanguve&apos;s potential meets the standards of global industry.</p>
+              <p className="mt-5 max-w-xl text-base leading-8 text-slate-600">Our learners do not simply study engineering — they live it. Through practical automotive, electrical, civil, science and mathematics pathways, every workshop becomes a rehearsal for a high-impact career.</p>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Button asChild className="group rounded-full bg-school-navy px-7 text-white shadow-lg shadow-school-navy/15 transition-all duration-300 hover:-translate-y-1 hover:bg-school-blue"><Link href="/about" className="flex items-center gap-2">Discover Our Story <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link></Button>
+                <Button asChild variant="outline" className="rounded-full border-school-navy/20 px-7 text-school-navy transition-all hover:-translate-y-1 hover:bg-school-navy hover:text-white"><Link href="/programs">Explore Programs</Link></Button>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance">
-                Engineering the Future,{" "}
-                <span className="text-school-blue">
-                  One Learner at a Time
-                </span>
-              </h2>
-
-              <div className="w-12 h-0.5 bg-school-gold" />
-
-              <p className="text-lg text-gray-500 font-medium">
-                Where Soshanguve&apos;s potential meets the standards of global industry
-              </p>
-
-              <p className="text-gray-600 leading-relaxed">
-                Our learners do not simply study engineering — they live it. From rebuilding engines at BMW-standard
-                workstations to programming PLCs and constructing solar-powered trains, every day at Soshanguve
-                Automotive SoS is a rehearsal for a high-impact career. We are not producing graduates — we are
-                producing the technicians, engineers, and entrepreneurs who will define South Africa&apos;s next chapter.
-              </p>
-
-              <div className="flex gap-4 pt-2">
-                <motion.div whileTap={{ scale: 0.95 }}>
-                  <Button
-                    asChild
-                    className="bg-school-navy hover:bg-school-blue transition-colors duration-300 text-white rounded-full px-7 shadow-md"
-                  >
-                    <Link href="/about">Learn More</Link>
-                  </Button>
-                </motion.div>
-                <motion.div whileTap={{ scale: 0.95 }}>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="rounded-full px-7 border-school-navy/30 text-school-navy hover:bg-school-navy hover:text-white transition-colors duration-300 bg-transparent"
-                  >
-                    <Link href="/contact">Contact Us</Link>
-                  </Button>
-                </motion.div>
+              <div className="mt-10 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border border-school-navy/10 bg-white shadow-[0_18px_50px_-28px_rgba(15,23,42,0.4)]">
+                {stats.map(([value, label], index) => (
+                  <div key={label} className={`relative px-4 py-5 ${index < 2 ? "border-r border-school-navy/10" : ""}`}><div className="absolute left-0 top-0 h-0.5 w-8 bg-school-gold" /><div className="font-serif text-2xl font-bold text-school-navy">{value}</div><div className="mt-1 font-technical text-[9px] font-bold uppercase tracking-[0.16em] text-slate-400">{label}</div></div>
+                ))}
               </div>
             </motion.div>
 
-            {/* Right: Image and CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="flex-1 flex flex-col justify-center items-center"
-              style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
-            >
-              <div
-                ref={carImageRef}
-                className="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] transition-shadow duration-300 w-full"
-              >
-                {/* Gold accent border on image */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-school-gold z-10" />
-                <SEOImage
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250203-WA0010.jpg-8fDZJnnxBBSs11CDSSdQi7ZzVqoby6.jpeg"
-                  alt="Students showcasing their innovative electric car project"
-                  width={600}
-                  height={400}
-                  className="w-full object-cover transform transition-transform duration-700 hover:scale-105"
-                  priority
-                />
+            <motion.div initial={reduceMotion ? false : { opacity: 0, x: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.08, ease: "easeOut" }} className="relative">
+              <div className="image-frame-premium">
+                <div className="image-surface aspect-[4/3]">
+                  <SEOImage src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250203-WA0010.jpg-8fDZJnnxBBSs11CDSSdQi7ZzVqoby6.jpeg" alt="Students showcasing their innovative electric car project" width={800} height={540} sizes="(max-width: 1024px) 100vw, 52vw" className="h-full w-full object-cover" priority />
+                  <div className="absolute inset-0 bg-gradient-to-t from-school-navy via-school-navy/5 to-transparent" />
+                  <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-school-navy/45 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-school-gold" /> Live learning</div>
+                  <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4"><div><div className="font-technical text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Hands-on innovation</div><p className="mt-1 max-w-xs font-serif text-xl font-semibold leading-tight text-white drop-shadow-lg">Ideas become machines, systems and solutions.</p></div><div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 backdrop-blur-md sm:flex"><Sparkles className="h-5 w-5 text-school-gold" /></div></div>
+                </div>
               </div>
-
-              <div className="text-center space-y-4 mt-8">
-                <p className="text-base text-gray-700 font-semibold font-serif">
-                  Every contribution accelerates a learner&apos;s journey from the classroom to the career floor.
-                </p>
-                <motion.div ref={donateButtonRef} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    asChild
-                    className="bg-school-gold hover:bg-yellow-400 text-school-navy font-bold rounded-full px-8 shadow-lg shadow-school-gold/20 transition-all duration-300 hover:scale-105"
-                  >
-                    <Link href="/support-us">Support Us</Link>
-                  </Button>
-                </motion.div>
-              </div>
+              <motion.div initial={reduceMotion ? false : { opacity: 0, y: 12 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: reduceMotion ? 0 : 0.35 }} className="absolute -bottom-6 -left-5 hidden rounded-2xl border border-school-gold/30 bg-white p-4 shadow-[0_20px_45px_-22px_rgba(15,23,42,0.5)] sm:block"><div className="flex items-center gap-2 font-technical text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400"><Check className="h-3 w-3 text-school-gold" /> Learner mindset</div><div className="mt-1 font-serif font-bold text-school-navy">Build. Test. Improve.</div></motion.div>
+              <div className="absolute -right-4 -top-4 hidden h-20 w-20 rounded-full border border-school-gold/20 sm:block" />
             </motion.div>
-
           </div>
         </div>
       </section>
