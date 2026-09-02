@@ -4,8 +4,8 @@ export function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    name: "Soshanguve Automotive School of Specialisation",
-    alternateName: "Soshanguve Automotive",
+    name: "Soshanguve Engineering School Of Specialisation",
+    alternateName: "Soshanguve Engineering School Of Specialisation",
     url: "https://sosha-automotive.org",
     logo: "https://sosha-automotive.org/icon.svg",
     sameAs: [
@@ -23,7 +23,7 @@ export function StructuredData() {
     },
     telephone: "+27 12 797 2118",
     email: "soshanguve.technical@gmail.com",
-    description: "Soshanguve Automotive School of Specialisation empowers future innovators through automotive and engineering education.",
+    description: "Soshanguve Engineering School Of Specialisation empowers future innovators through engineering and technical education.",
     areaServed: "Tshwane",
     foundingDate: "2019",
   }
