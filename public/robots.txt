@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.soshanguve-engineering.edu.za/sitemap.xml
+Sitemap: https://sosha-automotive.org/sitemap.xml
