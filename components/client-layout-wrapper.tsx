@@ -30,41 +30,22 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
   }, [])
 
   useEffect(() => {
-    if (mounted && pathname) {
-      window.scrollTo(0, 0)
-    }
+    if (mounted && pathname) window.scrollTo(0, 0)
   }, [pathname, mounted])
 
-  // Homepage-only headline treatment: reveal each heading like a precision typewriter
-  // without replacing its text, keeping the full heading accessible to search engines and assistive tech.
   useEffect(() => {
     if (!mounted || pathname !== "/") return
-
     const headings = Array.from(document.querySelectorAll<HTMLElement>("main h1, main h2, main h3, main h4, main h5, main h6"))
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-
-    if (reduceMotion) return
-
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const activate = (heading: HTMLElement) => {
       const chars = Math.max(12, heading.textContent?.trim().length ?? 12)
       heading.style.setProperty("--typewriter-steps", String(chars))
       heading.classList.add("typewriter-heading-active")
     }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activate(entry.target as HTMLElement)
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.15 },
-    )
-
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { activate(entry.target as HTMLElement); observer.unobserve(entry.target) }
+    }), { rootMargin: "0px 0px -8% 0px", threshold: 0.15 })
     headings.forEach((heading) => observer.observe(heading))
-
     return () => observer.disconnect()
   }, [mounted, pathname])
 
@@ -76,8 +57,8 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
       </AnimatePresence>
       {mounted && <Footer />}
       {mounted && <StructuredData />}
-      {/* Global contact actions: WhatsApp, phone call and Gmail compose. */}
-      {mounted && <FloatingContacts />}
+      {/* Keep contact actions mounted independently of page animation/layout state. */}
+      <FloatingContacts />
     </>
   )
 }
