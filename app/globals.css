@@ -36,7 +36,8 @@
   --primary-foreground: 222.2 84% 4.9%;
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
-  --muted: 215 20.2% 65.1%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
   --accent: 217.2 32.6% 17.5%;
   --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
@@ -50,7 +51,7 @@
   * { @apply border-border; }
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; touch-action: manipulation; min-height: 100%; overflow-x: hidden; scrollbar-gutter: stable; overscroll-behavior-y: none; }
   body { @apply bg-background text-foreground min-h-screen flex flex-col; font-family: var(--font-manrope), system-ui, sans-serif; font-feature-settings: "rlig" 1, "calt" 1, "kern" 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; width: 100%; letter-spacing: -0.012em; }
-  h1, h2, h3, h4, h5, h6 { font-family: var(--font-playfair), Georgia, serif; font-feature-settings: "liga" 1, "kern" 1, "clig" 1; letter-spacing: -0.035em; text-wrap: balance; font-weight: 600; text-rendering: optimizeLegibility; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-playfair), Georgia, serif; font-feature-settings: "liga" 1, "kern" 1, "clig" 1; letter-spacing: -0.035em; text-wrap: balance; font-weight: 600; text-rendering: optimizeLegibility; text-shadow: 0 1px 0 rgba(255,255,255,0.55), 0 7px 20px rgba(15,23,42,0.10), 0 16px 42px rgba(15,23,42,0.06); }
   h1 { line-height: 0.94; letter-spacing: -0.048em; }
   h2 { line-height: 0.98; letter-spacing: -0.042em; }
   h3 { line-height: 1.04; letter-spacing: -0.035em; }
@@ -66,8 +67,8 @@
   .font-display, .font-serif { font-family: var(--font-playfair), Georgia, serif; }
   .font-technical { font-family: var(--font-space), var(--font-manrope), system-ui, sans-serif; }
   .eyebrow { font-family: var(--font-space), var(--font-manrope), system-ui, sans-serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em; line-height: 1; text-transform: uppercase; }
-  .display-title { font-family: var(--font-playfair), Georgia, serif; font-weight: 600; letter-spacing: -0.05em; line-height: 0.94; text-wrap: balance; text-rendering: optimizeLegibility; }
-  .premium-heading { font-family: var(--font-playfair), Georgia, serif; font-weight: 600; letter-spacing: -0.05em; line-height: 0.95; text-wrap: balance; text-rendering: optimizeLegibility; text-shadow: 0 2px 0 rgba(255,255,255,0.72), 0 8px 24px rgba(15, 23, 42, 0.12), 0 18px 48px rgba(15, 23, 42, 0.08); }
+  .display-title { font-family: var(--font-playfair), Georgia, serif; font-weight: 600; letter-spacing: -0.05em; line-height: 0.94; text-wrap: balance; text-rendering: optimizeLegibility; text-shadow: 0 2px 0 rgba(255,255,255,0.72), 0 8px 24px rgba(15,23,42,0.12), 0 18px 48px rgba(15,23,42,0.08); }
+  .premium-heading { font-family: var(--font-playfair), Georgia, serif; font-weight: 600; letter-spacing: -0.05em; line-height: 0.95; text-wrap: balance; text-rendering: optimizeLegibility; text-shadow: 0 2px 0 rgba(255,255,255,0.72), 0 8px 24px rgba(15,23,42,0.12), 0 18px 48px rgba(15,23,42,0.08); }
   .premium-heading-dark { text-shadow: 0 2px 0 rgba(255,255,255,0.06), 0 8px 26px rgba(0,0,0,0.34), 0 18px 54px rgba(0,0,0,0.22); }
   .heading-accent { text-shadow: 0 2px 0 rgba(255,255,255,0.18), 0 6px 18px rgba(212,175,55,0.16); }
   .type-scale-display { font-size: clamp(3rem, 7vw, 7rem); }
