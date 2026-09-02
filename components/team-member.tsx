@@ -1,6 +1,5 @@
+import { ScrollAnimation } from "@/components/scroll-animation"
 import { Card, CardContent } from "@/components/ui/card"
-import { useSpring, animated } from "react-spring"
-import { useInView } from "react-intersection-observer"
 import Image from "next/image"
 
 interface TeamMemberProps {
@@ -11,35 +10,18 @@ interface TeamMemberProps {
 }
 
 export function TeamMember({ name, role, image, description }: TeamMemberProps) {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  const props = useSpring({
-    opacity: inView ? 1 : 0,
-    y: inView ? 0 : 20,
-    config: { duration: 500 },
-  })
-
   return (
-    <animated.div ref={ref} style={props}>
-      <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <ScrollAnimation>
+      <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-xl">
         <CardContent className="p-0">
-          <Image
-            src={image || "/placeholder.svg"}
-            alt={name}
-            width={300}
-            height={300}
-            className="w-full object-cover h-64"
-          />
+          <Image src={image || "/placeholder.svg"} alt={name} width={300} height={300} className="h-64 w-full object-cover" />
           <div className="p-6">
-            <h3 className="text-xl font-bold mb-1">{name}</h3>
-            <p className="text-school-blue font-semibold mb-2">{role}</p>
-            <p className="text-gray-600 text-sm">{description}</p>
+            <h3 className="mb-1 text-xl font-bold">{name}</h3>
+            <p className="mb-2 font-semibold text-school-blue">{role}</p>
+            <p className="text-sm text-gray-600">{description}</p>
           </div>
         </CardContent>
       </Card>
-    </animated.div>
+    </ScrollAnimation>
   )
 }
