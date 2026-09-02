@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageCircle, Phone, Mail, X } from "lucide-react"
-import { openEmail, openWhatsApp, SCHOOL_EMAIL } from "@/lib/contact-links"
+import { openEmail, openWhatsApp } from "@/lib/contact-links"
 
 const WA_DEFAULT_MSG = "Hello Soshanguve Automotive SoS, I would like to find out more about the school."
 const contacts = [
