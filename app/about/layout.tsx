@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { SeoStructuredData } from "@/components/seo-structured-data"
 
 export const metadata: Metadata = {
   title: "About the School",
@@ -8,4 +9,6 @@ export const metadata: Metadata = {
   openGraph: { title: "About Soshanguve Engineering School Of Specialisation", description: "Discover the school's engineering focus, history, achievements and vision in Soshanguve, Pretoria.", url: "https://sosha-automotive.org/about", type: "website" },
 }
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) { return children }
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
+  return <><SeoStructuredData title="About the School | Soshanguve Engineering School Of Specialisation" description={metadata.description as string} path="/about" breadcrumbs={[{ name: "Home", path: "" }, { name: "About the School", path: "/about" }]} />{children}</>
+}
