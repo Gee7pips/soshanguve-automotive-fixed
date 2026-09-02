@@ -5,14 +5,14 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { SidebarMenuItem } from "@/components/sidebar-menu-item"
 
 const routes = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
+  { href: "/about", label: "About" },
   { href: "/staff", label: "Staff" },
   { href: "/academics", label: "Academics" },
   { href: "/achievements", label: "Achievements" },
@@ -28,185 +28,114 @@ const routes = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const primaryRoutes = routes.slice(0, 7)
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200/40 shadow-lg"
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 lg:px-6 lg:pt-5"
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo Section - Prominently Displayed */}
-          <Link 
-            href="/" 
-            className="flex items-center gap-3 lg:gap-4 group flex-shrink-0"
-          >
-            <motion.div 
-              whileHover={{ scale: 1.08, rotate: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative h-20 w-20 lg:h-24 lg:w-24 rounded-2xl bg-gradient-to-br from-school-navy/10 to-school-gold/10 backdrop-blur-sm p-2 flex items-center justify-center border border-school-gold/20 shadow-lg hover:shadow-xl transition-shadow"
+      <div className="mx-auto max-w-7xl">
+        <div className="relative flex h-[68px] items-center rounded-[22px] border border-white/60 bg-white/90 px-3 shadow-[0_18px_50px_rgba(15,35,75,0.14)] backdrop-blur-2xl ring-1 ring-black/[0.03] sm:px-4 lg:h-[74px]">
+          <Link href="/" className="group flex shrink-0 items-center gap-2.5 rounded-2xl px-1.5 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-school-gold">
+            <motion.div
+              whileHover={{ scale: 1.04, rotate: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-school-navy/10 to-school-gold/15 p-1 ring-1 ring-school-gold/20 shadow-sm sm:h-12 sm:w-12"
             >
               <Image
                 src="/images/soshanguve-logo.jpg"
                 alt="Soshanguve Automotive S.O.S School Crest"
-                width={96}
-                height={96}
-                className="object-contain drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
+                width={48}
+                height={48}
+                className="h-full w-full object-contain"
                 priority
               />
             </motion.div>
-            <div className="hidden sm:flex flex-col justify-center space-y-1">
-              <h1 className="text-lg lg:text-2xl font-bold text-school-navy leading-tight group-hover:text-school-blue transition-colors">
-                Soshanguve
-              </h1>
-              <p className="text-xs lg:text-sm font-semibold text-school-gold">
-                Automotive S.O.S
-              </p>
+            <div className="hidden sm:block">
+              <p className="font-display text-[15px] font-semibold leading-none tracking-[-0.02em] text-school-navy lg:text-base">Soshanguve</p>
+              <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-school-gold lg:text-[10px]">Automotive S.O.S</p>
             </div>
           </Link>
 
-          {/* Desktop Navigation - Center */}
-          <nav className="hidden xl:flex items-center justify-center flex-1 mx-8">
-            <div className="flex items-center gap-2 bg-gradient-to-r from-white via-gray-50 to-white rounded-full px-6 py-3 border border-gray-200/60 shadow-md backdrop-blur-sm">
-              {routes.slice(0, 6).map((route) => {
+          <nav aria-label="Main navigation" className="hidden flex-1 items-center justify-center xl:flex">
+            <div className="mx-6 flex items-center rounded-full border border-school-navy/[0.06] bg-school-navy/[0.025] p-1">
+              {primaryRoutes.map((route) => {
                 const isActive = pathname === route.href
                 return (
-                  <motion.div
+                  <Link
                     key={route.href}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    href={route.href}
+                    className={`relative rounded-full px-3.5 py-2 text-[12px] font-bold tracking-[-0.01em] transition-colors duration-200 lg:px-4 ${isActive ? "text-white" : "text-slate-600 hover:text-school-navy"}`}
                   >
-                    <Link
-                      href={route.href}
-                      className={`relative px-4 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 whitespace-nowrap ${
-                        isActive 
-                          ? "text-white shadow-lg" 
-                          : "text-gray-700 hover:text-school-navy"
-                      }`}
-                    >
-                      {route.label}
-                      {isActive && (
-                        <motion.div
-                          layoutId="nav-pill"
-                          className="absolute inset-0 bg-gradient-to-r from-school-navy via-school-blue to-school-navy rounded-full -z-10 shadow-lg"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
+                    {isActive && (
+                      <motion.span
+                        layoutId="desktop-nav-pill"
+                        className="absolute inset-0 -z-10 rounded-full bg-school-navy shadow-md shadow-school-navy/20"
+                        transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                      />
+                    )}
+                    {route.label}
+                  </Link>
                 )
               })}
             </div>
           </nav>
 
-          {/* CTA Button & Mobile Menu */}
-          <div className="flex items-center gap-2 lg:gap-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden lg:block"
+          <div className="ml-auto flex items-center gap-2">
+            <Link
+              href="/apply"
+              className="group hidden items-center gap-1.5 rounded-full bg-school-navy px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-school-navy/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-school-blue hover:shadow-lg lg:flex"
             >
-              <Link
-                href="/support-us"
-                className="px-6 py-3 bg-gradient-to-r from-school-gold via-orange-400 to-school-gold text-white font-semibold text-sm rounded-full hover:shadow-lg transition-all duration-300"
-              >
-                Support Us
-              </Link>
-            </motion.div>
+              Apply Now
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
 
-            {/* Mobile Menu Trigger */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="xl:hidden">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-11 w-11 rounded-full hover:bg-school-navy/10 transition-colors"
+                  className="h-11 w-11 rounded-full border border-school-navy/10 bg-school-navy/[0.035] hover:bg-school-navy/10"
                 >
-                  {isOpen ? (
-                    <X className="h-6 w-6 text-school-navy" />
-                  ) : (
-                    <Menu className="h-6 w-6 text-school-navy" />
-                  )}
+                  {isOpen ? <X className="h-5 w-5 text-school-navy" /> : <Menu className="h-5 w-5 text-school-navy" />}
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
 
-              {/* Mobile Sidebar */}
-              <SheetContent
-                side="right"
-                className="w-full sm:w-96 p-0 bg-gradient-to-b from-white via-gray-50 to-white border-l border-gray-200/50 shadow-2xl"
-              >
-                <div className="flex flex-col h-full">
-                  {/* Mobile Sidebar Header */}
-                  <motion.div
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 }}
-                    className="sticky top-0 z-10 bg-gradient-to-b from-white to-gray-50/80 backdrop-blur-lg px-6 py-6 border-b border-gray-200/50"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="relative h-14 w-14 rounded-xl bg-gradient-to-br from-school-navy/10 to-school-gold/10 p-1.5 flex items-center justify-center border border-school-gold/20">
-                        <Image
-                          src="/images/soshanguve-logo.jpg"
-                          alt="Soshanguve Automotive S.O.S"
-                          width={56}
-                          height={56}
-                          className="object-contain drop-shadow-md"
-                          priority
-                        />
+              <SheetContent side="right" className="w-full border-l border-school-navy/10 bg-[#f8fafc] p-0 shadow-2xl sm:w-[400px]">
+                <div className="flex h-full flex-col">
+                  <div className="border-b border-school-navy/10 bg-white/85 px-5 pb-5 pt-6 backdrop-blur-xl">
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-school-navy/5 p-1 ring-1 ring-school-gold/25">
+                        <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Automotive S.O.S" width={48} height={48} className="h-full w-full object-contain" />
                       </div>
-                      <div className="flex flex-col">
-                        <p className="text-sm font-bold text-school-navy leading-tight">Soshanguve</p>
-                        <p className="text-xs font-semibold text-school-gold">Automotive S.O.S</p>
+                      <div>
+                        <p className="font-display text-lg font-semibold text-school-navy">Soshanguve</p>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-school-gold">Automotive S.O.S</p>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
 
-                  {/* Mobile Menu Items */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex-grow overflow-y-auto py-4 px-3 space-y-1"
-                  >
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1 overflow-y-auto px-3 py-4">
+                    <p className="px-3 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Explore</p>
                     <AnimatePresence>
                       {routes.map((route, index) => (
-                        <SidebarMenuItem
-                          key={route.href}
-                          href={route.href}
-                          label={route.label}
-                          isActive={pathname === route.href}
-                          onClick={() => setIsOpen(false)}
-                          index={index}
-                        />
+                        <SidebarMenuItem key={route.href} href={route.href} label={route.label} isActive={pathname === route.href} onClick={() => setIsOpen(false)} index={index} />
                       ))}
                     </AnimatePresence>
                   </motion.div>
 
-                  {/* Mobile Sidebar Footer */}
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    className="sticky bottom-0 p-4 border-t border-gray-200/50 bg-gradient-to-t from-white to-gray-50/80 backdrop-blur-lg space-y-3"
-                  >
-                    <Link
-                      href="/support-us"
-                      className="block w-full py-3 px-4 text-center bg-gradient-to-r from-school-gold via-orange-400 to-school-gold hover:shadow-lg hover:scale-105 transition-all duration-300 rounded-full text-white font-semibold text-sm"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Sponsor Us
+                  <div className="space-y-2 border-t border-school-navy/10 bg-white/90 p-4 backdrop-blur-xl">
+                    <Link href="/apply" onClick={() => setIsOpen(false)} className="flex w-full items-center justify-center gap-2 rounded-xl bg-school-navy px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-school-navy/15 transition-transform hover:-translate-y-0.5">
+                      Apply Now <ArrowUpRight className="h-4 w-4" />
                     </Link>
-                    <Link
-                      href="/apply"
-                      className="block w-full py-3 px-4 text-center bg-gradient-to-r from-school-navy to-school-blue hover:shadow-lg hover:scale-105 transition-all duration-300 rounded-full text-white font-semibold text-sm"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Apply Now
+                    <Link href="/support-us" onClick={() => setIsOpen(false)} className="flex w-full items-center justify-center rounded-xl border border-school-gold/40 bg-school-gold/10 px-4 py-3.5 text-sm font-bold text-school-navy transition-colors hover:bg-school-gold/20">
+                      Support Our Vision
                     </Link>
-                  </motion.div>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
