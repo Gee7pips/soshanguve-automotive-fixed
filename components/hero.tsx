@@ -21,7 +21,7 @@ export function Hero() {
   const reveal = (delay: number) => ({
     initial: { opacity: 0, y: reduceMotion ? 0 : 22 },
     animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : delay, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : delay, ease: "easeOut" as const },
   })
 
   return (
@@ -34,7 +34,6 @@ export function Hero() {
           backgroundFill="#0b1836"
           waveOpacity={0.18}
         >
-          {/* Engineering blueprint layer */}
           <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.07)_1px,transparent_1px)] [background-size:48px_48px]" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-school-gold/15" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
