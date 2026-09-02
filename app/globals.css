@@ -33,7 +33,7 @@
   --popover: 222.2 84% 4.9%;
   --popover-foreground: 210 40% 98%;
   --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
+  --primary-foreground: 222.2 84% 4.9%;
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
   --muted: 217.2 32.6% 17.5%;
@@ -48,127 +48,67 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
 
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     touch-action: manipulation;
-    height: 100%;
+    min-height: 100%;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
+    overscroll-behavior-y: none;
   }
 
   body {
     @apply bg-background text-foreground min-h-screen flex flex-col;
     font-feature-settings: "rlig" 1, "calt" 1;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     width: 100%;
   }
 
-  main {
-    min-height: calc(100vh - 6rem);
-  }
+  main { min-height: calc(100vh - 6rem); }
 
-  /* Improve mobile orientation changes */
   @media screen and (orientation: landscape) {
-    html,
-    body {
-      height: auto;
-      min-height: 100vh;
-    }
-  }
-
-  /* Prevent content shift on load */
-  html {
-    scrollbar-gutter: stable;
-    overscroll-behavior-y: none;
+    html, body { height: auto; min-height: 100vh; }
   }
 }
 
-/* Optimize animations */
 @layer utilities {
-  .animation-reduce {
-    @apply motion-reduce:transform-none motion-reduce:transition-none;
-  }
+  .animation-reduce { @apply motion-reduce:transform-none motion-reduce:transition-none; }
+  .transition-gpu { transform: translateZ(0); backface-visibility: hidden; }
+  .animate-gpu { transform: translateZ(0); backface-visibility: hidden; }
+  .content-lazy { content-visibility: auto; contain-intrinsic-size: 1px 700px; }
 }
 
-/* Optimize images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Improve touch targets */
 @media (pointer: coarse) {
-  button,
-  a {
-    min-height: 44px;
-    min-width: 44px;
-  }
+  button, a { min-height: 44px; min-width: 44px; }
 }
 
-/* Fix iOS momentum scrolling */
-.scroll-container {
-  -webkit-overflow-scrolling: touch;
-}
+.scroll-container { -webkit-overflow-scrolling: touch; }
 
-/* Optimize transitions */
-.transition-gpu {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
+.font-loaded { opacity: 1; transition: opacity 0.1s ease; }
 
-/* Prevent FOUT */
-.font-loaded {
-  opacity: 1;
-  transition: opacity 0.1s ease;
-}
+.text-responsive { font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem); }
 
-/* Responsive text sizing */
-@responsive {
-  .text-responsive {
-    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
-  }
-}
-
-/* Fix iOS notch issues */
 @supports (padding: max(0px)) {
-  .safe-bottom {
-    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
-  }
-
-  .safe-top {
-    padding-top: max(env(safe-area-inset-top), 1rem);
-  }
+  .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 1rem); }
+  .safe-top { padding-top: max(env(safe-area-inset-top), 1rem); }
 }
 
-/* Improve scrolling performance */
-* {
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-/* Optimize animations */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Add hardware acceleration for animations */
-.animate-gpu {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  will-change: transform;
 }
