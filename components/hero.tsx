@@ -10,7 +10,7 @@ import { ArrowRight, ChevronDown, Cpu, Gauge, GraduationCap } from "lucide-react
 const metrics = [
   { icon: GraduationCap, value: "700+", label: "Learners" },
   { icon: Cpu, value: "Technical", label: "Programs" },
-  { icon: Gauge, value: "99.3%", label: "2024 Matric Pass" },
+  { icon: Gauge, value: "100%", label: "2024 Matric Pass" },
 ]
 
 export function Hero() {
