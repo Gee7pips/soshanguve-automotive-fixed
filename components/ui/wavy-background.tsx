@@ -1,11 +1,11 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
 import { createNoise3D } from "simplex-noise"
 
 interface WavyBackgroundProps {
-  children?: React.ReactNode
+  children?: ReactNode
   className?: string
   containerClassName?: string
   colors?: string[]
@@ -34,7 +34,6 @@ export const WavyBackground = ({
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-
     const ctx = canvas.getContext("2d", { alpha: false })
     if (!ctx) return
 
@@ -60,17 +59,14 @@ export const WavyBackground = ({
       ctx.filter = "none"
       ctx.fillStyle = backgroundFill
       ctx.fillRect(0, 0, width, height)
-
       ctx.globalAlpha = waveOpacity
       ctx.lineWidth = waveWidth
       ctx.lineCap = "round"
-
       for (let wave = 0; wave < Math.min(colors.length, 3); wave++) {
         ctx.beginPath()
         ctx.strokeStyle = colors[wave]
         const yBase = height * (0.47 + wave * 0.075)
         const step = Math.max(10, width / 90)
-
         for (let x = -step; x <= width + step; x += step) {
           const y = yBase + noise(x / 700, wave * 0.7, time) * 65
           if (x === -step) ctx.moveTo(x, y)
@@ -78,7 +74,6 @@ export const WavyBackground = ({
         }
         ctx.stroke()
       }
-
       ctx.globalAlpha = 1
     }
 
@@ -92,9 +87,7 @@ export const WavyBackground = ({
 
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
-      if (visible && !reducedMotion && frameRef.current === null) {
-        frameRef.current = requestAnimationFrame(render)
-      }
+      if (visible && !reducedMotion && frameRef.current === null) frameRef.current = requestAnimationFrame(render)
       if (!visible && frameRef.current !== null) {
         cancelAnimationFrame(frameRef.current)
         frameRef.current = null
@@ -116,7 +109,6 @@ export const WavyBackground = ({
     resizeObserver.observe(canvas)
     observer.observe(canvas)
     motionQuery.addEventListener("change", onMotionChange)
-
     setIsSafari(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))
     resize()
     render()
@@ -131,12 +123,7 @@ export const WavyBackground = ({
 
   return (
     <div className={cn("relative flex min-h-screen flex-col items-center justify-center overflow-hidden", containerClassName)}>
-      <canvas
-        ref={canvasRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        style={{ filter: isSafari ? `blur(${Math.min(blur, 4)}px)` : undefined }}
-      />
+      <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" style={{ filter: isSafari ? `blur(${Math.min(blur, 4)}px)` : undefined }} />
       <div className={cn("relative z-10 w-full", className)}>{children}</div>
     </div>
   )
