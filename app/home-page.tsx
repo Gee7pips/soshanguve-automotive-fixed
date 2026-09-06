@@ -16,6 +16,7 @@ import { VideoSection } from "@/components/video-section"
 import { LiveTicker } from "@/components/live-ticker"
 import { InnovationPulse } from "@/components/innovation-pulse"
 import { Highlights2026 } from "@/components/highlights-2026"
+import { Impact2026 } from "@/components/impact-2026"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, CheckCircle2, Compass, Cpu, GraduationCap, Wrench } from "lucide-react"
 import { SectionDivider } from "@/components/section-motion"
@@ -85,6 +86,8 @@ export default function HomePageClient() {
       <AchievementsSection />
       <SectionDivider tone="dark" label="2026 / Field Notes" />
       <Highlights2026 />
+      <SectionDivider label="2026 / Impact" />
+      <Impact2026 />
       <SectionDivider label="Latest" />
       <NewsAndUpdates2026 />
       <SectionDivider tone="dark" label="Inside SOS" />
