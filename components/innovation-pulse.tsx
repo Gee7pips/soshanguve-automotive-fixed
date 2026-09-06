@@ -1,14 +1,15 @@
 "use client"
 
+import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, Cpu, Gauge, Orbit, Radio, Sparkles, Wrench } from "lucide-react"
 import Link from "next/link"
 
 const signals = [
-  { icon: Cpu, index: "01", title: "Engineering", text: "Technical thinking built through real projects." },
-  { icon: Wrench, index: "02", title: "Workshop", text: "Hands-on learning that turns theory into capability." },
-  { icon: Orbit, index: "03", title: "Aerospace", text: "Big ambition taking shape beyond the classroom." },
-  { icon: Gauge, index: "04", title: "Future Skills", text: "Career-ready foundations for a changing world." },
+  { icon: Cpu, index: "01", title: "Engineering", text: "Technical thinking built through real projects.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0012-npGbQl41x5FxKUHZ8CBaDZz5Xz2NQC.jpg", alt: "Soshanguve Engineering learners celebrating an engineering achievement" },
+  { icon: Wrench, index: "02", title: "Workshop", text: "Hands-on learning that turns theory into capability.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0011-ai1QlIOBXhquApCz4uZXQXk2hAtphD.jpg", alt: "Learners working on an engineering aircraft project" },
+  { icon: Orbit, index: "03", title: "Aerospace", text: "Big ambition taking shape beyond the classroom.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0010-ZcU0BoXNd5gU7SM8TbcbMhamriBbf5.jpg", alt: "Soshanguve Engineering Flight 01 aircraft in flight" },
+  { icon: Gauge, index: "04", title: "Future Skills", text: "Career-ready foundations for a changing world.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0021-Wdylez7JBZv7L82Jtt5wlNrnNke4rY.jpg", alt: "Learners working with robotics equipment" },
 ]
 
 export function InnovationPulse() {
@@ -31,11 +32,18 @@ export function InnovationPulse() {
           {signals.map((signal, index) => {
             const Icon = signal.icon
             return (
-              <motion.div key={signal.index} initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.07 }} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/40 hover:bg-white/[0.08]">
-                <div className="mb-10 flex items-center justify-between"><span className="font-mono text-[9px] text-white/35">{signal.index}</span><span className="flex h-9 w-9 items-center justify-center rounded-xl border border-school-gold/20 bg-school-gold/5"><Icon className="h-4 w-4 text-school-gold" /></span></div>
-                <h3 className="font-serif text-2xl font-bold">{signal.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-white/55">{signal.text}</p>
-                <div className="mt-6 h-px w-8 bg-school-gold transition-all duration-500 group-hover:w-full" />
+              <motion.div key={signal.index} initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.07 }} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] p-2 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/40 hover:bg-white/[0.08]">
+                <div className="relative h-36 overflow-hidden rounded-xl bg-slate-900">
+                  <Image src={signal.image} alt={signal.alt} fill className="object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-school-navy via-school-navy/10 to-transparent" />
+                  <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/20 px-2 py-1 font-mono text-[8px] text-white/60 backdrop-blur">{signal.index}</span>
+                  <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-lg border border-school-gold/30 bg-school-navy/60"><Icon className="h-3.5 w-3.5 text-school-gold" /></span>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-serif text-2xl font-bold">{signal.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-white/55">{signal.text}</p>
+                  <div className="mt-5 h-px w-8 bg-school-gold transition-all duration-500 group-hover:w-full" />
+                </div>
               </motion.div>
             )
           })}
