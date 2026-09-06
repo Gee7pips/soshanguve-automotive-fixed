@@ -8,10 +8,11 @@ const TICKER_ITEMS = [
   { category: "INNOVATION", text: "S.o.S Flight 01 takes off — students design and build the school's first RC aircraft" },
   { category: "AWARD", text: "Rendani Tshikhudo named Best Quintile 3 Junior Learner — SA Mathematics Olympiad 2025" },
   { category: "WIN", text: "1st Place at the Gauteng SoS Festival 2026 — school aircraft project earns top honours" },
+  { category: "WIN", text: "Future Nation Business Challenge 2026 — Soshanguve Engineering SOS takes 1st place and wins R15,000" },
   { category: "PARTNERSHIP", text: "Vuma Fibre and Afrihost connect our campus — high-speed internet for every learner" },
   { category: "TECH", text: "New mBot Robotics Lab launched — state-of-the-art coding and robotics for all grades" },
   { category: "SPORT", text: "Netball, chess and table-tennis teams advance to inter-district championships 2026" },
-  { category: "COMMUNITY", text: "100+ learners enrolled in extended engineering mentorship with industry partners" },
+  { category: "COMMUNITY", text: "Black Coffee Foundation and Gautrain support learners through a 2026 school-uniform initiative" },
   { category: "APPLY", text: "2026 applications now open — non-fee-paying school serving 700+ learners across Tshwane" },
   { category: "NEWS", text: "Principal Mr. TA Mashiane receives national crystal award for educational leadership excellence" },
 ]
