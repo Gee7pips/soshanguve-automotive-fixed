@@ -9,15 +9,14 @@ const quickLinks = [
   { name: "Programs", href: "/programs" },
   { name: "Achievements", href: "/achievements" },
   { name: "Activities", href: "/activities" },
-  { name: "Staff", href: "/staff" },
   { name: "Contact", href: "/contact" },
 ]
 
 const resourceLinks = [
   { name: "Apply Now", href: "/apply" },
-  { name: "Documents", href: "/documents" },
   { name: "Partnerships", href: "/partnerships" },
   { name: "Support Us", href: "/support-us" },
+  { name: "Innovations", href: "/innovations" },
 ]
 
 const socialLinks = [
