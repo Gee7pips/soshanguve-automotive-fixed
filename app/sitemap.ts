@@ -9,13 +9,14 @@ const routes: Array<{ path: string; priority: number; changeFrequency: MetadataR
   { path: "/academics", priority: 0.95, changeFrequency: "weekly" },
   { path: "/apply", priority: 0.95, changeFrequency: "weekly" },
   { path: "/innovations", priority: 0.9, changeFrequency: "weekly" },
-  { path: "/achievements", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/achievements", priority: 0.9, changeFrequency: "monthly" },
   { path: "/about", priority: 0.85, changeFrequency: "monthly" },
   { path: "/activities", priority: 0.8, changeFrequency: "monthly" },
   { path: "/partnerships", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/documents", priority: 0.8, changeFrequency: "monthly" },
   { path: "/support-us", priority: 0.8, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
