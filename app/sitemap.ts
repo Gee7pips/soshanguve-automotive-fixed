@@ -4,6 +4,7 @@ const baseUrl = "https://www.sosha-automotive.org"
 const routes: Array<{ path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }> = [
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/programs", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/documents", priority: 0.75, changeFrequency: "monthly" },
   { path: "/academics", priority: 0.95, changeFrequency: "weekly" },
   { path: "/apply", priority: 0.95, changeFrequency: "weekly" },
   { path: "/innovations", priority: 0.9, changeFrequency: "weekly" },
