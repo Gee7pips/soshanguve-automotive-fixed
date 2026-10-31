@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import HomePageClient from "./home-page"
 
-const siteUrl = "https://sosha-automotive.org"
+const siteUrl = "https://www.sosha-automotive.org"
 const siteName = "Soshanguve Engineering School Of Specialisation"
 
 export const metadata: Metadata = {
