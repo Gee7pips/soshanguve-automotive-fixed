@@ -19,7 +19,7 @@ import { Highlights2026 } from "@/components/highlights-2026"
 import { Impact2026 } from "@/components/impact-2026"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, CheckCircle2, Compass, Cpu, GraduationCap, Wrench } from "lucide-react"
-import { SectionDivider } from "@/components/section-motion"
+import { CinematicSection, SectionDivider } from "@/components/section-motion"
 
 const stats = [
   { label: "Matric Pass Rate", value: "100%", description: "2025 Results" },
@@ -42,24 +42,25 @@ export default function HomePageClient() {
     <div className="bg-white">
       <Hero />
       <SectionDivider tone="dark" label="Discover" />
-      <LiveTicker />
+      <CinematicSection delay={0.02}><LiveTicker /></CinematicSection>
       <SectionDivider label="Achievement" />
-      <MatricResultsSection />
+      <CinematicSection delay={0.04}><MatricResultsSection /></CinematicSection>
       <SectionDivider tone="dark" label="Our Mission" />
-      <WelcomeSection />
+      <CinematicSection delay={0.02}><WelcomeSection /></CinematicSection>
       <SectionDivider tone="dark" label="Innovation Pulse" />
-      <InnovationPulse />
+      <CinematicSection delay={0.03}><InnovationPulse /></CinematicSection>
       <SectionDivider label="Leadership" />
-      <PrincipalWelcome />
+      <CinematicSection delay={0.02}><PrincipalWelcome /></CinematicSection>
       <SectionDivider tone="dark" label="Innovation" />
-      <InnovationSection />
+      <CinematicSection delay={0.02}><InnovationSection /></CinematicSection>
       <SectionDivider tone="dark" label="Aerospace" />
-      <AirplaneInnovation />
+      <CinematicSection delay={0.04}><AirplaneInnovation /></CinematicSection>
       <SectionDivider label="Learning Pathways" />
-      <SubjectOfferings />
+      <CinematicSection delay={0.02}><SubjectOfferings /></CinematicSection>
       <SectionDivider tone="dark" label="Campus Life" />
-      <CampusLife />
+      <CinematicSection delay={0.02}><CampusLife /></CinematicSection>
       <SectionDivider label="Our Story" />
+      <CinematicSection delay={0.02}>
       <section className="relative overflow-hidden bg-white py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(30,58,138,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.05)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-school-gold/10 blur-3xl" />
@@ -82,16 +83,17 @@ export default function HomePageClient() {
           </div>
         </div>
       </section>
+      </CinematicSection>
       <SectionDivider tone="dark" label="Recognition" />
-      <AchievementsSection />
+      <CinematicSection delay={0.02}><AchievementsSection /></CinematicSection>
       <SectionDivider tone="dark" label="2026 / Field Notes" />
-      <Highlights2026 />
+      <CinematicSection delay={0.02}><Highlights2026 /></CinematicSection>
       <SectionDivider label="2026 / Impact" />
-      <Impact2026 />
+      <CinematicSection delay={0.02}><Impact2026 /></CinematicSection>
       <SectionDivider label="Latest" />
-      <NewsAndUpdates2026 />
+      <CinematicSection delay={0.02}><NewsAndUpdates2026 /></CinematicSection>
       <SectionDivider tone="dark" label="Inside SOS" />
-      <VideoSection />
+      <CinematicSection delay={0.02}><VideoSection /></CinematicSection>
     </div>
   )
 }
