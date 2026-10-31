@@ -169,3 +169,148 @@ main.premium-interior-page li {
     font-size: clamp(1.15rem, 5.5vw, 1.4rem);
   }
 }
+
+
+/* Premium homepage typography system.
+   The hero leads with an editorial serif; section headings use a modern geometric sans.
+   Body copy and controls retain the highly legible Manrope family. */
+main.premium-homepage {
+  --home-ink: #102447;
+  --home-muted: #526178;
+}
+
+/* Flagship hero statement */
+main.premium-homepage h1 {
+  max-width: 18ch;
+  margin-inline: auto;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2.4rem, 5.8vw, 5.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.068em;
+  text-wrap: balance;
+  text-shadow: none;
+  text-rendering: optimizeLegibility;
+}
+
+main.premium-homepage h1 span:first-child {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2.35rem, 6.15vw, 6rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.072em;
+}
+
+main.premium-homepage h1 span + span {
+  margin-top: 0.35rem;
+  font-family: var(--font-space), var(--font-manrope), system-ui, sans-serif;
+  font-size: clamp(1.55rem, 4.05vw, 3.55rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.052em;
+}
+
+/* High-contrast, modern engineering section headings */
+main.premium-homepage h2,
+main.premium-homepage h2.premium-heading,
+main.premium-homepage .premium-heading:not(h1):not(h3) {
+  font-family: var(--font-space), var(--font-manrope), system-ui, sans-serif;
+  font-size: clamp(2rem, 3.85vw, 4.15rem);
+  font-weight: 700;
+  line-height: 1.075;
+  letter-spacing: -0.058em;
+  text-wrap: balance;
+  text-shadow: none;
+  text-rendering: optimizeLegibility;
+}
+
+main.premium-homepage h3,
+main.premium-homepage h3.premium-heading {
+  font-family: var(--font-space), var(--font-manrope), system-ui, sans-serif;
+  font-size: clamp(1.25rem, 1.95vw, 1.8rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+  text-shadow: none;
+  text-rendering: optimizeLegibility;
+}
+
+main.premium-homepage h4,
+main.premium-homepage h5,
+main.premium-homepage h6 {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  text-shadow: none;
+}
+
+main.premium-homepage .display-title {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.02;
+  text-shadow: none;
+}
+
+main.premium-homepage .premium-heading,
+main.premium-homepage .premium-heading-dark,
+main.premium-homepage .heading-accent {
+  text-shadow: none;
+}
+
+main.premium-homepage .eyebrow {
+  font-family: var(--font-space), var(--font-manrope), system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+}
+
+main.premium-homepage p {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+main.premium-homepage strong {
+  font-weight: 750;
+}
+
+@media (max-width: 640px) {
+  main.premium-homepage h1 {
+    max-width: 100%;
+    font-size: clamp(2.1rem, 9vw, 3.45rem);
+    line-height: 1.03;
+    letter-spacing: -0.064em;
+  }
+
+  main.premium-homepage h1 span:first-child {
+    font-size: clamp(2.15rem, 9.2vw, 3.55rem);
+    line-height: 1.04;
+    letter-spacing: -0.068em;
+  }
+
+  main.premium-homepage h1 span + span {
+    margin-top: 0.3rem;
+    font-size: clamp(1.5rem, 6.7vw, 2.45rem);
+    line-height: 1.12;
+    letter-spacing: -0.048em;
+  }
+
+  main.premium-homepage h2,
+  main.premium-homepage h2.premium-heading,
+  main.premium-homepage .premium-heading:not(h1):not(h3) {
+    font-size: clamp(1.8rem, 7.7vw, 2.65rem);
+    line-height: 1.12;
+    letter-spacing: -0.052em;
+  }
+
+  main.premium-homepage h3,
+  main.premium-homepage h3.premium-heading {
+    font-size: clamp(1.2rem, 5.2vw, 1.5rem);
+    line-height: 1.22;
+  }
+}
