@@ -10,14 +10,14 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], display: "swap", variab
 
 const siteName = "Soshanguve Engineering School Of Specialisation"
 const siteUrl = "https://www.sosha-automotive.org"
-const description = "Soshanguve Engineering School Of Specialisation is a Gauteng School of Specialisation in Soshanguve, Pretoria, focused on automotive, engineering, technology and practical STEM education for Grades 8–12."
+const description = "Soshanguve Engineering School Of Specialisation is a Gauteng School of Specialisation and technical high school in Soshanguve, Pretoria, focused on automotive, engineering, technology and practical STEM education for Grades 8–12."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: siteName, template: "%s | Soshanguve Engineering School Of Specialisation" },
   description,
   keywords: [
-    siteName, "Soshanguve engineering school", "Soshanguve technical school", "school of specialisation Soshanguve",
+    siteName, "Soshanguve engineering school", "Soshanguve technical school", "Soshanguve technical high school", "school of specialisation Soshanguve",
     "automotive school Soshanguve", "engineering school Gauteng", "technical high school Pretoria",
     "automotive engineering South Africa", "technical education Gauteng", "STEM school Soshanguve",
     "Schools of Specialisation Gauteng", "Tshwane West engineering school",
