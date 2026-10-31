@@ -9,7 +9,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variabl
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], display: "swap", variable: "--font-space", weight: ["400", "500", "600", "700"] })
 
 const siteName = "Soshanguve Engineering School Of Specialisation"
-const siteUrl = "https://sosha-automotive.org"
+const siteUrl = "https://www.sosha-automotive.org"
 const description = "Soshanguve Engineering School Of Specialisation is a Gauteng School of Specialisation in Soshanguve, Pretoria, focused on automotive, engineering, technology and practical STEM education for Grades 8–12."
 
 export const metadata: Metadata = {
