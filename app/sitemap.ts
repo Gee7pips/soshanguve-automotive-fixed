@@ -1,8 +1,6 @@
 import type { MetadataRoute } from "next"
 
-const baseUrl = "https://sosha-automotive.org"
-const lastModified = new Date()
-
+const baseUrl = "https://www.sosha-automotive.org"
 const routes: Array<{ path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }> = [
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/programs", priority: 0.95, changeFrequency: "weekly" },
@@ -22,7 +20,6 @@ const routes: Array<{ path: string; priority: number; changeFrequency: MetadataR
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map(({ path, priority, changeFrequency }) => ({
     url: `${baseUrl}${path}`,
-    lastModified,
     changeFrequency,
     priority,
   }))
