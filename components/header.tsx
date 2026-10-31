@@ -9,7 +9,6 @@ import {
   ArrowUpRight,
   BookOpen,
   Building2,
-  FileText,
   GraduationCap,
   Handshake,
   Home,
@@ -26,16 +25,14 @@ import { SidebarMenuItem } from "@/components/sidebar-menu-item"
 const routes = [
   { href: "/", label: "Home", icon: Home },
   { href: "/about", label: "About", icon: Building2 },
-  { href: "/staff", label: "Staff", icon: Users },
   { href: "/academics", label: "Academics", icon: GraduationCap },
   { href: "/achievements", label: "Achievements", icon: Trophy },
   { href: "/activities", label: "Activities", icon: Wrench },
   { href: "/partnerships", label: "Partnerships", icon: Handshake },
   { href: "/programs", label: "Programs", icon: BookOpen },
-  { href: "/documents", label: "Documents", icon: FileText },
   { href: "/support-us", label: "Support Us", icon: Handshake },
   { href: "/contact", label: "Contact", icon: Users },
-  { href: "/apply", label: "Apply Now", icon: GraduationCap },
+  { href: "/apply", label: "Admissions & Enquiries", icon: GraduationCap },
 ]
 
 export function Header() {
@@ -78,7 +75,7 @@ export function Header() {
 
           <div className="ml-auto flex items-center gap-2">
             <Link href="/apply" className="group hidden items-center gap-1.5 rounded-full bg-school-navy px-4 py-2.5 font-sans text-xs font-extrabold text-white shadow-md shadow-school-navy/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-school-blue hover:shadow-lg lg:flex">
-              Apply Now <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              Admissions <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
