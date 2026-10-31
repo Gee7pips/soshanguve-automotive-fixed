@@ -13,12 +13,12 @@ const TICKER_ITEMS = [
   { category: "TECH", text: "New mBot Robotics Lab launched — state-of-the-art coding and robotics for all grades" },
   { category: "SPORT", text: "Netball, chess and table-tennis teams advance to inter-district championships 2026" },
   { category: "COMMUNITY", text: "Black Coffee Foundation and Gautrain support learners through a 2026 school-uniform initiative" },
-  { category: "APPLY", text: "2026 applications now open — non-fee-paying school serving 700+ learners across Tshwane" },
+  { category: "ADMISSIONS", text: "2027 Grade 8 admissions — check the official GDE portal for placement updates and late-application guidance" },
   { category: "NEWS", text: "Principal Mr. TA Mashiane receives national crystal award for educational leadership excellence" },
 ]
 
 const CATEGORY_STYLES: Record<string, string> = {
-  ACHIEVEMENT: "border-school-gold/30 bg-school-gold/10 text-school-gold", INNOVATION: "border-school-blue/40 bg-school-blue/15 text-blue-100", AWARD: "border-school-gold/30 bg-school-gold/10 text-school-gold", WIN: "border-emerald-400/30 bg-emerald-400/10 text-emerald-200", PARTNERSHIP: "border-white/15 bg-white/[0.06] text-white/75", TECH: "border-sky-300/30 bg-sky-300/10 text-sky-100", SPORT: "border-orange-300/30 bg-orange-300/10 text-orange-100", COMMUNITY: "border-white/15 bg-white/[0.06] text-white/75", APPLY: "border-school-gold/30 bg-school-gold/10 text-school-gold", NEWS: "border-rose-300/30 bg-rose-300/10 text-rose-100",
+  ACHIEVEMENT: "border-school-gold/30 bg-school-gold/10 text-school-gold", INNOVATION: "border-school-blue/40 bg-school-blue/15 text-blue-100", AWARD: "border-school-gold/30 bg-school-gold/10 text-school-gold", WIN: "border-emerald-400/30 bg-emerald-400/10 text-emerald-200", PARTNERSHIP: "border-white/15 bg-white/[0.06] text-white/75", TECH: "border-sky-300/30 bg-sky-300/10 text-sky-100", SPORT: "border-orange-300/30 bg-orange-300/10 text-orange-100", COMMUNITY: "border-white/15 bg-white/[0.06] text-white/75", ADMISSIONS: "border-school-gold/30 bg-school-gold/10 text-school-gold", NEWS: "border-rose-300/30 bg-rose-300/10 text-rose-100",
 }
 
 export function LiveTicker() {
