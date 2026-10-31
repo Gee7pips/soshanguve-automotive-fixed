@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useEffect, useState } from "react"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { StructuredData } from "@/components/structured-data"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation"
 export function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,29 +34,22 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
     if (mounted && pathname) window.scrollTo(0, 0)
   }, [pathname, mounted])
 
-  useEffect(() => {
-    if (!mounted || pathname !== "/") return
-    const headings = Array.from(document.querySelectorAll<HTMLElement>("main h1, main h2, main h3, main h4, main h5, main h6"))
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    const activate = (heading: HTMLElement) => {
-      const chars = Math.max(12, heading.textContent?.trim().length ?? 12)
-      heading.style.setProperty("--typewriter-steps", String(chars))
-      heading.classList.add("typewriter-heading-active")
-    }
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) { activate(entry.target as HTMLElement); observer.unobserve(entry.target) }
-    }), { rootMargin: "0px 0px -8% 0px", threshold: 0.15 })
-    headings.forEach((heading) => observer.observe(heading))
-    return () => observer.disconnect()
-  }, [mounted, pathname])
-
   const typographyScope = pathname === "/" ? "premium-homepage" : "premium-interior-page"
 
   return (
     <>
       {mounted && <Header />}
-      <AnimatePresence mode="wait">
-        <main className={`flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28 ${typographyScope}`}>{children}</main>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.main
+          key={pathname}
+          initial={reduceMotion ? false : { opacity: 0, y: 8, filter: "blur(2px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: -4, filter: "blur(1px)" }}
+          transition={{ duration: reduceMotion ? 0 : 0.36, ease: [0.22, 1, 0.36, 1] }}
+          className={`flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28 ${typographyScope}`}
+        >
+          {children}
+        </motion.main>
       </AnimatePresence>
       {mounted && <Footer />}
       {mounted && <StructuredData />}
