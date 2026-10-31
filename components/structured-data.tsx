@@ -13,7 +13,7 @@ export function StructuredData() {
       url: siteUrl,
       logo: { "@type": "ImageObject", url: `${siteUrl}/icon.svg` },
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-zXpGFpwslpfjZV4tHjellh5AzhDh2M.jpeg",
-      description: "A Gauteng School of Specialisation in Soshanguve, Pretoria, focused on automotive, engineering, technology and practical STEM education.",
+      description: "Soshanguve Engineering School Of Specialisation is a Gauteng School of Specialisation and technical high school in Soshanguve, Pretoria, focused on automotive, engineering, technology and practical STEM education.",
       telephone: "+27 12 797 2118",
       email: "soshanguve.technical@gmail.com",
       address: {
