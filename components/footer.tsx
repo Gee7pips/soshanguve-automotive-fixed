@@ -17,6 +17,7 @@ const resourceLinks = [
   { name: "Partnerships", href: "/partnerships" },
   { name: "Support Us", href: "/support-us" },
   { name: "Innovations", href: "/innovations" },
+  { name: "School Documents", href: "/documents" },
 ]
 
 const socialLinks = [
