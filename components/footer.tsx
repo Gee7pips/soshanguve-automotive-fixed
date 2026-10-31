@@ -13,7 +13,7 @@ const quickLinks = [
 ]
 
 const resourceLinks = [
-  { name: "Apply Now", href: "/apply" },
+  { name: "Admissions & Enquiries", href: "/apply" },
   { name: "Partnerships", href: "/partnerships" },
   { name: "Support Us", href: "/support-us" },
   { name: "Innovations", href: "/innovations" },
