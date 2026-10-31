@@ -49,11 +49,13 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
     return () => observer.disconnect()
   }, [mounted, pathname])
 
+  const typographyScope = pathname === "/" ? "premium-homepage" : "premium-interior-page"
+
   return (
     <>
       {mounted && <Header />}
       <AnimatePresence mode="wait">
-        <main className={`flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28${pathname === "/" ? "" : " premium-interior-page"}`}>{children}</main>
+        <main className={`flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28 ${typographyScope}`}>{children}</main>
       </AnimatePresence>
       {mounted && <Footer />}
       {mounted && <StructuredData />}
