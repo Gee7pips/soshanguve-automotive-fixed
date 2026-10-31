@@ -46,7 +46,7 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           exit={reduceMotion ? undefined : { opacity: 0, y: -4, filter: "blur(1px)" }}
           transition={{ duration: reduceMotion ? 0 : 0.36, ease: [0.22, 1, 0.36, 1] }}
-          className={`flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28 ${typographyScope}`}
+          className={`premium-route-enter flex-grow relative z-0 overflow-hidden pt-24 lg:pt-28 ${typographyScope}`}
         >
           {children}
         </motion.main>
