@@ -1,6 +1,5 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
@@ -8,6 +7,8 @@ import { ArrowRight, CheckCircle2, Wrench, Building2, Zap, Microscope, Calculato
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { SectionDivider } from "@/components/section-motion"
+import { PageHeader } from "@/components/page-header"
+import { PageTransition } from "@/components/page-transition"
 
 const programs = {
   mechanical: { title: "Mechanical Technology", short: "Mechanical", eyebrow: "01 / Mechanical systems", description: "Master fabrication, diagnostics, precision engineering and industrial technology through practical, workshop-led learning.", icon: Wrench, image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-yGlKhAhQg39EA6QQPltIMWzC1vXCas.jpeg", subjects: [{ name: "Welding", icon: Hammer, description: "Advanced welding techniques, metallurgy and fabrication processes.", careers: ["Welding Specialist", "Metal Fabricator", "Quality Control Inspector"] }, { name: "Automotive", icon: Car, description: "Vehicle systems, diagnostics and modern automotive technology.", careers: ["Automotive Technician", "Vehicle Inspector", "Fleet Maintenance Manager"] }, { name: "Fitting & Turning", icon: Cog, description: "Precision engineering, machine operation and component manufacturing.", careers: ["Machine Operator", "Manufacturing Technician", "Maintenance Specialist"] }] },
@@ -17,15 +18,13 @@ const programs = {
   mathematics: { title: "Mathematics", short: "Mathematics", eyebrow: "05 / Analytical thinking", description: "Develop analytical thinking and problem-solving skills that power technical and engineering pathways.", icon: Calculator, image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-yGlKhAhQg39EA6QQPltIMWzC1vXCas.jpeg", subjects: [{ name: "Pure Mathematics", icon: PlusSquare, description: "Mathematical concepts, reasoning and theoretical foundations.", careers: ["Data Analyst", "Statistical Technician", "Mathematical Modeler"] }, { name: "Technical Mathematics", icon: Calculator, description: "Mathematical principles applied to engineering and design problems.", careers: ["Technical Designer", "CAD Specialist", "Engineering Technician"] }] },
 }
 
-const DynamicPageTransition = dynamic(() => import("@/components/ui/page-transition").then((mod) => mod.PageTransition), { ssr: false })
-const DynamicPageHeader = dynamic(() => import("@/components/ui/page-transition").then((mod) => mod.PageHeader), { ssr: false })
 
 export default function ProgramsPage() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <DynamicPageTransition>
-      <DynamicPageHeader title="Our Specialized Programs" subtitle="Technical pathways built for future innovators, technicians and engineers" backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-yGlKhAhQg39EA6QQPltIMWzC1vXCas.jpeg" />
+    <PageTransition>
+      <PageHeader title="Our Specialized Programs" subtitle="Technical pathways built for future innovators, technicians and engineers" backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FB_IMG_1737649315546.jpg-yGlKhAhQg39EA6QQPltIMWzC1vXCas.jpeg"  />
 
       <section className="relative overflow-hidden bg-[#f5f7fb] py-24 lg:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-[0.045]" style={{ backgroundImage: "linear-gradient(#102a56 1px, transparent 1px), linear-gradient(90deg, #102a56 1px, transparent 1px)", backgroundSize: "52px 52px" }} />
@@ -53,6 +52,6 @@ export default function ProgramsPage() {
 
       <section className="relative overflow-hidden bg-school-navy py-24 text-white lg:py-28"><div className="absolute inset-0 opacity-[0.055]" style={{ backgroundImage: "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(white 1px, transparent 1px)", backgroundSize: "72px 72px" }} /><div className="pointer-events-none absolute -left-24 top-16 h-80 w-80 rounded-full bg-school-blue/20 blur-3xl" /><div className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-school-gold/10 blur-3xl" /><div className="container relative"><div className="grid items-end gap-10 lg:grid-cols-[1fr_auto]"><div className="max-w-3xl"><div className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-school-gold"><Sparkles className="h-4 w-4" /> The SOS Difference</div><h2 className="premium-heading-dark display-title text-5xl leading-[0.98] sm:text-6xl">Learn by <span className="text-school-gold">Doing.</span><br />Prepare to <span className="text-school-blue">Lead.</span></h2><p className="subheading-premium-dark mt-7 max-w-2xl text-base sm:text-lg">A technical education experience that connects classroom knowledge with practical capability, confidence and future opportunity.</p></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">{[{ value: "05", label: "Core pathways", icon: Layers3 }, { value: "∞", label: "Room to build", icon: Gauge }].map((item) => <div key={item.label} className="rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-4 backdrop-blur-sm"><item.icon className="mb-4 h-4 w-4 text-school-gold" /><div className="font-serif text-3xl text-white">{item.value}</div><div className="mt-1 text-[9px] font-bold uppercase tracking-[0.16em] text-white/40">{item.label}</div></div>)}</div></div><div className="mt-14 grid gap-4 md:grid-cols-3">{[{ title: "Industry-Aligned", text: "Learning shaped around relevant technical skills and workplace expectations." }, { title: "Hands-on Learning", text: "Practical experience that turns concepts into confidence and capability." }, { title: "Career Ready", text: "Clear pathways toward further study, apprenticeships and technical careers." }].map((item, index) => <motion.div key={item.title} initial={reducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ delay: index * 0.1 }} className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.055] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/35 hover:bg-white/[0.09]"><div className="absolute right-0 top-0 h-16 w-16 rounded-bl-[1.5rem] border-b border-l border-white/5 bg-school-gold/[0.04]" /><div className="mb-8 font-technical text-sm text-school-gold">0{index + 1}</div><h3 className="premium-heading-dark mb-3 text-2xl">{item.title}</h3><p className="leading-7 text-blue-100/80">{item.text}</p><div className="mt-7 h-px w-12 bg-school-gold transition-all duration-300 group-hover:w-full" /></motion.div>)}</div></div></section>
       <SectionDivider tone="light" label="Start building your future" />
-    </DynamicPageTransition>
+    </PageTransition>
   )
 }
