@@ -57,13 +57,15 @@ export function Hero() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#0b1836]/70 to-transparent" />
         <motion.div
           aria-hidden="true"
-          className="hero-orbit hero-orbit-wide pointer-events-none absolute left-1/2 top-[38%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-school-gold/10"
+          className="hero-orbit hero-orbit-wide pointer-events-none absolute left-1/2 top-[38%] h-[460px] w-[460px] rounded-full border border-school-gold/10"
+          style={{ x: "-50%", y: "-50%" }}
           animate={reduceMotion ? undefined : { rotate: 360 }}
           transition={{ duration: 52, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
           aria-hidden="true"
-          className="hero-orbit hero-orbit-inner pointer-events-none absolute left-1/2 top-[38%] h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07]"
+          className="hero-orbit hero-orbit-inner pointer-events-none absolute left-1/2 top-[38%] h-[330px] w-[330px] rounded-full border border-white/[0.07]"
+          style={{ x: "-50%", y: "-50%" }}
           animate={reduceMotion ? undefined : { rotate: -360 }}
           transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
         />
@@ -147,7 +149,7 @@ export function Hero() {
               {...reveal(0.56)}
               className="hero-metrics mt-10 grid w-full max-w-2xl grid-cols-3 border-y border-white/10 py-4"
             >
-              {metrics.map(({ icon: Icon, value, label }, index) => (
+              {metrics.map(({ icon: Icon, value, label }) => (
                 <motion.div
                   key={label}
                   initial={false}
