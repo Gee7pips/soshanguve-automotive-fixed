@@ -12,7 +12,7 @@ type SeoStructuredDataProps = {
   breadcrumbs: BreadcrumbItem[]
 }
 
-const siteUrl = "https://sosha-automotive.org"
+const siteUrl = "https://www.sosha-automotive.org"
 const siteName = "Soshanguve Engineering School Of Specialisation"
 
 export function SeoStructuredData({ title, description, path, breadcrumbs }: SeoStructuredDataProps) {
