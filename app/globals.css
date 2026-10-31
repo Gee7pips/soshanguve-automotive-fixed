@@ -49,10 +49,8 @@
   .scroll-reveal { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity 500ms ease, transform 500ms ease; will-change: opacity, transform; }
   .scroll-reveal-visible { opacity: 1; transform: translate3d(0, 0, 0); will-change: auto; }
   .page-transition { animation: page-enter 260ms ease-out both; }
-  .typewriter-heading-active { animation: premium-typewriter 1.15s steps(var(--typewriter-steps), end) both; will-change: clip-path; }
 }
 @keyframes page-enter { from { opacity: 0; transform: translate3d(0, 4px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
-@keyframes premium-typewriter { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes premium-ticker-scroll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-33.333333%, 0, 0); } }
 @keyframes premium-ticker-scan { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
 img { max-width: 100%; height: auto; display: block; }
@@ -312,5 +310,82 @@ main.premium-homepage strong {
   main.premium-homepage h3.premium-heading {
     font-size: clamp(1.2rem, 5.2vw, 1.5rem);
     line-height: 1.22;
+  }
+}
+
+
+/* Premium motion + elevation system across homepage and interior routes. */
+main.premium-homepage,
+main.premium-interior-page {
+  --premium-shadow-soft: 0 2px 8px -3px rgba(9, 26, 55, 0.12), 0 12px 28px -18px rgba(9, 26, 55, 0.22);
+  --premium-shadow-raised: 0 6px 16px -7px rgba(9, 26, 55, 0.18), 0 22px 42px -20px rgba(9, 26, 55, 0.26), inset 0 1px 0 rgba(255,255,255,0.72);
+  --premium-shadow-deep: 0 14px 32px -12px rgba(9, 26, 55, 0.22), 0 32px 68px -28px rgba(9, 26, 55, 0.28), inset 0 1px 0 rgba(255,255,255,0.52);
+}
+
+/* Give existing elevated cards, panels and image surfaces one coherent depth language. */
+main.premium-homepage :is(.shadow-sm, .shadow-md),
+main.premium-interior-page :is(.shadow-sm, .shadow-md) {
+  box-shadow: var(--premium-shadow-soft);
+  transition: box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease;
+}
+
+main.premium-homepage :is(.shadow-lg, .shadow-xl),
+main.premium-interior-page :is(.shadow-lg, .shadow-xl) {
+  box-shadow: var(--premium-shadow-raised);
+  transition: box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease;
+}
+
+main.premium-homepage .shadow-2xl,
+main.premium-interior-page .shadow-2xl {
+  box-shadow: var(--premium-shadow-deep);
+  transition: box-shadow 460ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease;
+}
+
+main.premium-homepage :is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl):hover,
+main.premium-interior-page :is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl):hover {
+  box-shadow: 0 12px 26px -9px rgba(9, 26, 55, 0.2), 0 30px 54px -22px rgba(9, 26, 55, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.1);
+}
+
+/* Main headings receive controlled depth rather than a heavy glow. */
+main.premium-homepage :is(h1, h2, h3, h4, h5, h6, .premium-heading),
+main.premium-interior-page :is(h1, h2, h3, h4, h5, h6, .premium-heading) {
+  text-shadow: 0 1px 0 rgba(255,255,255,0.42), 0 8px 22px rgba(9,26,55,0.14), 0 22px 48px rgba(9,26,55,0.08);
+}
+
+main.premium-homepage :is(.premium-heading-dark, h1.text-white, h2.text-white, h3.text-white),
+main.premium-interior-page :is(.premium-heading-dark, h1.text-white, h2.text-white, h3.text-white) {
+  text-shadow: 0 2px 2px rgba(0,0,0,0.34), 0 10px 28px rgba(0,0,0,0.28), 0 24px 54px rgba(0,0,0,0.18);
+}
+
+main.premium-homepage .heading-accent,
+main.premium-interior-page .heading-accent {
+  text-shadow: 0 1px 0 rgba(255,255,255,0.18), 0 8px 22px rgba(212,175,55,0.24), 0 20px 42px rgba(212,175,55,0.14);
+}
+
+/* Keep the route transition short, calm and GPU-friendly. */
+.premium-route-enter {
+  will-change: opacity, transform, filter;
+}
+
+@media (max-width: 640px) {
+  main.premium-homepage :is(h1, h2, h3, .premium-heading),
+  main.premium-interior-page :is(h1, h2, h3, .premium-heading) {
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3), 0 6px 16px rgba(9,26,55,0.12);
+  }
+
+  main.premium-homepage :is(.premium-heading-dark, h1.text-white, h2.text-white, h3.text-white),
+  main.premium-interior-page :is(.premium-heading-dark, h1.text-white, h2.text-white, h3.text-white) {
+    text-shadow: 0 2px 2px rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.premium-homepage :is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl),
+  main.premium-interior-page :is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl) {
+    transition: none;
+  }
+
+  .premium-route-enter {
+    will-change: auto;
   }
 }
