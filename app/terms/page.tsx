@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Soshanguve Engineering School Of Specialisation",
+  title: "Terms of Use",
   description: "Terms of use for the Soshanguve Engineering School Of Specialisation website.",
+  alternates: { canonical: "https://www.sosha-automotive.org/terms" },
 }
 
 export default function TermsPage() {
