@@ -1,6 +1,6 @@
 import Script from "next/script"
 
-const siteUrl = "https://sosha-automotive.org"
+const siteUrl = "https://www.sosha-automotive.org"
 const siteName = "Soshanguve Engineering School Of Specialisation"
 
 export function StructuredData() {
