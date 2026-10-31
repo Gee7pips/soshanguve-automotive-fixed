@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Soshanguve Engineering School Of Specialisation",
+  title: "Privacy Policy",
   description: "Privacy information for the Soshanguve Engineering School Of Specialisation website.",
+  alternates: { canonical: "https://www.sosha-automotive.org/privacy" },
 }
 
 export default function PrivacyPage() {
