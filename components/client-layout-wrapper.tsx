@@ -7,6 +7,7 @@ import { StructuredData } from "@/components/structured-data"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { FloatingContacts } from "@/components/floating-contacts"
+import { FloatingDonorButton } from "@/components/floating-donor-button"
 import { usePathname } from "next/navigation"
 
 export function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -55,6 +56,7 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
       {mounted && <StructuredData />}
       {/* Keep contact actions mounted independently of page animation/layout state. */}
       <FloatingContacts />
+      <FloatingDonorButton />
     </>
   )
 }
