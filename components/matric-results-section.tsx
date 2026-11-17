@@ -17,7 +17,7 @@ export function MatricResultsSection() {
   const reveal = (delay = 0) => ({ initial: reduceMotion ? false : { opacity: 0, y: 16 }, whileInView: reduceMotion ? undefined : { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.12 }, transition: { duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : delay, ease: "easeOut" as const } })
 
   return (
-    <section className="relative overflow-hidden bg-school-navy py-20 sm:py-24 lg:py-28">
+    <section className="homepage-section section-results relative overflow-hidden bg-school-navy py-20 sm:py-24 lg:py-28">
       <div className="absolute inset-0 opacity-[0.045]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 0h1v40H0zm40 0h-1v40h1zM0 0v1h40V0zm0 40v-1h40v1z'/%3E%3C/g%3E%3C/svg%3E")` }} />
       <div className="absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-school-gold/10 blur-3xl" />
       <div className="relative z-10 mx-auto max-w-6xl px-6">
