@@ -33,10 +33,11 @@ const contactInfo = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-school-navy text-white">
+    <footer className="relative isolate overflow-hidden bg-[#061326] text-white">
       <div className="h-1.5 w-full bg-gradient-to-r from-school-gold via-white/80 to-school-gold" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.045] bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[size:24px_24px]" />
-      <div className="pointer-events-none absolute -right-40 top-10 h-[34rem] w-[34rem] rounded-full bg-school-blue/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 top-10 h-[34rem] w-[34rem] rounded-full bg-school-blue/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-white/[0.035] to-transparent" />
       <div className="pointer-events-none absolute -left-40 bottom-0 h-[28rem] w-[28rem] rounded-full bg-school-gold/10 blur-3xl" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-px w-[70%] -translate-x-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
@@ -101,7 +102,7 @@ export function Footer() {
         <div className="border-t border-white/10 py-6">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-col gap-2 text-xs text-white/35 sm:flex-row sm:items-center sm:gap-4"><span>&copy; {new Date().getFullYear()} Soshanguve Engineering School Of Specialisation.</span><span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" /><span>All rights reserved.</span></div>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs"><Link href="/privacy" className="text-white/35 transition-colors hover:text-white/70">Privacy Policy</Link><Link href="/terms" className="text-white/35 transition-colors hover:text-white/70">Terms of Service</Link><span className="hidden h-4 w-px bg-white/10 sm:block" /><span className="inline-flex items-center gap-1.5 text-white/35">Designed and Developed by <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 font-semibold text-white/65 transition-colors hover:text-school-gold">Carter Digitals <ExternalLink className="h-3 w-3 opacity-50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" /></Link></span></div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs"><Link href="/privacy" className="text-white/35 transition-colors hover:text-white/70">Privacy Policy</Link><Link href="/terms" className="text-white/35 transition-colors hover:text-white/70">Terms of Service</Link><span className="hidden h-4 w-px bg-white/10 sm:block" /><span className="inline-flex items-center gap-1.5 text-white/35">Designed & developed by <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full border border-school-gold/25 bg-school-gold/[0.08] px-3 py-1.5 font-bold tracking-wide text-school-gold shadow-[0_8px_24px_-12px_rgba(212,175,55,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:border-school-gold/60 hover:bg-school-gold/15 hover:text-white">Carter Digitals <ExternalLink className="h-3 w-3 opacity-70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link></span></div>
           </div>
         </div>
       </div>
