@@ -37,14 +37,16 @@ export function CinematicSection({
       initial={{
         opacity: 0,
         y: reduceMotion ? 0 : 34,
-        scale: reduceMotion ? 1 : 0.988,
+        scale: reduceMotion ? 1 : 0.986,
+        filter: reduceMotion ? "none" : "blur(7px)",
       }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, amount, margin: "0px 0px -7% 0px" }}
       transition={{
         opacity: { duration: reduceMotion ? 0.42 : 0.78, delay, ease: cinematicEase },
         y: { duration: reduceMotion ? 0 : 0.82, delay, ease: cinematicEase },
-        scale: { duration: reduceMotion ? 0 : 0.9, delay, ease: cinematicEase },
+        scale: { duration: reduceMotion ? 0 : 0.96, delay, ease: cinematicEase },
+        filter: { duration: reduceMotion ? 0 : 0.82, delay, ease: cinematicEase },
       }}
       className={`cinematic-section ${className}`}
     >
