@@ -5,9 +5,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import {
-  ArrowDownRight, ArrowRight, ArrowUpRight, Award, BatteryCharging, BookOpen,
-  ChevronDown, Cpu, ExternalLink, FlaskConical, GraduationCap, Leaf, Medal,
-  Microscope, Plane, Radio, Sparkles, Sprout, Trophy, TrainFront, Wrench, Zap,
+  ArrowDownRight, ArrowRight, ArrowUpRight, BatteryCharging, BookOpen,
+  ChevronDown, ExternalLink, FlaskConical, GraduationCap, Medal,
+  Microscope, Radio, Sparkles, Sprout, Trophy, Wrench, Zap,
 } from "lucide-react"
 
 type CaseStudy = {
