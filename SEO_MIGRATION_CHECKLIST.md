@@ -45,6 +45,18 @@ This is a repository and public-search-derived inventory, not a complete Search 
 
 Google guidance: [Site moves and URL mapping](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes) and [301 redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects).
 
+## 2A. Public search visibility snapshot — 17 November 2026
+
+A public web-search check on 17 November 2026 returned existing results for:
+
+- `/` — the current old homepage, with an indexed result containing its older school overview and 2024 matric information.
+- `/academics` — an indexed page result for the existing academic/technical programme page.
+- `/achievements` — an indexed result for the existing achievements page.
+
+These examples confirm that the old hostname and several important page URLs are discoverable in public search. This is only a spot check, not a full index report or Search Console export. Some snippets still show legacy content and 2024 figures; that is expected to remain visible until Google recrawls and refreshes its index after a future cutover.
+
+The release keeps those exact paths and the same canonical hostname so Google can recrawl the redesigned content at the same URLs rather than treating it as an unrelated new domain. The exact indexed URL list, click/impression baseline and current Google-selected canonicals must still be verified from Search Console before cutover.
+
 ## 3. Technical SEO release checks
 
 - [x] Global metadata uses `https://www.sosha-automotive.org` as its metadata base and canonical homepage.
