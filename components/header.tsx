@@ -8,6 +8,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
 import {
   ArrowUpRight,
   BookOpen,
+  Cpu,
   Building2,
   GraduationCap,
   Handshake,
@@ -28,6 +29,7 @@ const routes = [
   { href: "/academics", label: "Academics", icon: GraduationCap },
   { href: "/achievements", label: "Achievements", icon: Trophy },
   { href: "/activities", label: "Activities", icon: Wrench },
+  { href: "/innovations", label: "Innovation Hub", icon: Cpu },
   { href: "/partnerships", label: "Partnerships", icon: Handshake },
   { href: "/programs", label: "Programs", icon: BookOpen },
   { href: "/support-us", label: "Support Us", icon: Handshake },
@@ -40,7 +42,7 @@ export function Header() {
   const pathname = usePathname()
   const { scrollYProgress } = useScroll()
   const scrollProgress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
-  const primaryRoutes = routes.slice(0, 7)
+  const primaryRoutes = routes.filter((route) => ["/", "/about", "/academics", "/achievements", "/innovations", "/programs", "/partnerships"].includes(route.href))
 
   return (
     <motion.header
@@ -109,7 +111,7 @@ export function Header() {
                         <p className="font-sans text-[10px] font-extrabold uppercase tracking-[0.22em] text-white/45">Navigation</p>
                         <h2 className="mt-1 font-display text-2xl font-semibold tracking-[-0.03em]">Explore the School</h2>
                       </div>
-                      <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-school-gold">01 — 12</span>
+                      <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-school-gold">01 — 11</span>
                     </div>
                   </div>
 
