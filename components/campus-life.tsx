@@ -13,7 +13,7 @@ const galleryItems = [
 export function CampusLife() {
   const reduceMotion = useReducedMotion()
   return (
-    <section className="relative overflow-hidden bg-school-navy py-24 lg:py-32">
+    <section className="homepage-section section-campus relative overflow-hidden bg-school-navy py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-school-blue/15 blur-3xl" />
       <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
