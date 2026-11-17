@@ -6,7 +6,7 @@ const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),
 })
 
-export default [
+const eslintConfig = [
   {
     ignores: [".next/**", "node_modules/**", "out/**", "build/**", "next-env.d.ts"],
   },
@@ -25,3 +25,5 @@ export default [
     },
   },
 ]
+
+export default eslintConfig
