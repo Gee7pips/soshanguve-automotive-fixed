@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Instagram, Mail, Phone, MapPin, ArrowUpRight, ChevronRight, ExternalLink, Sparkles, MessageCircle } from "lucide-react"
+import { SCHOOL_EMAIL, DEPARTMENT_EMAIL } from "@/lib/contact-links"
 
 const quickLinks = [
   { name: "About Us", href: "/about" },
@@ -26,7 +27,8 @@ const socialLinks = [
 ]
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "700241314@gdeschools.gov.za", href: "mailto:700241314@gdeschools.gov.za" },
+  { icon: Mail, label: "School Gmail", value: SCHOOL_EMAIL, href: `mailto:${SCHOOL_EMAIL}` },
+  { icon: Mail, label: "GDE Email", value: DEPARTMENT_EMAIL, href: `mailto:${DEPARTMENT_EMAIL}` },
   { icon: Phone, label: "Phone", value: "012 797 2118", href: "tel:0127972118" },
   { icon: MapPin, label: "Campus", value: "1669 Block L, Soshanguve", href: "https://maps.google.com/?q=1669+Block+L,+Soshanguve" },
 ]
