@@ -40,9 +40,7 @@ const caseStudies: CaseStudy[] = [
     sourceDate: "16 September 2022",
     sourceUrl: "https://groundup.org.za/article/soshanguve-learners-build-one-of-a-kind-solar-powered-train/",
     sourceType: "Independent reporting",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0010-ZcU0BoXNd5gU7SM8TbcbMhamriBbf5.jpg",
-    imageAlt: "Soshanguve Engineering learner-built Flight 01 aircraft; displayed here as a school engineering project photograph",
-    facts: ["30 km/h reported prototype speed", "Work on the locomotive began in 2020", "Solar-powered, with passenger seating and onboard electrical features"],
+    facts: ["30 km/h reported prototype speed", "Top prize, Engineering category — Gauteng SoS Festival", "SAGE national and South Africa Annual Teen Entrepreneur of the Year champions"],
   },
   {
     id: "dynamic-charging",
@@ -216,6 +214,39 @@ const innovationLoop = [
 ]
 
 function ProjectArtwork({ item }: { item: CaseStudy }) {
+  if (item.id === "modjadji") {
+    return (
+      <div className="relative flex h-full min-h-[250px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_40%,#1b4565_0%,#0b2038_58%,#061326_100%)]">
+        <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(255,255,255,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.07)_1px,transparent_1px)] [background-size:28px_28px]" />
+        <div className="absolute right-10 top-8 h-16 w-16 rounded-full bg-school-gold/10 blur-2xl" />
+        <svg viewBox="0 0 640 300" role="img" aria-label="Illustration of Modjadji, the school’s solar-powered locomotive" className="relative w-full max-w-[580px] px-3">
+          <defs>
+            <linearGradient id="modjadji-shell" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#55b9e3"/><stop offset="55%" stopColor="#0876a8"/><stop offset="100%" stopColor="#073858"/></linearGradient>
+            <linearGradient id="modjadji-solar" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#244c70"/><stop offset="100%" stopColor="#0a203a"/></linearGradient>
+            <linearGradient id="modjadji-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#8c6a29"/><stop offset="50%" stopColor="#f5df9d"/><stop offset="100%" stopColor="#a98132"/></linearGradient>
+          </defs>
+          <path d="M56 232 H584" stroke="#a7c0d2" strokeOpacity=".55" strokeWidth="4" strokeLinecap="round"/>
+          <path d="M72 245 H568" stroke="#8ca5ba" strokeOpacity=".45" strokeWidth="3" strokeDasharray="5 9"/>
+          {Array.from({length:13},(_,i)=><path key={i} d={"M"+(85+i*39)+" 233 v17"} stroke="#93aabd" strokeOpacity=".45" strokeWidth="4"/>)}
+          <path d="M128 100 L166 66 H470 L510 106 V218 H116 V143 Z" fill="url(#modjadji-shell)" stroke="#b9d8e8" strokeWidth="2.5"/>
+          <path d="M153 105 L190 77 H450 L484 105 Z" fill="#09213b" stroke="#d4e6f0" strokeOpacity=".55" strokeWidth="2"/>
+          <path d="M176 98 L198 82 H268 V105 H164 Z M283 82 H365 V105 H283 Z M380 82 H444 L464 105 H380 Z" fill="url(#modjadji-solar)" stroke="#8bb4ce" strokeWidth="1.5"/>
+          <path d="M180 87 l-10 15 M204 84 l-10 18 M228 83 l-10 20 M252 83 l-10 20 M292 84 l-10 18 M316 84 l-10 18 M340 84 l-10 18 M388 84 l-10 18 M412 84 l-10 18 M436 86 l-10 16" stroke="#90c6df" strokeOpacity=".55" strokeWidth="1.2"/>
+          <path d="M125 139 H500 V206 H125 Z" fill="#063a5b" stroke="#c4e1ef" strokeOpacity=".5"/>
+          <path d="M143 150 H226 V197 H143 Z M237 150 H320 V197 H237 Z M331 150 H414 V197 H331 Z M425 150 H484 V197 H425 Z" fill="#b4dff0" fillOpacity=".28" stroke="#d4ebf5" strokeWidth="2"/>
+          <path d="M143 151 L172 151 V197 H143 Z M237 151 L265 151 V197 H237 Z M331 151 L359 151 V197 H331 Z" fill="#d8eff8" fillOpacity=".22"/>
+          <path d="M118 207 H512" stroke="#f2d88e" strokeWidth="4"/>
+          <path d="M116 121 H96 V105 M510 122 H532 V106" fill="none" stroke="#e9d18d" strokeWidth="3"/>
+          <path d="M245 63 L258 42 H404 L420 63 Z" fill="#0a1e35" stroke="#d5dfeb" strokeOpacity=".55"/>
+          <text x="320" y="130" fill="#fff2bf" fontSize="11" fontWeight="700" letterSpacing="2.2" textAnchor="middle">MODJADJI</text>
+          <g><circle cx="184" cy="228" r="25" fill="#061326" stroke="#b5c8d8" strokeWidth="5"/><circle cx="184" cy="228" r="9" fill="url(#modjadji-metal)"/><circle cx="444" cy="228" r="25" fill="#061326" stroke="#b5c8d8" strokeWidth="5"/><circle cx="444" cy="228" r="9" fill="url(#modjadji-metal)"/></g>
+          <motion.path d="M210 54 H430" stroke="#f4df9a" strokeWidth="2" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity:[.15,.8,.15] }} transition={{duration:3.5,repeat:Infinity,ease:"easeInOut"}}/>
+          <text x="52" y="282" fill="#9db4c8" fontSize="9" fontFamily="monospace" letterSpacing="1.6">SOLAR LOCOMOTIVE / LEARNER BUILT / 2022</text>
+          <text x="588" y="282" fill="#e5c878" fontSize="9" fontFamily="monospace" textAnchor="end">MODJADJI</text>
+        </svg>
+      </div>
+    )
+  }
   if (item.id === "horticulture") {
     return (
       <div className="relative flex h-full min-h-[250px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#153e42] via-[#0d2938] to-[#061326]">
