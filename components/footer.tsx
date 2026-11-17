@@ -69,7 +69,11 @@ export function Footer() {
               </div>
             </Link>
 
-            <p className="mt-6 max-w-sm text-sm leading-7 text-white/55">Empowering future innovators through excellence in engineering and technical education since 2019.</p>
+            <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">Empowering future innovators through excellence in engineering and technical education since 2019.</p>
+            <div className="mt-7 flex items-center gap-3 border-l-2 border-school-gold/70 pl-4">
+              <span className="font-technical text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold/90">Our focus</span>
+              <span className="text-[11px] leading-5 text-white/45">Skills · Precision · Possibility</span>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-2">
               {socialLinks.map((social) => <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className="group flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.045] text-white/50 transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:bg-school-gold/10 hover:text-school-gold"><social.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" /></Link>)}
