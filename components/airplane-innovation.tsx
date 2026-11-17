@@ -15,7 +15,7 @@ const specs = [
 
 export function AirplaneInnovation() {
   return (
-    <section className="relative py-24 lg:py-36 bg-school-navy overflow-hidden">
+    <section className="homepage-section section-aerospace relative py-24 lg:py-36 bg-school-navy overflow-hidden">
       {/* Subtle grid texture */}
       <div
         className="absolute inset-0 opacity-[0.04]"
