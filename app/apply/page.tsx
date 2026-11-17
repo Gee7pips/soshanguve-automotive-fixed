@@ -16,7 +16,7 @@ import { openEmail, openWhatsApp } from "@/lib/contact-links"
 const faqs = [
   {
     question: "How do I apply for Grade 8 at Soshanguve Engineering School Of Specialisation?",
-    answer: "The main Gauteng Department of Education online application period for 2027 Grade 8 admissions ran from 5 August to 4 September 2026 and has closed. Parents who applied should follow the Department’s placement updates and SMS notifications. Check the official GDE portal for current guidance.",
+    answer: "The main Gauteng Department of Education online application period for 2027 Grade 8 admissions ran from 5 August to 4 September 2026 and has closed. Applicants who did not submit proof of residence can use the GDE incomplete-application window from 23 November to 4 December 2026. The GDE lists late applications from 4 December 2026 to 31 January 2027, only at schools with available space. Parents who already applied should monitor placement updates and SMS notifications on the official GDE portal.",
   },
   {
     question: "Does this website form automatically submit my application?",
@@ -62,8 +62,9 @@ export default function ApplyPage() {
         <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-school-gold">2027 admissions update</p>
         <h2 id="admissions-update-heading" className="font-serif text-2xl font-bold text-school-navy md:text-3xl">The main Grade 8 application period has closed</h2>
         <p className="mt-4 leading-7 text-gray-600">The Gauteng Department of Education&apos;s main online application period for 2027 Grade 8 admissions ran from 5 August to 4 September 2026.</p>
-        <p className="mt-3 leading-7 text-gray-600">For applicants who have not yet been placed, the GDE lists an unplaced-learner placement phase from 2 to 20 November 2026. The published late-application phase runs from 4 December 2026 to 31 January 2027, for schools with available space.</p>
-        <p className="mt-3 leading-7 text-gray-600">These are Department-managed processes. Parents and guardians should check the official GDE portal for current instructions, placement status and any updates.</p>
+        <p className="mt-3 leading-7 text-gray-600">The current unplaced-learner placement phase runs from 2 to 20 November 2026. Applicants who did not submit proof of residence can address that outstanding requirement during the incomplete-application window from 23 November to 4 December 2026.</p>
+        <p className="mt-3 leading-7 text-gray-600">The GDE lists late applications from 4 December 2026 to 31 January 2027, for schools where space is still available. These are Department-managed processes; an enquiry to the school does not create an official application or guarantee placement.</p>
+        <p className="mt-3 leading-7 text-gray-600">Dates and placement instructions can change. Parents and guardians should confirm the latest information directly on the official GDE portal before acting.</p>
         <a href="https://www.gdeadmissions.gov.za/" target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center rounded-full bg-school-navy px-5 py-3 font-semibold text-white hover:bg-school-blue">Check Official GDE Admissions <ArrowUpRight className="ml-2 h-4 w-4" /></a>
       </div>
       <div className="bg-white rounded-2xl shadow-lg p-6 md:p-10">
@@ -82,7 +83,7 @@ export default function ApplyPage() {
       <div className="mt-12 rounded-2xl bg-school-navy text-white p-6 md:p-8">
         <p className="text-xs uppercase tracking-[0.22em] text-school-gold mb-2">Official admissions route</p>
         <h2 className="font-serif text-3xl font-bold mb-3">The GDE manages official Grade 8 applications and placement</h2>
-        <p className="text-white/75 leading-7 mb-5">For 2027 Grade 8 admissions, the main online application window has closed. The GDE publishes the placement and late-application phases, and applications during the late phase depend on schools having available space. This enquiry form does not replace the official GDE process.</p>
+        <p className="text-white/75 leading-7 mb-5">For 2027 Grade 8 admissions, the main application window has closed. The GDE lists an incomplete-application window from 23 November to 4 December 2026 for applicants with outstanding proof of residence, followed by late applications from 4 December 2026 to 31 January 2027 at schools with available space. This enquiry form does not replace the official GDE process.</p>
         <a href="https://www.gdeadmissions.gov.za/" target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full bg-school-gold px-5 py-3 font-semibold text-school-navy hover:opacity-90">Open Official GDE Admissions Portal <ArrowUpRight className="ml-2 h-4 w-4" /></a>
       </div>
 
