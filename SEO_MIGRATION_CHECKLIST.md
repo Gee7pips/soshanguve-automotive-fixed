@@ -50,13 +50,17 @@ Google guidance: [Site moves and URL mapping](https://developers.google.com/sear
 - [x] Global metadata uses `https://www.sosha-automotive.org` as its metadata base and canonical homepage.
 - [x] Route metadata uses the same www hostname; the Documents canonical was normalised during QA.
 - [x] Sitemap URLs use the www canonical host and include current live public routes.
-- [x] `robots.txt` allows public crawling and advertises the canonical sitemap.
+- [x] `robots.txt` allows public crawling and advertises the canonical www sitemap (both the public static file and Next.js route are aligned).
 - [x] The site does not intentionally add a site-wide `noindex` directive.
+- [x] `llms.txt` uses the www canonical URLs and lists both school email contacts.
+- [x] EducationalOrganization structured data uses the www host and includes both school email contacts.
+- [x] The site no longer depends on a build-time Google Fonts fetch; the three existing typefaces are bundled locally.
 - [x] Existing high-value paths `/academics` and `/achievements` are retained.
 - [x] Legacy `/learn-more` and `/staff` paths have permanent redirects.
 - [ ] Re-run route/redirect HTTP tests against the final production deployment after the later domain cutover.
 - [ ] Verify canonical tags, sitemap, robots, response codes, and structured data using Google's URL Inspection / Rich Results tooling after cutover.
 - [ ] Confirm social preview image URLs load and are publicly accessible from the final deployment.
+- [ ] Complete an authorised visual/mobile interaction pass; the Vercel preview deployment is SSO-protected, so unauthenticated external visual QA is not conclusive.
 
 ## 4. Search Console baseline — do before cutover
 
