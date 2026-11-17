@@ -4,6 +4,7 @@ import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, Cpu, Gauge, Orbit, Radio, Sparkles, Wrench } from "lucide-react"
 import Link from "next/link"
+import { TransmissionGearIllustration } from "@/components/motor-engineering-illustrations"
 
 const signals = [
   { icon: Cpu, index: "01", title: "Engineering", text: "Technical thinking built through real projects.", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0012-npGbQl41x5FxKUHZ8CBaDZz5Xz2NQC.jpg", alt: "Soshanguve Engineering learners celebrating an engineering achievement" },
@@ -16,7 +17,7 @@ export function InnovationPulse() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative overflow-hidden bg-school-navy py-20 text-white lg:py-24">
+    <section className="homepage-section section-innovation-pulse relative overflow-hidden bg-school-navy py-20 text-white lg:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px)] [background-size:56px_56px]" />
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-school-blue/20 blur-3xl" />
       <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -47,6 +48,16 @@ export function InnovationPulse() {
               </motion.div>
             )
           })}
+        </div>
+
+        <div className="motor-art-panel motor-art-panel-dark mt-9 grid items-center gap-5 lg:grid-cols-[.78fr_1.22fr]">
+          <div className="motor-art-copy">
+            <span>DRIVETRAIN / STUDY 02</span>
+            <h3>Precision in motion.</h3>
+            <p>A transmission uses carefully matched gear ratios to transfer torque and manage rotational speed.</p>
+            <div className="motor-art-readout"><span>INPUT SHAFT</span><i /><span>OUTPUT SHAFT</span></div>
+          </div>
+          <TransmissionGearIllustration className="motor-art-svg" />
         </div>
 
         <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-white/10 bg-black/10 p-5 sm:flex-row sm:items-center sm:justify-between">
