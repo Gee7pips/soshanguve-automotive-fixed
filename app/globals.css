@@ -963,3 +963,90 @@ main.premium-homepage .section-divider-core {
     transition-duration: 180ms;
   }
 }
+
+
+/* 2026 MOTION POLISH — preserve all existing photography and add restrained depth. */
+.site-scroll-progress {
+  position: absolute;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform-origin: 0 50%;
+  pointer-events: none;
+  background: linear-gradient(90deg, #9f7b21 0%, #f0d878 46%, #ffffff 58%, #d4af37 100%);
+  box-shadow: 0 0 14px rgba(212,175,55,.48), 0 1px 6px rgba(212,175,55,.25);
+}
+
+main.premium-homepage .cinematic-section {
+  transform-origin: 50% 24%;
+  backface-visibility: hidden;
+}
+
+main.premium-homepage .group[class*="rounded-"] {
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 560ms cubic-bezier(.22,1,.36,1),
+    box-shadow 560ms cubic-bezier(.22,1,.36,1),
+    border-color 360ms ease,
+    background-color 360ms ease;
+}
+
+main.premium-homepage .group[class*="rounded-"]:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 22px 48px -24px rgba(7,22,48,.34), 0 34px 78px -38px rgba(7,22,48,.28), 0 0 0 1px rgba(212,175,55,.14);
+}
+
+main.premium-homepage .group[class*="rounded-"] img {
+  transform: scale(1.001);
+  transition:
+    transform 1050ms cubic-bezier(.22,1,.36,1),
+    filter 760ms ease;
+  backface-visibility: hidden;
+}
+
+main.premium-homepage .group[class*="rounded-"]:hover img {
+  transform: scale(1.07);
+  filter: saturate(1.09) contrast(1.04);
+}
+
+main.premium-homepage :is(a, button):focus-visible {
+  outline: 2px solid rgba(212,175,55,.92);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px rgba(212,175,55,.14);
+}
+
+main.premium-homepage :is(a, button):active {
+  transition-duration: 120ms;
+}
+
+main.premium-homepage .hero-cinematic {
+  isolation: isolate;
+}
+
+@media (max-width: 640px) {
+  main.premium-homepage .group[class*="rounded-"]:hover {
+    transform: none;
+    box-shadow: inherit;
+  }
+
+  main.premium-homepage .group[class*="rounded-"]:hover img {
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-scroll-progress {
+    transition: none;
+  }
+
+  main.premium-homepage .cinematic-section,
+  main.premium-homepage .group[class*="rounded-"],
+  main.premium-homepage .group[class*="rounded-"] img {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
