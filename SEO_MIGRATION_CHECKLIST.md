@@ -57,6 +57,12 @@ These examples confirm that the old hostname and several important page URLs are
 
 The release keeps those exact paths and the same canonical hostname so Google can recrawl the redesigned content at the same URLs rather than treating it as an unrelated new domain. The exact indexed URL list, click/impression baseline and current Google-selected canonicals must still be verified from Search Console before cutover.
 
+### Admissions content freshness note
+
+The release Admissions page preserves the existing `/apply` URL. The latest public update on 16 November 2026 reports late applications from **17 December 2026 to 31 January 2027**, while the GDE admissions-phases page currently still displays **4 December 2026 to 31 January 2027**. The page therefore identifies the conflict and tells parents to confirm the live portal before acting. Re-check the GDE page immediately before publishing any further admissions-date change.
+
+Sources checked 17 November 2026: [GDE Admissions Phases](https://www.gdeadmissions.gov.za/admissions-phases/) and [SAnews report of the newer GDE update](https://www.sanews.gov.za/node/85667).
+
 ## 3. Technical SEO release checks
 
 - [x] Global metadata uses `https://www.sosha-automotive.org` as its metadata base and canonical homepage.
