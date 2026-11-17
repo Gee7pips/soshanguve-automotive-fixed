@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { MessageCircle, Phone, Mail } from "lucide-react"
-import { openEmail } from "@/lib/contact-links"
+import { openEmail, openWhatsApp } from "@/lib/contact-links"
 
 const WA_DEFAULT_MSG = "Hello Soshanguve Engineering School Of Specialisation, I would like to find out more about the school."
 
@@ -43,10 +43,10 @@ export function FloatingContacts() {
           <Mail className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
           <span className="pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 rounded-lg border border-white/10 bg-school-navy px-2.5 py-1.5 text-[9px] font-bold text-white opacity-0 shadow-xl transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Email</span>
         </button>
-        <a href="https://wa.me/27127972118?text=Hello%20Soshanguve%20Engineering%20School%20Of%20Specialisation%2C%20I%20would%20like%20to%20find%20out%20more%20about%20the%20school." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Soshanguve Engineering School Of Specialisation" title="WhatsApp the school" className={actionClass + " bg-[#1fbf69] text-white shadow-[0_10px_28px_-10px_rgba(31,191,105,.5)]"}>
+        <button type="button" onClick={() => openWhatsApp(WA_DEFAULT_MSG)} aria-label="WhatsApp Soshanguve Engineering School Of Specialisation" title="WhatsApp the school" className={actionClass + " bg-[#1fbf69] text-white shadow-[0_10px_28px_-10px_rgba(31,191,105,.5)]"}>
           <MessageCircle className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
           <span className="pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 rounded-lg border border-white/10 bg-school-navy px-2.5 py-1.5 text-[9px] font-bold text-white opacity-0 shadow-xl transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">WhatsApp</span>
-        </a>
+        </button>
       </div>
     </motion.div>
   )
