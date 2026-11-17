@@ -11,7 +11,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Legacy paths retained as permanent, relevant redirects.
       { source: "/learn-more", destination: "/about", permanent: true },
+      { source: "/staff", destination: "/about", permanent: true },
     ]
   },
   async headers() {
