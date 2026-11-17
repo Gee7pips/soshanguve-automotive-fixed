@@ -6,6 +6,7 @@ import Link from "next/link"
 import { SEOImage } from "@/components/seo-image"
 import { ErrorBoundary } from "react-error-boundary"
 import { ArrowUpRight, Check, Crosshair, Sparkles } from "lucide-react"
+import { EnginePistonIllustration } from "@/components/motor-engineering-illustrations"
 
 const stats = [["2019", "Established"], ["700+", "Learners"], ["9", "Programs"]]
 
@@ -14,7 +15,7 @@ export function WelcomeSection() {
 
   return (
     <ErrorBoundary fallback={<div>Something went wrong</div>}>
-      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+      <section className="homepage-section section-welcome relative overflow-hidden bg-white py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(30,58,138,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.045)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="pointer-events-none absolute -left-40 top-24 h-80 w-80 rounded-full bg-school-blue/10 blur-3xl" />
         <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -50,6 +51,13 @@ export function WelcomeSection() {
                   <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-school-navy/45 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-school-gold" /> Live learning</div>
                   <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4"><div><div className="font-technical text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Hands-on innovation</div><p className="mt-1 max-w-xs font-serif text-xl font-semibold leading-tight text-white drop-shadow-lg">Ideas become machines, systems and solutions.</p></div><div className="hidden h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 backdrop-blur-md sm:flex"><Sparkles className="h-5 w-5 text-school-gold" /></div></div>
                 </div>
+              </div>
+              <div className="motor-art-panel mt-5">
+                <div className="motor-art-panel-heading">
+                  <div><span>POWERTRAIN / STUDY 01</span><p>Piston &amp; crank assembly</p></div>
+                  <span className="motor-art-index">01 / 03</span>
+                </div>
+                <EnginePistonIllustration className="motor-art-svg" />
               </div>
               <motion.div initial={reduceMotion ? false : { opacity: 0, y: 12 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: reduceMotion ? 0 : 0.35 }} className="absolute -bottom-6 -left-5 hidden rounded-2xl border border-school-gold/30 bg-white p-4 shadow-[0_20px_45px_-22px_rgba(15,23,42,0.5)] sm:block"><div className="flex items-center gap-2 font-technical text-[9px] font-bold uppercase tracking-[0.18em] text-slate-400"><Check className="h-3 w-3 text-school-gold" /> Learner mindset</div><div className="mt-1 font-serif font-bold text-school-navy">Build. Test. Improve.</div></motion.div>
               <div className="absolute -right-4 -top-4 hidden h-20 w-20 rounded-full border border-school-gold/20 sm:block" />
