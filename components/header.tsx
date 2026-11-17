@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
 import {
   ArrowUpRight,
   BookOpen,
@@ -38,15 +38,18 @@ const routes = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const { scrollYProgress } = useScroll()
+  const scrollProgress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
   const primaryRoutes = routes.slice(0, 7)
 
   return (
     <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ y: -28, opacity: 0, filter: "blur(5px)" }}
+      animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+      transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 lg:px-6 lg:pt-5"
     >
+      <motion.div aria-hidden="true" className="site-scroll-progress" style={{ scaleX: scrollProgress }} />
       <div className="mx-auto max-w-7xl">
         <div className="relative flex h-[68px] items-center rounded-[22px] border border-white/70 bg-white/90 px-3 shadow-[0_18px_50px_rgba(15,35,75,0.14)] backdrop-blur-2xl ring-1 ring-black/[0.03] sm:px-4 lg:h-[74px]">
           <Link href="/" className="group flex shrink-0 items-center gap-2.5 rounded-2xl px-1.5 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-school-gold">
