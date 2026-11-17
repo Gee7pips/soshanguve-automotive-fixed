@@ -54,7 +54,7 @@ export function Highlights2026() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative overflow-hidden bg-school-navy py-24 text-white lg:py-32">
+    <section className="homepage-section section-highlights relative overflow-hidden bg-school-navy py-24 text-white lg:py-32">
       <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.045)_1px,transparent_1px)] [background-size:56px_56px]" />
       <div className="pointer-events-none absolute -left-32 top-24 h-96 w-96 rounded-full bg-school-blue/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-[28rem] w-[28rem] rounded-full bg-school-gold/10 blur-3xl" />
