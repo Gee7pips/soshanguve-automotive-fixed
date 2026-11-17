@@ -12,8 +12,12 @@ Visitor enquiries open WhatsApp or Gmail with prefilled details for the visitor 
 
 ## Production hygiene
 
-Unfinished Staff and placeholder Document routes have been removed. Privacy Policy and Terms of Use pages are included. The production sitemap contains only live routes.
+The public contact details retain both school email inboxes. Admissions dates are linked to the current Gauteng Department of Education guidance. Legacy `/learn-more` and `/staff` routes receive permanent, relevant redirects. Privacy Policy and Terms of Use pages are included, and the sitemap contains live canonical routes only.
 
-## Deployment trigger
+## Google Search preservation
 
-Production-readiness cleanup triggered on 2026-09-06. Vercel should build this branch from the latest commit.
+The canonical host remains `https://www.sosha-automotive.org`. Existing public page paths are retained wherever possible. See [SEO_MIGRATION_CHECKLIST.md](./SEO_MIGRATION_CHECKLIST.md) for the old-route map, Search Console safeguards, launch tests and monitoring requirements. Do not change DNS, Vercel custom-domain assignments, or the live project until the checklist's launch gates are met.
+
+## Deployment
+
+Use the preview branch for QA. Production release requires review and merge of PR #9; the custom domain cutover is a separate, later action and is not part of this branch update.
