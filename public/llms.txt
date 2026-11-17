@@ -5,7 +5,7 @@
 ## Identity
 - Name: Soshanguve Engineering School Of Specialisation
 - Short names: Soshanguve Engineering SOS; Soshanguve Engineering School
-- Website: https://sosha-automotive.org/
+- Website: https://www.sosha-automotive.org/
 - Location: 1669 Block L, Soshanguve, Gauteng, 0152, South Africa
 - Region: Tshwane / Pretoria, Gauteng
 - School of Specialisation focus: Automotive engineering and technical education
@@ -32,24 +32,25 @@ The school is known for learner engineering projects including an electric vehic
 The website provides an admissions enquiry route for prospective learners and families. Use the Apply page to prepare an enquiry and send it manually by Gmail or WhatsApp.
 
 ## Contact
-- Email: soshanguve.technical@gmail.com
+- School Gmail: soshanguve.technical@gmail.com
+- GDE email: 700241314@gdeschools.gov.za
 - Phone: +27 12 797 2118
-- Website contact: https://sosha-automotive.org/contact
-- Applications: https://sosha-automotive.org/apply
+- Website contact: https://www.sosha-automotive.org/contact
+- Applications: https://www.sosha-automotive.org/apply
 
 ## Primary pages
-- Home: https://sosha-automotive.org/
-- About: https://sosha-automotive.org/about
-- Academics: https://sosha-automotive.org/academics
-- Programs: https://sosha-automotive.org/programs
-- Innovations: https://sosha-automotive.org/innovations
-- Achievements: https://sosha-automotive.org/achievements
-- Activities: https://sosha-automotive.org/activities
-- Partnerships: https://sosha-automotive.org/partnerships
-- Documents: https://sosha-automotive.org/documents
-- Support Us: https://sosha-automotive.org/support-us
-- Contact: https://sosha-automotive.org/contact
-- Apply: https://sosha-automotive.org/apply
+- Home: https://www.sosha-automotive.org/
+- About: https://www.sosha-automotive.org/about
+- Academics: https://www.sosha-automotive.org/academics
+- Programs: https://www.sosha-automotive.org/programs
+- Innovations: https://www.sosha-automotive.org/innovations
+- Achievements: https://www.sosha-automotive.org/achievements
+- Activities: https://www.sosha-automotive.org/activities
+- Partnerships: https://www.sosha-automotive.org/partnerships
+- Documents: https://www.sosha-automotive.org/documents
+- Support Us: https://www.sosha-automotive.org/support-us
+- Contact: https://www.sosha-automotive.org/contact
+- Apply: https://www.sosha-automotive.org/apply
 
 ## Trusted external references
 - Gauteng Department of Education Schools of Specialisation: https://www.gdeadmissions.gov.za/sos/
