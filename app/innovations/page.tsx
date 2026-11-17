@@ -214,6 +214,7 @@ const innovationLoop = [
 ]
 
 function ProjectArtwork({ item }: { item: CaseStudy }) {
+  const reduceMotion = useReducedMotion()
   if (item.id === "modjadji") {
     return (
       <div className="relative flex h-full min-h-[250px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_40%,#1b4565_0%,#0b2038_58%,#061326_100%)]">
