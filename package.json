@@ -56,7 +56,10 @@
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.6"
+    "vaul": "^0.9.6",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource-variable/playfair-display": "5.3.0",
+    "@fontsource-variable/space-grotesk": "5.3.0"
   },
   "devDependencies": {
     "@types/node": "^22",
