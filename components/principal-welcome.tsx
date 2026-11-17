@@ -15,7 +15,7 @@ export function PrincipalWelcome() {
   const reveal = (x = 0, delay = 0) => ({ initial: reduceMotion ? false : { opacity: 0, x }, whileInView: reduceMotion ? undefined : { opacity: 1, x: 0 }, viewport: { once: true, amount: 0.12 }, transition: { duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : delay, ease: "easeOut" as const } })
 
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-24 lg:py-32">
+    <section className="homepage-section section-leadership relative overflow-hidden bg-slate-50 py-24 lg:py-32">
       <div className="pointer-events-none absolute right-0 top-0 h-[520px] w-[520px] rounded-full bg-school-blue/[0.04] blur-3xl" />
       <div className="container relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div {...reveal(0, 0)} className="mb-14 max-w-3xl lg:mb-20">
