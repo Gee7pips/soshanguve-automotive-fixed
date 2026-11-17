@@ -51,7 +51,7 @@ export function Impact2026() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+    <section className="homepage-section section-impact relative overflow-hidden bg-white py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(30,58,138,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.045)_1px,transparent_1px)] [background-size:64px_64px]" />
       <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-school-gold/10 blur-3xl" />
       <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
