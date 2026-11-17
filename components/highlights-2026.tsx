@@ -1,8 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowUpRight, CalendarDays, Trophy, Users, Sparkles, Globe2, ImageIcon } from "lucide-react"
+import { ArrowUpRight, CalendarDays, Trophy, Users, Sparkles, Globe2 } from "lucide-react"
 import Link from "next/link"
 
 const moments = [
@@ -43,13 +42,6 @@ const moments = [
   },
 ]
 
-const gallery = [
-  { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0010-ZcU0BoXNd5gU7SM8TbcbMhamriBbf5.jpg", alt: "Soshanguve Engineering School Flight 01 aircraft in flight", label: "Flight 01" },
-  { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0012-npGbQl41x5FxKUHZ8CBaDZz5Xz2NQC.jpg", alt: "Soshanguve Engineering learners celebrating engineering achievement", label: "Recognition" },
-  { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0021-Wdylez7JBZv7L82Jtt5wlNrnNke4rY.jpg", alt: "Soshanguve Engineering learners working with robotics equipment", label: "Robotics" },
-  { src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0020-SYPUiWO0yYLtCcruvuwvDkEaJEcFDq.jpg", alt: "Soshanguve Engineering School partnership event", label: "Partnerships" },
-]
-
 export function Highlights2026() {
   const reduceMotion = useReducedMotion()
 
@@ -71,12 +63,30 @@ export function Highlights2026() {
 
         <div className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
           <motion.div initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduceMotion ? 0 : 0.7 }} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-black/20 p-2 shadow-2xl shadow-black/30">
-            <div className="relative overflow-hidden rounded-[1.5rem] bg-slate-900">
-              <Image src={gallery[0].src} alt={gallery[0].alt} width={1400} height={900} className="aspect-[10/7] w-full object-cover transition duration-700 group-hover:scale-[1.025]" sizes="(max-width: 1024px) 100vw, 52vw" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-school-navy/80 via-school-navy/5 to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 sm:bottom-7 sm:left-7 sm:right-7">
-                <div><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-school-gold">{gallery[0].label} / 2026</p><p className="mt-2 max-w-sm font-serif text-xl font-bold leading-tight sm:text-2xl">Engineering education is moving beyond the classroom.</p></div>
-                <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur sm:flex"><ArrowUpRight className="h-5 w-5" /></div>
+            <div className="relative flex min-h-[27rem] flex-col justify-between overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#102f56] via-[#0b1d39] to-[#07162b] p-7 sm:p-9">
+              <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.10)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.10)_1px,transparent_1px)] [background-size:36px_36px]" />
+              <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full border border-school-gold/20" />
+              <div className="pointer-events-none absolute -right-5 top-[-2rem] h-52 w-52 rounded-full border border-white/10" />
+              <div className="pointer-events-none absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-school-blue/25 blur-3xl" />
+              <div className="relative flex items-center justify-between gap-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-school-gold">2026 / National recognition</p>
+                <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white/55">Field note 04</span>
+              </div>
+              <div className="relative mt-10 flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <div className="font-serif text-[7rem] font-bold leading-[.8] tracking-[-.08em] text-white sm:text-[9rem]">1<span className="text-school-gold">st</span></div>
+                  <p className="mt-5 max-w-sm font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">Future Nation Business Challenge</p>
+                  <p className="mt-3 max-w-sm text-sm leading-6 text-white/55">A school idea moved from technical learning into a national enterprise challenge.</p>
+                </div>
+                <div className="flex shrink-0 flex-col items-start rounded-2xl border border-school-gold/25 bg-school-gold/10 px-5 py-4 backdrop-blur">
+                  <Trophy className="mb-3 h-6 w-6 text-school-gold" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/45">Prize awarded</span>
+                  <span className="mt-1 font-serif text-3xl font-bold text-school-gold">R15,000</span>
+                </div>
+              </div>
+              <div className="relative mt-10 flex items-center justify-between border-t border-white/10 pt-5">
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/35">Soshanguve Engineering SOS</span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-school-gold"><ArrowUpRight className="h-5 w-5" /></span>
               </div>
             </div>
           </motion.div>
@@ -89,14 +99,25 @@ export function Highlights2026() {
           </div>
         </div>
 
-        <div className="mt-14">
-          <div className="mb-5 flex items-center gap-3"><ImageIcon className="h-4 w-4 text-school-gold" /><span className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">2026 / Visual archive</span></div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {gallery.slice(1).map((item, index) => <motion.div key={item.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1"><div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-900"><Image src={item.src} alt={item.alt} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, 25vw" /><div className="absolute inset-0 bg-gradient-to-t from-school-navy/80 via-transparent to-transparent" /><span className="absolute bottom-3 left-3 text-[9px] font-bold uppercase tracking-[0.18em] text-white">{item.label}</span></div></motion.div>)}
+        <div className="mt-14 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-3">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Youth Day / 05 June</span>
+            <p className="mt-3 font-serif text-4xl font-bold text-white">1,200<span className="text-school-gold">+</span></p>
+            <p className="mt-1 text-xs leading-5 text-white/45">Learners reached through career guidance, STEM and mentorship activity</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">Academic excellence</span>
+            <p className="mt-3 font-serif text-4xl font-bold text-white">100<span className="text-school-gold">%</span></p>
+            <p className="mt-1 text-xs leading-5 text-white/45">Class of 2025 National Senior Certificate pass rate</p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold">International pathway</span>
+            <p className="mt-3 font-serif text-4xl font-bold text-white">Global</p>
+            <p className="mt-1 text-xs leading-5 text-white/45">New-energy vehicle training partnership with Shanghai Caoyang</p>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-xl text-sm leading-6 text-white/45">2026 is presented as a living story — achievements, people, partnerships and learner opportunity — with working imagery rather than a placeholder collage.</p><Link href="/achievements" className="inline-flex w-fit items-center gap-2 rounded-full border border-school-gold/40 bg-school-gold/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-school-gold transition hover:bg-school-gold hover:text-school-navy">Explore Achievements <ArrowUpRight className="h-4 w-4" /></Link></div>
+        <div className="mt-12 flex flex-col gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-xl text-sm leading-6 text-white/45">2026 is a living record of achievement, people, partnerships and learner opportunity — told through the school's milestones and outcomes.</p><Link href="/achievements" className="inline-flex w-fit items-center gap-2 rounded-full border border-school-gold/40 bg-school-gold/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-school-gold transition hover:bg-school-gold hover:text-school-navy">Explore Achievements <ArrowUpRight className="h-4 w-4" /></Link></div>
       </div>
     </section>
   )
