@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight, Award, Cpu, Globe2, Users } from "lucide-react"
 import Link from "next/link"
@@ -9,24 +10,32 @@ const stories = [
     eyebrow: "01 / INNOVATION",
     title: "Flight 01 put engineering on display.",
     text: "Learners designed, assembled and successfully flew a battery-powered model aircraft, turning classroom principles into a working project.",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0010-ZcU0BoXNd5gU7SM8TbcbMhamriBbf5.jpg",
+    alt: "Soshanguve Engineering learners' Flight 01 aircraft in flight",
     icon: Cpu,
   },
   {
     eyebrow: "02 / RECOGNITION",
     title: "Technical talent is being recognised.",
     text: "From engineering projects to mathematics achievement, learners are building a record of academic and practical excellence.",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0018-6c8mSu5UhQricouUACyKwlgUZ68ff4.jpg",
+    alt: "Learner receiving mathematics achievement recognition",
     icon: Award,
   },
   {
     eyebrow: "03 / COMMUNITY",
     title: "Support is becoming opportunity.",
     text: "Partnerships around connectivity, learner support and community programmes are helping expand what learners can access.",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0020-SYPUiWO0yYLtCcruvuwvDkEaJEcFDq.jpg",
+    alt: "School partnership and learner support event",
     icon: Users,
   },
   {
     eyebrow: "04 / GLOBAL",
     title: "The pathway is getting bigger.",
     text: "New partnerships and industry exposure are connecting technical education with the wider world of work, technology and enterprise.",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260407-WA0021-Wdylez7JBZv7L82Jtt5wlNrnNke4rY.jpg",
+    alt: "Learners working with robotics equipment",
     icon: Globe2,
   },
 ]
@@ -70,18 +79,10 @@ export function Impact2026() {
             return (
               <motion.article key={story.title} initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : index * 0.06 }} className="group overflow-hidden rounded-[1.75rem] border border-school-navy/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-school-gold/40 hover:shadow-2xl">
                 <div className="grid sm:grid-cols-[.92fr_1.08fr]">
-                  <div className="relative min-h-60 overflow-hidden bg-gradient-to-br from-[#102f56] via-school-navy to-[#07162b]">
-                    <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.10)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.10)_1px,transparent_1px)] [background-size:32px_32px]" />
-                    <div className="pointer-events-none absolute -right-12 -top-14 h-56 w-56 rounded-full border border-school-gold/20" />
-                    <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-school-blue/20 blur-3xl" />
-                    <div className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-xl border border-white/20 bg-school-navy/55 text-school-gold backdrop-blur"><Icon className="h-4 w-4" /></div>
-                    <div className="relative flex min-h-60 flex-col items-center justify-center px-6 text-center">
-                      <div className="flex h-20 w-20 items-center justify-center rounded-[1.6rem] border border-school-gold/30 bg-school-gold/10 text-school-gold shadow-[0_18px_55px_-28px_rgba(212,175,55,.55)]">
-                        <Icon className="h-9 w-9" />
-                      </div>
-                      <span className="mt-5 text-[9px] font-bold uppercase tracking-[0.24em] text-white/45">{story.eyebrow}</span>
-                      <span className="mt-2 font-serif text-2xl font-bold text-white">Impact signal</span>
-                    </div>
+                  <div className="relative min-h-60 overflow-hidden bg-school-navy">
+                    <Image src={story.image} alt={story.alt} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 45vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-school-navy/75 via-transparent to-transparent" />
+                    <div className="absolute left-4 top-4 flex h-9 w-9 items-center justify-center rounded-xl border border-white/20 bg-school-navy/45 text-school-gold backdrop-blur"><Icon className="h-4 w-4" /></div>
                   </div>
                   <div className="flex flex-col justify-center p-6 sm:p-7">
                     <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-school-gold">{story.eyebrow}</span>
