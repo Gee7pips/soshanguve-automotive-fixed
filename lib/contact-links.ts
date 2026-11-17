@@ -1,11 +1,13 @@
 export const SCHOOL_EMAIL = "soshanguve.technical@gmail.com"
+export const DEPARTMENT_EMAIL = "700241314@gdeschools.gov.za"
+export const SCHOOL_EMAIL_RECIPIENTS = `${SCHOOL_EMAIL},${DEPARTMENT_EMAIL}`
 export const WHATSAPP_NUMBER = "27820985985"
 
 export function openEmail(subject: string, body: string) {
   const params = new URLSearchParams({
     view: "cm",
     fs: "1",
-    to: SCHOOL_EMAIL,
+    to: SCHOOL_EMAIL_RECIPIENTS,
     su: subject,
     body,
   })
