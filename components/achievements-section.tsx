@@ -18,7 +18,7 @@ const achievements = [
 export function AchievementsSection() {
   const reduceMotion = useReducedMotion()
   return (
-    <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+    <section className="homepage-section section-achievements relative overflow-hidden bg-white py-24 lg:py-32">
       <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-14">
           <div className="mb-5 flex items-center gap-3"><span className="h-px w-9 bg-school-gold" /><span className="text-[11px] font-bold uppercase tracking-[0.22em] text-school-gold">Recognition & Excellence</span></div>
