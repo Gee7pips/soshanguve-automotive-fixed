@@ -63,11 +63,11 @@ export function Footer() {
             <Link href="/" className="group inline-flex items-center gap-4">
               <div className="relative flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-[1.35rem] border border-school-gold/35 bg-white/[0.08] p-1.5 shadow-[0_18px_45px_-20px_rgba(0,0,0,0.8)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-school-gold/70 group-hover:bg-white/[0.12]">
                 <div className="absolute inset-1 rounded-[1rem] border border-white/10" />
-                <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School Of Specialisation crest" width={62} height={62} className="relative rounded-xl object-contain" />
+                <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School of Specialisation crest" width={62} height={62} className="relative rounded-xl object-contain" />
               </div>
               <div>
                 <p className="font-serif text-lg font-semibold leading-tight text-white">Soshanguve Engineering</p>
-                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-school-gold">School Of Specialisation</p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-school-gold">School of Specialisation</p>
               </div>
             </Link>
 
@@ -112,7 +112,7 @@ export function Footer() {
               <div>
                 <p className="font-technical text-[9px] font-bold uppercase tracking-[.22em] text-school-gold">Digital experience / website partner</p>
                 <p className="mt-2 text-xs leading-6 text-white/55">Designed and developed by</p>
-                <p className="mt-1 font-display text-3xl font-semibold tracking-[-.04em] text-white sm:text-4xl">Carter Digitals</p>
+                <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" className="group mt-1 inline-flex items-center gap-2 font-display text-3xl font-semibold tracking-[-.04em] text-white transition-colors hover:text-school-gold sm:text-4xl" aria-label="Designed and developed by Carter Digitals — visit Carter Digitals website">Carter Digitals <ExternalLink className="h-4 w-4 text-school-gold transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
                 <p className="mt-2 text-[10px] leading-5 text-white/35">Digital design, development and technology partner.</p>
               </div>
               <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit Carter Digitals website" className="group inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full border border-school-gold/45 bg-school-gold px-6 py-3 text-xs font-extrabold uppercase tracking-[.12em] text-school-navy shadow-[0_14px_36px_-16px_rgba(212,175,55,.55)] transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white sm:self-center">
@@ -123,7 +123,7 @@ export function Footer() {
         </div>
         <div className="border-t border-white/10 py-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-col gap-2 text-xs text-white/35 sm:flex-row sm:items-center sm:gap-4"><span>&copy; {new Date().getFullYear()} Soshanguve Engineering School Of Specialisation.</span><span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" /><span>All rights reserved.</span></div>
+            <div className="flex flex-col gap-2 text-xs text-white/35 sm:flex-row sm:items-center sm:gap-4"><span>&copy; {new Date().getFullYear()} Soshanguve Engineering School of Specialisation.</span><span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" /><span>All rights reserved.</span></div>
             <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs"><Link href="/privacy" className="text-white/35 transition-colors hover:text-white/70">Privacy Policy</Link><Link href="/terms" className="text-white/35 transition-colors hover:text-white/70">Terms of Service</Link></div>
           </div>
         </div>
