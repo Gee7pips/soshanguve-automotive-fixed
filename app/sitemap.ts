@@ -1,12 +1,27 @@
 import type { MetadataRoute } from "next"
 
-const baseUrl = "https://sosha-automotive.org"
+const baseUrl = "https://www.sosha-automotive.org"
+const routes: Array<{ path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }> = [
+  { path: "", priority: 1, changeFrequency: "weekly" },
+  { path: "/programs", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/documents", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/academics", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/apply", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/innovations", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/achievements", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/about", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/activities", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/partnerships", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/support-us", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/about", "/academics", "/achievements", "/activities", "/partnerships", "/programs", "/documents", "/support-us", "/contact", "/apply"]
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    changeFrequency: "weekly" as const,
-    priority: route === "" ? 1 : 0.8,
+  return routes.map(({ path, priority, changeFrequency }) => ({
+    url: `${baseUrl}${path}`,
+    changeFrequency,
+    priority,
   }))
 }

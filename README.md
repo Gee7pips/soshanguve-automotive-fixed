@@ -1,30 +1,23 @@
-# Soshanguve SOS 
+# Soshanguve Engineering School Of Specialisation
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Premium school website for Soshanguve Engineering School Of Specialisation.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/kadiakakabelo4-gmailcoms-projects/v0-brand-heroes-dehbxtdx91e)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/DehBXTdX91e)
+## Preview
 
-## Overview
+The `preview/school-site-final` branch is the final validation branch for the Vercel preview deployment. It contains the verified 2025 matric achievement, premium Programs experience, production-ready footer, and globally mounted floating WhatsApp, phone and Gmail contact controls.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Contact architecture
+
+Visitor enquiries open WhatsApp or Gmail with prefilled details for the visitor to send manually. No database, Supabase, Resend, administration dashboard, or automatic message submission is used.
+
+## Production hygiene
+
+The public contact details retain both school email inboxes. Admissions dates are linked to the current Gauteng Department of Education guidance. Legacy `/learn-more` and `/staff` routes receive permanent, relevant redirects. Privacy Policy and Terms of Use pages are included, and the sitemap contains live canonical routes only.
+
+## Google Search preservation
+
+The canonical host remains `https://www.sosha-automotive.org`. Existing public page paths are retained wherever possible. See [SEO_MIGRATION_CHECKLIST.md](./SEO_MIGRATION_CHECKLIST.md) for the old-route map, Search Console safeguards, launch tests and monitoring requirements. Do not change DNS, Vercel custom-domain assignments, or the live project until the checklist's launch gates are met.
 
 ## Deployment
 
-Your project is live at:
-
-**[https://vercel.com/kadiakakabelo4-gmailcoms-projects/v0-brand-heroes-dehbxtdx91e](https://vercel.com/kadiakakabelo4-gmailcoms-projects/v0-brand-heroes-dehbxtdx91e)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/DehBXTdX91e](https://v0.dev/chat/projects/DehBXTdX91e)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Use the preview branch for QA. Production release requires review and merge of PR #9; the custom domain cutover is a separate, later action and is not part of this branch update.

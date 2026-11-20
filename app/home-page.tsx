@@ -14,122 +14,86 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { VideoSection } from "@/components/video-section"
 import { LiveTicker } from "@/components/live-ticker"
-import { motion } from "framer-motion"
+import { InnovationPulse } from "@/components/innovation-pulse"
+import { Highlights2026 } from "@/components/highlights-2026"
+import { Impact2026 } from "@/components/impact-2026"
+import { motion, useReducedMotion } from "framer-motion"
+import { ArrowUpRight, CheckCircle2, Compass, Cpu, GraduationCap, Wrench } from "lucide-react"
+import { CinematicSection, SectionDivider } from "@/components/section-motion"
 
 const stats = [
   { label: "Matric Pass Rate", value: "100%", description: "2025 Results" },
-  { label: "Student Capacity", value: "700+", description: "Annual Enrollment" },
-  { label: "Specialized Programs", value: "9", description: "Technical Fields" },
-  { label: "Years of Excellence", value: "5+", description: "Since Establishment" },
+  { label: "Student Capacity", value: "700+", description: "Learners" },
+  { label: "Specialized Programs", value: "Technical", description: "Engineering & Technology" },
+  { label: "Years of Excellence", value: "7+", description: "Since 2019" },
+]
+
+const pillars = [
+  { icon: Wrench, label: "Hands-on", text: "Practical technical learning" },
+  { icon: Cpu, label: "Innovation", text: "Build. Test. Improve." },
+  { icon: GraduationCap, label: "Excellence", text: "Academic & career readiness" },
+  { icon: Compass, label: "Purpose", text: "Skills for South Africa's future" },
 ]
 
 export default function HomePageClient() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <div className="bg-white">
       <Hero />
-      <LiveTicker />
-      <MatricResultsSection />
-      <WelcomeSection />
-      <PrincipalWelcome />
-      <InnovationSection />
-      <AirplaneInnovation />
-      <SubjectOfferings />
-      <CampusLife />
-
-      {/* About / Stats Section */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid gap-16 lg:gap-24 lg:grid-cols-2 items-center">
-
-            {/* Left: Editorial text block */}
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="space-y-6"
-            >
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3">
-                <span className="h-px w-8 bg-school-gold" />
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-school-gold">
-                  Our Story
-                </span>
-              </div>
-
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-school-navy leading-tight text-balance">
-                Where Township Ambition Meets World-Class Engineering
-              </h2>
-
-              <div className="w-12 h-0.5 bg-school-gold" />
-
-              <p className="text-gray-600 leading-relaxed text-lg">
-                Born from a decades-long legacy in Tshwane, Soshanguve Automotive SoS was formally designated as one
-                of Gauteng&apos;s 39 specialisation schools in 2019 — a mandate to produce the technical talent that
-                South Africa&apos;s economy demands.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Under the visionary stewardship of Principal Mr. TA Mashiane, we have built an institution where
-                excellence is non-negotiable and opportunity knows no postal code. Our non-fee-paying model opens
-                world-class technical education to over 700 learners from Soshanguve and surrounding communities —
-                culminating in a historic 100% matric pass rate for the Class of 2025.
-              </p>
-              <div className="flex gap-4 pt-2">
-                <Button
-                  asChild
-                  className="bg-school-navy hover:bg-school-blue text-white rounded-full px-7 shadow-md transition-all duration-300 hover:scale-105"
-                >
-                  <Link href="/about">Learn More</Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="rounded-full px-7 border-school-navy/30 text-school-navy hover:bg-school-navy hover:text-white hover:border-school-navy transition-all duration-300 hover:scale-105 bg-transparent"
-                >
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
-              </div>
+      <SectionDivider tone="dark" label="Discover" />
+      <CinematicSection delay={0.02}><LiveTicker /></CinematicSection>
+      <SectionDivider label="Achievement" />
+      <CinematicSection delay={0.04}><MatricResultsSection /></CinematicSection>
+      <SectionDivider tone="dark" label="Our Mission" />
+      <CinematicSection delay={0.02}><WelcomeSection /></CinematicSection>
+      <SectionDivider tone="dark" label="Innovation Pulse" />
+      <CinematicSection delay={0.03}><InnovationPulse /></CinematicSection>
+      <SectionDivider label="Leadership" />
+      <CinematicSection delay={0.02}><PrincipalWelcome /></CinematicSection>
+      <SectionDivider tone="dark" label="Innovation" />
+      <CinematicSection delay={0.02}><InnovationSection /></CinematicSection>
+      <SectionDivider tone="dark" label="Aerospace" />
+      <CinematicSection delay={0.04}><AirplaneInnovation /></CinematicSection>
+      <SectionDivider label="Learning Pathways" />
+      <CinematicSection delay={0.02}><SubjectOfferings /></CinematicSection>
+      <SectionDivider tone="dark" label="Campus Life" />
+      <CinematicSection delay={0.02}><CampusLife /></CinematicSection>
+      <SectionDivider label="Our Story" />
+      <CinematicSection delay={0.02}>
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(30,58,138,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,.05)_1px,transparent_1px)] [background-size:64px_64px]" />
+        <div className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-school-gold/10 blur-3xl" />
+        <div className="container relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-14 flex flex-col gap-5 border-b border-school-navy/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="mb-4 flex items-center gap-3"><span className="h-px w-10 bg-school-gold" /><span className="text-[11px] font-bold uppercase tracking-[0.24em] text-school-gold">The SOS Difference</span></div>
+              <h2 className="max-w-3xl font-serif text-4xl font-bold leading-[1.08] text-school-navy sm:text-5xl lg:text-6xl">Where Township Ambition Meets World-Class Engineering</h2>
+            </div>
+            <div className="hidden rounded-full border border-school-navy/10 bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-school-navy/55 shadow-sm sm:block">Tshwane · Gauteng · South Africa</div>
+          </div>
+          <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+            <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.7 }} className="space-y-6">
+              <p className="max-w-2xl text-lg font-medium leading-relaxed text-school-navy/75">With a long educational legacy in Tshwane, Soshanguve Engineering School Of Specialisation was formally relaunched as an engineering School of Specialisation in 2019, with a focus on automotive and technical education.</p>
+              <p className="max-w-2xl text-base leading-8 text-slate-600">The school provides technical and engineering education for learners from Soshanguve and surrounding communities. Its practical focus includes automotive, mechanical, civil and electrical technology, supported by mathematics, sciences and project-based learning.</p>
+              <div className="flex flex-wrap gap-3 pt-2"><Button asChild className="group rounded-full bg-school-navy px-7 text-white shadow-lg shadow-school-navy/15 transition-all duration-300 hover:-translate-y-1 hover:bg-school-blue"><Link href="/about" className="flex items-center gap-2">Learn More <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link></Button><Button asChild variant="outline" className="rounded-full border-school-navy/20 px-7 text-school-navy transition-all duration-300 hover:-translate-y-1 hover:bg-school-navy hover:text-white"><Link href="/contact">Contact Us</Link></Button></div>
+              <div className="grid max-w-2xl grid-cols-2 gap-3 pt-3 sm:grid-cols-4">{pillars.map((pillar, index) => { const Icon = pillar.icon; return <motion.div key={pillar.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.06 }} className="rounded-2xl border border-school-navy/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-lg"><Icon className="h-5 w-5 text-school-gold" /><p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-school-navy">{pillar.label}</p><p className="mt-1 text-[11px] leading-5 text-slate-500">{pillar.text}</p></motion.div> })}</div>
             </motion.div>
-
-            {/* Right: Stat cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Gold left accent */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-school-gold rounded-l-2xl" />
-
-                  <p className="font-serif text-4xl font-bold text-school-navy leading-none mb-2">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm font-semibold text-gray-800 mb-1">{stat.label}</p>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider">{stat.description}</p>
-
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 bg-school-navy/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                </motion.div>
-              ))}
-            </motion.div>
-
+            <motion.div initial={{ opacity: 0, x: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.1 }} className="grid grid-cols-2 gap-4">{stats.map((stat, index) => <motion.div key={stat.label} initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.08 }} className="group relative overflow-hidden rounded-2xl border border-school-navy/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:shadow-xl"><div className="absolute inset-x-0 top-0 h-1 bg-school-gold/80" /><div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-school-gold/10 blur-2xl transition-transform duration-500 group-hover:scale-150" /><p className="relative font-serif text-4xl font-bold leading-none text-school-navy sm:text-5xl">{stat.value}</p><p className="relative mt-3 text-sm font-bold text-school-navy">{stat.label}</p><p className="relative mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">{stat.description}</p><CheckCircle2 className="absolute bottom-5 right-5 h-4 w-4 text-school-gold/60" /></motion.div>)}</motion.div>
           </div>
         </div>
       </section>
-
-      <AchievementsSection />
-      <NewsAndUpdates2026 />
-      <VideoSection />
+      </CinematicSection>
+      <SectionDivider tone="dark" label="Recognition" />
+      <CinematicSection delay={0.02}><AchievementsSection /></CinematicSection>
+      <SectionDivider tone="dark" label="2026 / Field Notes" />
+      <CinematicSection delay={0.02}><Highlights2026 /></CinematicSection>
+      <SectionDivider label="2026 / Impact" />
+      <CinematicSection delay={0.02}><Impact2026 /></CinematicSection>
+      <SectionDivider label="Latest" />
+      <CinematicSection delay={0.02}><NewsAndUpdates2026 /></CinematicSection>
+      <SectionDivider tone="dark" label="Inside SOS" />
+      <CinematicSection delay={0.02}><VideoSection /></CinematicSection>
     </div>
   )
 }

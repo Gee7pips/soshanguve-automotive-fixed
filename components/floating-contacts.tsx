@@ -1,33 +1,53 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, Phone, Mail, X } from "lucide-react"
+import { useEffect, useState } from "react"
+import { motion, useReducedMotion } from "framer-motion"
+import { MessageCircle, Phone, Mail } from "lucide-react"
 import { openEmail, openWhatsApp } from "@/lib/contact-links"
 
-const WA_DEFAULT_MSG = "Hello Soshanguve Automotive SoS, I would like to find out more about the school."
-const contacts = [
-  { id: "whatsapp", label: "WhatsApp", icon: MessageCircle, bg: "bg-[#25D366]", text: "text-white", action: () => openWhatsApp(WA_DEFAULT_MSG) },
-  { id: "phone", label: "Call Us", icon: Phone, bg: "bg-school-navy", text: "text-white", href: "tel:0127972118" },
-  { id: "email", label: "Email Us", icon: Mail, bg: "bg-school-gold", text: "text-school-navy", action: () => openEmail("General Enquiry", "Hello Soshanguve Automotive SoS,\n\nI would like to find out more about the school.") },
-]
+const WA_DEFAULT_MSG = "Hello Soshanguve Engineering School Of Specialisation, I would like to find out more about the school."
 
 export function FloatingContacts() {
-  const [open, setOpen] = useState(false)
+  const [footerVisible, setFooterVisible] = useState(false)
+  const reduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    const footer = document.querySelector("[data-site-footer]")
+    if (!footer || !("IntersectionObserver" in window)) return
+    const observer = new IntersectionObserver(([entry]) => setFooterVisible(entry.isIntersecting), {
+      threshold: 0.01,
+      rootMargin: "0px 0px -56px 0px",
+    })
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [])
+
+  const actionClass = "group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/75 shadow-[0_10px_26px_-12px_rgba(4,18,38,.42)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-school-gold focus-visible:ring-offset-2 sm:h-12 sm:w-12"
+
   return (
-    <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
-      <AnimatePresence>
-        {open && contacts.map((c, i) => {
-          const Icon = c.icon
-          return c.action ? (
-            <motion.button key={c.id} type="button" onClick={c.action} aria-label={c.label} initial={{ opacity: 0, y: 16, scale: 0.85 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16, scale: 0.85 }} transition={{ duration: 0.22, delay: i * 0.06 }} className={`group flex items-center gap-3 rounded-full shadow-lg px-4 py-2.5 ${c.bg} ${c.text} font-semibold text-sm transition-transform hover:scale-105 active:scale-95`}><Icon className="h-5 w-5 shrink-0" /><span className="whitespace-nowrap">{c.label}</span></motion.button>
-          ) : (
-            <motion.a key={c.id} href={c.href} aria-label={c.label} initial={{ opacity: 0, y: 16, scale: 0.85 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16, scale: 0.85 }} transition={{ duration: 0.22, delay: i * 0.06 }} className={`group flex items-center gap-3 rounded-full shadow-lg px-4 py-2.5 ${c.bg} ${c.text} font-semibold text-sm transition-transform hover:scale-105 active:scale-95`}><Icon className="h-5 w-5 shrink-0" /><span className="whitespace-nowrap">{c.label}</span></motion.a>
-          )
-        })}
-      </AnimatePresence>
-      {!open && <motion.div className="relative" initial={false}><span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40" /><motion.button onClick={() => setOpen(true)} aria-label="Open contact options" whileTap={{ scale: 0.9 }} className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-2xl text-white"><MessageCircle className="h-7 w-7" /></motion.button></motion.div>}
-      {open && <motion.button initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} onClick={() => setOpen(false)} aria-label="Close contact options" className="flex h-14 w-14 items-center justify-center rounded-full bg-gray-800 shadow-2xl text-white hover:bg-gray-700 transition-colors"><X className="h-6 w-6" /></motion.button>}
-    </div>
+    <motion.div
+      initial={false}
+      animate={{ opacity: footerVisible ? 0 : 1, y: footerVisible ? 16 : 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.22, 1, 0.36, 1] }}
+      aria-hidden={footerVisible}
+      style={{ pointerEvents: footerVisible ? "none" : "auto" }}
+      className="pointer-events-none fixed bottom-4 right-3 z-[70] safe-bottom sm:bottom-6 sm:right-6"
+    >
+      <div className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/70 bg-white/85 p-1.5 shadow-[0_18px_50px_-20px_rgba(5,20,44,.38)] backdrop-blur-2xl sm:gap-2 sm:p-2" aria-label="Contact the school">
+        <span className="hidden pl-3 pr-1 font-technical text-[8px] font-bold uppercase tracking-[.16em] text-slate-400 xl:block">Connect</span>
+        <a href="tel:0127972118" aria-label="Call Soshanguve Engineering School Of Specialisation" title="Call the school" className={actionClass + " bg-school-navy text-white"}>
+          <Phone className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+          <span className="pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 rounded-lg border border-white/10 bg-school-navy px-2.5 py-1.5 text-[9px] font-bold text-white opacity-0 shadow-xl transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Call</span>
+        </a>
+        <button type="button" onClick={() => openEmail("General Enquiry", "Hello Soshanguve Engineering School Of Specialisation,\n\nI would like to find out more about the school.")} aria-label="Email Soshanguve Engineering School Of Specialisation" title="Email the school" className={actionClass + " bg-gradient-to-br from-[#f5d979] to-school-gold text-school-navy"}>
+          <Mail className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+          <span className="pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 rounded-lg border border-white/10 bg-school-navy px-2.5 py-1.5 text-[9px] font-bold text-white opacity-0 shadow-xl transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">Email</span>
+        </button>
+        <button type="button" onClick={() => openWhatsApp(WA_DEFAULT_MSG)} aria-label="WhatsApp Soshanguve Engineering School Of Specialisation" title="WhatsApp the school" className={actionClass + " bg-[#1fbf69] text-white shadow-[0_10px_28px_-10px_rgba(31,191,105,.5)]"}>
+          <MessageCircle className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
+          <span className="pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 rounded-lg border border-white/10 bg-school-navy px-2.5 py-1.5 text-[9px] font-bold text-white opacity-0 shadow-xl transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">WhatsApp</span>
+        </button>
+      </div>
+    </motion.div>
   )
 }

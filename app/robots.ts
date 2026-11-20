@@ -5,8 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin", "/api"],
     },
-    sitemap: "https://sosha-automotive.org/sitemap.xml",
+    sitemap: "https://www.sosha-automotive.org/sitemap.xml",
   }
 }

@@ -24,6 +24,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { ElectricMotorIllustration } from "@/components/motor-engineering-illustrations"
 
 /* ─────────────────────────────────────────────
    DATA
@@ -181,7 +182,7 @@ export function SubjectOfferings() {
   }
 
   return (
-    <section className="py-24 lg:py-36 bg-school-navy overflow-hidden">
+    <section className="homepage-section section-programmes py-24 lg:py-36 bg-school-navy overflow-hidden">
       <div className="container max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* ── Section Header ── */}
@@ -427,6 +428,22 @@ export function SubjectOfferings() {
               )
             })}
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.65 }}
+          className="motor-art-panel motor-art-panel-dark mt-12 grid items-center gap-6 lg:grid-cols-[.82fr_1.18fr]"
+        >
+          <div className="motor-art-copy">
+            <span>E-MOBILITY / STUDY 03</span>
+            <h3>Inside the electric drive.</h3>
+            <p>A cutaway view of the stator and rotor — the magnetic architecture that turns electrical energy into mechanical rotation.</p>
+            <div className="motor-art-readout"><span>STATOR / FIELD</span><i /><span>ROTOR / OUTPUT</span></div>
+          </div>
+          <ElectricMotorIllustration className="motor-art-svg" />
         </motion.div>
 
       </div>

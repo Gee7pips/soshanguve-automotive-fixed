@@ -1,206 +1,131 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Mail, Phone, MapPin, ArrowUpRight, ChevronRight } from "lucide-react"
+import { ArrowUpRight, ChevronRight, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
+import { SCHOOL_EMAIL, DEPARTMENT_EMAIL } from "@/lib/contact-links"
 
 const quickLinks = [
-  { name: "About Us", href: "/about" },
-  { name: "Programs", href: "/programs" },
+  { name: "About the school", href: "/about" },
+  { name: "Academic life", href: "/academics" },
   { name: "Achievements", href: "/achievements" },
   { name: "Activities", href: "/activities" },
-  { name: "Staff", href: "/staff" },
   { name: "Contact", href: "/contact" },
 ]
 
 const resourceLinks = [
-  { name: "Apply Now", href: "/apply" },
-  { name: "Documents", href: "/documents" },
+  { name: "Admissions & enquiries", href: "/apply" },
+  { name: "Programmes", href: "/programs" },
+  { name: "Innovation hub", href: "/innovations" },
   { name: "Partnerships", href: "/partnerships" },
-  { name: "Support Us", href: "/support-us" },
+  { name: "School documents", href: "/documents" },
+  { name: "Support the school", href: "/support-us" },
 ]
 
 const socialLinks = [
-  {
-    name: "Facebook",
-    href: "https://www.facebook.com/SoshaTechnical/",
-    icon: Facebook,
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/technical_matrics?igsh=czMxOTZ1b20wbXNu",
-    icon: Instagram,
-  },
+  { name: "Facebook", href: "https://www.facebook.com/SoshaTechnical/", icon: Facebook },
+  { name: "Instagram", href: "https://www.instagram.com/technical_matrics?igsh=czMxOTZ1b20wbXNu", icon: Instagram },
 ]
 
 const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "700241314@gdeschools.gov.za",
-    href: "mailto:700241314@gdeschools.gov.za",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "012 797 2118",
-    href: "tel:0127972118",
-  },
-  {
-    icon: MapPin,
-    label: "Address",
-    value: "1669 Block L, Soshanguve",
-    href: "https://maps.google.com/?q=1669+Block+L,+Soshanguve",
-  },
+  { icon: Mail, label: "School email", value: SCHOOL_EMAIL, href: "mailto:" + SCHOOL_EMAIL },
+  { icon: Mail, label: "GDE email", value: DEPARTMENT_EMAIL, href: "mailto:" + DEPARTMENT_EMAIL },
+  { icon: Phone, label: "Telephone", value: "012 797 2118", href: "tel:0127972118" },
+  { icon: MapPin, label: "Campus", value: "1669 Block L, Soshanguve", href: "https://maps.google.com/?q=1669+Block+L,+Soshanguve" },
 ]
 
 export function Footer() {
   return (
-    <footer className="relative bg-school-navy text-white overflow-hidden">
-      {/* Gold top accent bar */}
-      <div className="h-1 w-full bg-school-gold" />
+    <footer data-site-footer="true" className="site-footer relative isolate overflow-hidden bg-[#123654] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_84%_0%,rgba(143,190,220,.18),transparent_39%),radial-gradient(ellipse_at_4%_100%,rgba(212,175,55,.07),transparent_35%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[.12] [background-image:linear-gradient(rgba(255,255,255,.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.14)_1px,transparent_1px)] [background-size:46px_46px]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d8bd78]/70 to-transparent" />
 
-      {/* Subtle textured overlay */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[size:24px_24px] pointer-events-none" />
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-7 border-b border-white/15 py-12 sm:flex-row sm:items-end sm:justify-between lg:py-14">
+          <div className="max-w-3xl">
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[.22em] text-[#d9c580]">Soshanguve Engineering / School of Specialisation</p>
+            <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-[1.08] tracking-[-.055em] text-white sm:text-4xl lg:text-5xl">Learning for today. <span className="text-[#b9d7eb]">Engineering for tomorrow.</span></h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65">A school community focused on academic growth, technical curiosity, practical thinking and possibility.</p>
+          </div>
+          <Link href="/apply" className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-3 self-start rounded-full border border-white/20 bg-white/[.09] px-6 py-3 text-xs font-bold text-white shadow-[0_14px_40px_-26px_rgba(0,0,0,.55)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white hover:text-[#123654] sm:self-auto">
+            Admissions & enquiries <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
+        </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-        {/* Main footer grid */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 py-16 lg:py-20">
-
-          {/* Column 1: Brand */}
-          <div className="lg:col-span-1 space-y-6">
-            <Link href="/" className="flex items-center gap-4 group">
-              <div className="relative h-16 w-16 flex-shrink-0 rounded-xl bg-white/10 border border-school-gold/30 p-1.5 flex items-center justify-center transition-all duration-300 group-hover:border-school-gold/60">
-                <Image
-                  src="/images/soshanguve-logo.jpg"
-                  alt="Soshanguve Automotive S.O.S School Crest"
-                  width={56}
-                  height={56}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <p className="font-serif text-base font-700 leading-tight text-white">Soshanguve</p>
-                <p className="text-xs font-semibold tracking-widest uppercase text-school-gold">Automotive S.O.S</p>
-              </div>
+        <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-14">
+          <div className="lg:col-span-4">
+            <Link href="/" className="group inline-flex items-center gap-3.5">
+              <span className="relative flex h-[66px] w-[66px] shrink-0 items-center justify-center rounded-[1.15rem] border border-white/20 bg-white p-1.5 shadow-[0_12px_30px_-18px_rgba(0,0,0,.55)] transition-transform duration-300 group-hover:-translate-y-0.5">
+                <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School of Specialisation crest" width={54} height={54} className="h-full w-full rounded-lg object-contain" />
+              </span>
+              <span>
+                <span className="block font-display text-base font-semibold leading-tight tracking-[-.025em] text-white">Soshanguve Engineering</span>
+                <span className="mt-1 block font-sans text-[8px] font-bold uppercase tracking-[.17em] text-[#cbddea]">School of Specialisation</span>
+              </span>
             </Link>
-
-            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
-              Empowering future innovators through excellence in automotive and engineering education since 2019.
-            </p>
-
-            {/* Social links */}
-            <div className="flex items-center gap-3">
+            <p className="mt-5 max-w-sm text-sm leading-7 text-white/60">Empowering future innovators through excellence in engineering and technical education since 2019.</p>
+            <div className="mt-6 flex flex-wrap gap-2">
               {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="h-9 w-9 flex items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/60 hover:border-school-gold/60 hover:bg-school-gold/10 hover:text-school-gold transition-all duration-300"
-                >
-                  <social.icon className="h-4 w-4" />
+                <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[.06] text-white/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[.14] hover:text-white">
+                  <social.icon className="h-4 w-4 transition-transform group-hover:scale-110" />
                 </Link>
               ))}
             </div>
+            <p className="mt-6 font-mono text-[8px] font-semibold uppercase tracking-[.18em] text-white/35">Tshwane · Gauteng · South Africa</p>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-bold tracking-[0.18em] uppercase text-school-gold">Quick Links</h3>
+          <div className="lg:col-span-2">
+            <h3 className="mb-5 font-mono text-[9px] font-bold uppercase tracking-[.2em] text-[#d9c580]">Explore</h3>
             <ul className="space-y-2.5">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors duration-200"
-                  >
-                    <ChevronRight className="h-3.5 w-3.5 text-school-gold/50 group-hover:text-school-gold group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+              {quickLinks.map((link) => <li key={link.name}><Link href={link.href} className="group inline-flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white"><ChevronRight className="h-3 w-3 text-[#b6d2e6]/50 transition-transform group-hover:translate-x-0.5 group-hover:text-[#d9c580]" />{link.name}</Link></li>)}
             </ul>
           </div>
 
-          {/* Column 3: Resources */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-bold tracking-[0.18em] uppercase text-school-gold">Resources</h3>
+          <div className="lg:col-span-2">
+            <h3 className="mb-5 font-mono text-[9px] font-bold uppercase tracking-[.2em] text-[#d9c580]">Information</h3>
             <ul className="space-y-2.5">
-              {resourceLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors duration-200"
-                  >
-                    <ChevronRight className="h-3.5 w-3.5 text-school-gold/50 group-hover:text-school-gold group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA block */}
-            <div className="mt-6 pt-6 border-t border-white/10">
-              <p className="text-xs text-white/50 mb-3 leading-relaxed">
-                Help shape the future of technical education in South Africa.
-              </p>
-              <Link
-                href="/support-us"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-school-gold hover:text-white border border-school-gold/40 hover:border-school-gold hover:bg-school-gold px-4 py-2 rounded-full transition-all duration-300"
-              >
-                Become a Sponsor
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Column 4: Contact */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-bold tracking-[0.18em] uppercase text-school-gold">Contact Us</h3>
-            <ul className="space-y-4">
-              {contactInfo.map((contact) => (
-                <li key={contact.label}>
-                  <Link
-                    href={contact.href}
-                    target={contact.icon === MapPin ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="group flex items-start gap-3"
-                  >
-                    <span className="flex-shrink-0 h-8 w-8 rounded-lg bg-school-gold/10 border border-school-gold/20 flex items-center justify-center group-hover:bg-school-gold/20 group-hover:border-school-gold/40 transition-all duration-300">
-                      <contact.icon className="h-3.5 w-3.5 text-school-gold" />
-                    </span>
-                    <div>
-                      <p className="text-[10px] font-semibold tracking-widest uppercase text-white/30 mb-0.5">{contact.label}</p>
-                      <p className="text-sm text-white/70 group-hover:text-white transition-colors duration-200 leading-snug">
-                        {contact.value}
-                      </p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
+              {resourceLinks.map((link) => <li key={link.name}><Link href={link.href} className="group inline-flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white"><ChevronRight className="h-3 w-3 text-[#b6d2e6]/50 transition-transform group-hover:translate-x-0.5 group-hover:text-[#d9c580]" />{link.name}</Link></li>)}
             </ul>
           </div>
-        </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/10 py-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-xs text-white/35">
-              &copy; {new Date().getFullYear()} Soshanguve Engineering School of Specialisation. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <Link href="/privacy" className="text-xs text-white/35 hover:text-white/70 transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <span className="text-white/15">|</span>
-              <Link href="/terms" className="text-xs text-white/35 hover:text-white/70 transition-colors duration-200">
-                Terms of Service
-              </Link>
+          <div className="lg:col-span-4">
+            <h3 className="mb-5 font-mono text-[9px] font-bold uppercase tracking-[.2em] text-[#d9c580]">Connect with the school</h3>
+            <div className="overflow-hidden rounded-[1.35rem] border border-white/15 bg-white/[.055] shadow-[0_20px_55px_-38px_rgba(0,0,0,.55)] backdrop-blur-sm">
+              <div className="divide-y divide-white/10">
+                {contactInfo.map((contact) => (
+                  <Link key={contact.label} href={contact.href} target={contact.icon === MapPin ? "_blank" : undefined} rel={contact.icon === MapPin ? "noopener noreferrer" : undefined} className="group flex items-center gap-3 px-4 py-3.5 transition-colors hover:bg-white/[.07]">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[.07] text-[#c5dbea]"><contact.icon className="h-4 w-4" /></span>
+                    <span className="min-w-0 flex-1"><span className="block font-mono text-[8px] font-bold uppercase tracking-[.15em] text-white/40">{contact.label}</span><span className="mt-1 block truncate text-xs text-white/75 transition-colors group-hover:text-white">{contact.value}</span></span>
+                    <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-white/30 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#d9c580]" />
+                  </Link>
+                ))}
+              </div>
+              <div className="border-t border-white/10 p-3">
+                <Link href="/contact" className="group flex items-center justify-between rounded-lg bg-white/[.09] px-3.5 py-3 text-[10px] font-bold text-white/80 transition-colors hover:bg-white hover:text-[#123654]">
+                  <span>Open contact page</span><ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
+        <div className="flex flex-col gap-4 border-t border-white/15 py-6 text-[10px] sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-white/40">
+            <span>© {new Date().getFullYear()} Soshanguve Engineering School of Specialisation.</span>
+            <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:block" />
+            <span>All rights reserved.</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link href="/privacy" className="text-white/45 transition-colors hover:text-white/85">Privacy</Link>
+            <Link href="/terms" className="text-white/45 transition-colors hover:text-white/85">Terms</Link>
+            <span className="hidden h-3 w-px bg-white/15 sm:block" />
+            <span className="text-white/35">Designed & developed by</span>
+            <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 font-semibold text-[#c4dcec]/75 transition-colors hover:text-white" aria-label="Designed and developed by Carter Digitals — visit website">
+              Carter Digitals <ArrowUpRight className="h-3 w-3 text-[#d9c580]/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   )

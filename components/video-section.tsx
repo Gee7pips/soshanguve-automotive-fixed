@@ -30,7 +30,7 @@ export function VideoSection() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="homepage-section section-video py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-gray-900/[0.02] -z-10" />
 

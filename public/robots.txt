@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sosha-automotive.org/sitemap.xml
+Sitemap: https://www.sosha-automotive.org/sitemap.xml
