@@ -176,6 +176,20 @@ export default function AboutPage() {
                     <p className="mt-1 text-xs font-semibold text-slate-500">Secondary education</p>
                   </div>
                 </div>
+                <div className="rounded-2xl border border-school-navy/10 bg-white p-5 shadow-[0_16px_42px_-30px_rgba(7,22,48,.35)]">
+                  <div className="mb-3 flex items-center gap-2">
+                    <Award className="h-4 w-4 text-school-gold" />
+                    <p className="font-technical text-[9px] font-bold uppercase tracking-[0.18em] text-school-blue">Recognition and achievements</p>
+                  </div>
+                  <ul className="grid gap-2 sm:grid-cols-2">
+                    {recognitions.map((recognition) => (
+                      <li key={recognition} className="flex items-start gap-2 text-xs leading-5 text-slate-600">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-school-gold" />
+                        {recognition}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 <Link href="/achievements" className="group inline-flex items-center gap-2 pt-2 text-sm font-bold text-school-blue transition-colors hover:text-school-navy">
                   Discover our achievements <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
