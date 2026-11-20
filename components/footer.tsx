@@ -2,23 +2,24 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Mail, Phone, MapPin, ArrowUpRight, ChevronRight, ExternalLink, Sparkles, MessageCircle } from "lucide-react"
+import { ArrowUpRight, ChevronRight, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
 import { SCHOOL_EMAIL, DEPARTMENT_EMAIL } from "@/lib/contact-links"
 
 const quickLinks = [
-  { name: "About Us", href: "/about" },
-  { name: "Programs", href: "/programs" },
+  { name: "About the school", href: "/about" },
+  { name: "Academic life", href: "/academics" },
   { name: "Achievements", href: "/achievements" },
   { name: "Activities", href: "/activities" },
   { name: "Contact", href: "/contact" },
 ]
 
 const resourceLinks = [
-  { name: "Admissions & Enquiries", href: "/apply" },
+  { name: "Admissions & enquiries", href: "/apply" },
+  { name: "Programmes", href: "/programs" },
+  { name: "Innovation hub", href: "/innovations" },
   { name: "Partnerships", href: "/partnerships" },
-  { name: "Support Us", href: "/support-us" },
-  { name: "Innovations", href: "/innovations" },
-  { name: "School Documents", href: "/documents" },
+  { name: "School documents", href: "/documents" },
+  { name: "Support the school", href: "/support-us" },
 ]
 
 const socialLinks = [
@@ -27,104 +28,102 @@ const socialLinks = [
 ]
 
 const contactInfo = [
-  { icon: Mail, label: "School Gmail", value: SCHOOL_EMAIL, href: `mailto:${SCHOOL_EMAIL}` },
-  { icon: Mail, label: "GDE Email", value: DEPARTMENT_EMAIL, href: `mailto:${DEPARTMENT_EMAIL}` },
-  { icon: Phone, label: "Phone", value: "012 797 2118", href: "tel:0127972118" },
+  { icon: Mail, label: "School email", value: SCHOOL_EMAIL, href: "mailto:" + SCHOOL_EMAIL },
+  { icon: Mail, label: "GDE email", value: DEPARTMENT_EMAIL, href: "mailto:" + DEPARTMENT_EMAIL },
+  { icon: Phone, label: "Telephone", value: "012 797 2118", href: "tel:0127972118" },
   { icon: MapPin, label: "Campus", value: "1669 Block L, Soshanguve", href: "https://maps.google.com/?q=1669+Block+L,+Soshanguve" },
 ]
 
 export function Footer() {
   return (
-    <footer data-site-footer="true" className="site-footer relative isolate overflow-hidden bg-[#061326] text-white">
-      <div className="h-1.5 w-full bg-gradient-to-r from-school-gold via-white/80 to-school-gold" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.045] bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[size:24px_24px]" />
-      <div className="pointer-events-none absolute -right-40 top-10 h-[34rem] w-[34rem] rounded-full bg-school-blue/20 blur-3xl" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-white/[0.035] to-transparent" />
-      <div className="pointer-events-none absolute -left-40 bottom-0 h-[28rem] w-[28rem] rounded-full bg-school-gold/10 blur-3xl" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-[70%] -translate-x-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <footer data-site-footer="true" className="site-footer relative isolate overflow-hidden bg-[#123654] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_84%_0%,rgba(143,190,220,.18),transparent_39%),radial-gradient(ellipse_at_4%_100%,rgba(212,175,55,.07),transparent_35%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[.12] [background-image:linear-gradient(rgba(255,255,255,.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.14)_1px,transparent_1px)] [background-size:46px_46px]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d8bd78]/70 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="border-b border-white/10 py-14 lg:py-20">
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_auto] lg:items-end">
-            <div className="max-w-3xl">
-              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 backdrop-blur-sm">
-                <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-school-gold/60" /><span className="relative inline-flex h-2 w-2 rounded-full bg-school-gold" /></span>
-                <span className="text-[9px] font-bold uppercase tracking-[0.24em] text-white/65">SOS / Engineering Education</span>
-              </div>
-              <h2 className="premium-heading-dark font-serif text-4xl leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-6xl">Building the engineers <span className="text-school-gold">who will shape tomorrow.</span></h2>
-              <p className="subheading-premium-dark mt-6 max-w-2xl text-sm leading-7 sm:text-base">A school built around technical confidence, practical learning, innovation and the ambition to create real opportunity.</p>
-            </div>
-            <Link href="/apply" className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-school-gold/50 bg-school-gold px-7 py-4 text-sm font-bold text-school-navy shadow-[0_20px_50px_-18px_rgba(212,175,55,0.65)] transition-all duration-300 hover:-translate-y-1 hover:bg-white sm:w-auto">Start Your Journey <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
+        <div className="flex flex-col gap-7 border-b border-white/15 py-12 sm:flex-row sm:items-end sm:justify-between lg:py-14">
+          <div className="max-w-3xl">
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[.22em] text-[#d9c580]">Soshanguve Engineering / School of Specialisation</p>
+            <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-[1.08] tracking-[-.055em] text-white sm:text-4xl lg:text-5xl">Learning for today. <span className="text-[#b9d7eb]">Engineering for tomorrow.</span></h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65">A school community focused on academic growth, technical curiosity, practical thinking and possibility.</p>
           </div>
+          <Link href="/apply" className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-3 self-start rounded-full border border-white/20 bg-white/[.09] px-6 py-3 text-xs font-bold text-white shadow-[0_14px_40px_-26px_rgba(0,0,0,.55)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white hover:text-[#123654] sm:self-auto">
+            Admissions & enquiries <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
         </div>
 
-        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-16">
+        <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-14">
           <div className="lg:col-span-4">
-            <Link href="/" className="group inline-flex items-center gap-4">
-              <div className="relative flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-[1.35rem] border border-school-gold/35 bg-white/[0.08] p-1.5 shadow-[0_18px_45px_-20px_rgba(0,0,0,0.8)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-school-gold/70 group-hover:bg-white/[0.12]">
-                <div className="absolute inset-1 rounded-[1rem] border border-white/10" />
-                <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School of Specialisation crest" width={62} height={62} className="relative rounded-xl object-contain" />
-              </div>
-              <div>
-                <p className="font-serif text-lg font-semibold leading-tight text-white">Soshanguve Engineering</p>
-                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-school-gold">School of Specialisation</p>
-              </div>
+            <Link href="/" className="group inline-flex items-center gap-3.5">
+              <span className="relative flex h-[66px] w-[66px] shrink-0 items-center justify-center rounded-[1.15rem] border border-white/20 bg-white p-1.5 shadow-[0_12px_30px_-18px_rgba(0,0,0,.55)] transition-transform duration-300 group-hover:-translate-y-0.5">
+                <Image src="/images/soshanguve-logo.jpg" alt="Soshanguve Engineering School of Specialisation crest" width={54} height={54} className="h-full w-full rounded-lg object-contain" />
+              </span>
+              <span>
+                <span className="block font-display text-base font-semibold leading-tight tracking-[-.025em] text-white">Soshanguve Engineering</span>
+                <span className="mt-1 block font-sans text-[8px] font-bold uppercase tracking-[.17em] text-[#cbddea]">School of Specialisation</span>
+              </span>
             </Link>
-
-            <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">Empowering future innovators through excellence in engineering and technical education since 2019.</p>
-            <div className="mt-7 flex items-center gap-3 border-l-2 border-school-gold/70 pl-4">
-              <span className="font-technical text-[9px] font-bold uppercase tracking-[0.2em] text-school-gold/90">Our focus</span>
-              <span className="text-[11px] leading-5 text-white/45">Skills · Precision · Possibility</span>
+            <p className="mt-5 max-w-sm text-sm leading-7 text-white/60">Empowering future innovators through excellence in engineering and technical education since 2019.</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {socialLinks.map((social) => (
+                <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[.06] text-white/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[.14] hover:text-white">
+                  <social.icon className="h-4 w-4 transition-transform group-hover:scale-110" />
+                </Link>
+              ))}
             </div>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {socialLinks.map((social) => <Link key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className="group flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.045] text-white/50 transition-all duration-300 hover:-translate-y-1 hover:border-school-gold/50 hover:bg-school-gold/10 hover:text-school-gold"><social.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" /></Link>)}
-            </div>
-
-            <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3"><Sparkles className="h-4 w-4 text-school-gold" /><span className="text-[10px] font-bold uppercase tracking-[0.17em] text-white/45">Tshwane · Gauteng · South Africa</span></div>
+            <p className="mt-6 font-mono text-[8px] font-semibold uppercase tracking-[.18em] text-white/35">Tshwane · Gauteng · South Africa</p>
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-6 text-[10px] font-bold uppercase tracking-[0.24em] text-school-gold">Explore</h3>
-            <ul className="space-y-3.5">{quickLinks.map((link, index) => <li key={link.name}><Link href={link.href} className="group flex items-center justify-between gap-3 rounded-xl px-2 py-1.5 text-sm text-white/55 transition-all hover:bg-white/[0.035] hover:text-white"><span className="flex items-center gap-2"><span className="font-technical text-[9px] text-white/20">0{index + 1}</span>{link.name}</span><ChevronRight className="h-3.5 w-3.5 text-school-gold/35 transition-all group-hover:translate-x-0.5 group-hover:text-school-gold" /></Link></li>)}</ul>
+            <h3 className="mb-5 font-mono text-[9px] font-bold uppercase tracking-[.2em] text-[#d9c580]">Explore</h3>
+            <ul className="space-y-2.5">
+              {quickLinks.map((link) => <li key={link.name}><Link href={link.href} className="group inline-flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white"><ChevronRight className="h-3 w-3 text-[#b6d2e6]/50 transition-transform group-hover:translate-x-0.5 group-hover:text-[#d9c580]" />{link.name}</Link></li>)}
+            </ul>
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-6 text-[10px] font-bold uppercase tracking-[0.24em] text-school-gold">Resources</h3>
-            <ul className="space-y-3.5">{resourceLinks.map((link, index) => <li key={link.name}><Link href={link.href} className="group flex items-center justify-between gap-3 rounded-xl px-2 py-1.5 text-sm text-white/55 transition-all hover:bg-white/[0.035] hover:text-white"><span className="flex items-center gap-2"><span className="font-technical text-[9px] text-white/20">{String(index + 1).padStart(2, "0")}</span>{link.name}</span><ChevronRight className="h-3.5 w-3.5 text-school-gold/35 transition-all group-hover:translate-x-0.5 group-hover:text-school-gold" /></Link></li>)}</ul>
-            <Link href="/support-us" className="group mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-school-gold hover:text-white">Partner with us <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
+            <h3 className="mb-5 font-mono text-[9px] font-bold uppercase tracking-[.2em] text-[#d9c580]">Information</h3>
+            <ul className="space-y-2.5">
+              {resourceLinks.map((link) => <li key={link.name}><Link href={link.href} className="group inline-flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white"><ChevronRight className="h-3 w-3 text-[#b6d2e6]/50 transition-transform group-hover:translate-x-0.5 group-hover:text-[#d9c580]" />{link.name}</Link></li>)}
+            </ul>
           </div>
 
           <div className="lg:col-span-4">
-            <h3 className="mb-6 text-[10px] font-bold uppercase tracking-[0.24em] text-school-gold">Connect</h3>
-            <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] shadow-[0_24px_60px_-35px_rgba(0,0,0,0.9)] backdrop-blur-sm">
-              <div className="border-b border-white/10 bg-white/[0.025] px-5 py-4"><p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/35">School contact desk</p><p className="mt-1 text-sm font-semibold text-white/85">Speak with Soshanguve Engineering</p></div>
-              <div className="divide-y divide-white/10">{contactInfo.map((contact) => <Link key={contact.label} href={contact.href} target={contact.icon === MapPin ? "_blank" : undefined} rel={contact.icon === MapPin ? "noopener noreferrer" : undefined} className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-white/[0.045]"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-school-gold/15 bg-school-gold/[0.06] transition-all group-hover:border-school-gold/40 group-hover:bg-school-gold/10"><contact.icon className="h-4 w-4 text-school-gold" /></span><span className="min-w-0"><span className="block text-[9px] font-bold uppercase tracking-[0.17em] text-white/30">{contact.label}</span><span className="mt-1 block truncate text-sm text-white/65 transition-colors group-hover:text-white">{contact.value}</span></span><ArrowUpRight className="ml-auto h-3.5 w-3.5 shrink-0 text-white/20 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-school-gold" /></Link>)}</div>
-              <div className="border-t border-white/10 p-4"><Link href="/contact" className="group flex items-center justify-between rounded-xl bg-school-gold px-4 py-3 text-xs font-bold text-school-navy transition-all hover:bg-white"><span className="flex items-center gap-2"><MessageCircle className="h-4 w-4" /> Open Contact Page</span><ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link></div>
+            <h3 className="mb-5 font-mono text-[9px] font-bold uppercase tracking-[.2em] text-[#d9c580]">Connect with the school</h3>
+            <div className="overflow-hidden rounded-[1.35rem] border border-white/15 bg-white/[.055] shadow-[0_20px_55px_-38px_rgba(0,0,0,.55)] backdrop-blur-sm">
+              <div className="divide-y divide-white/10">
+                {contactInfo.map((contact) => (
+                  <Link key={contact.label} href={contact.href} target={contact.icon === MapPin ? "_blank" : undefined} rel={contact.icon === MapPin ? "noopener noreferrer" : undefined} className="group flex items-center gap-3 px-4 py-3.5 transition-colors hover:bg-white/[.07]">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[.07] text-[#c5dbea]"><contact.icon className="h-4 w-4" /></span>
+                    <span className="min-w-0 flex-1"><span className="block font-mono text-[8px] font-bold uppercase tracking-[.15em] text-white/40">{contact.label}</span><span className="mt-1 block truncate text-xs text-white/75 transition-colors group-hover:text-white">{contact.value}</span></span>
+                    <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-white/30 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#d9c580]" />
+                  </Link>
+                ))}
+              </div>
+              <div className="border-t border-white/10 p-3">
+                <Link href="/contact" className="group flex items-center justify-between rounded-lg bg-white/[.09] px-3.5 py-3 text-[10px] font-bold text-white/80 transition-colors hover:bg-white hover:text-[#123654]">
+                  <span>Open contact page</span><ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 py-9">
-          <div className="relative overflow-hidden rounded-[1.65rem] border border-school-gold/25 bg-gradient-to-r from-white/[0.075] via-white/[0.035] to-school-gold/[0.08] p-6 shadow-[0_24px_65px_-42px_rgba(0,0,0,.85)] sm:p-8">
-            <div className="pointer-events-none absolute -right-10 -top-20 h-52 w-52 rounded-full bg-school-gold/10 blur-3xl" />
-            <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="font-technical text-[9px] font-bold uppercase tracking-[.22em] text-school-gold">Digital experience / website partner</p>
-                <p className="mt-2 text-xs leading-6 text-white/55">Designed and developed by</p>
-                <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" className="group mt-1 inline-flex items-center gap-2 font-display text-3xl font-semibold tracking-[-.04em] text-white transition-colors hover:text-school-gold sm:text-4xl" aria-label="Designed and developed by Carter Digitals — visit Carter Digitals website">Carter Digitals <ExternalLink className="h-4 w-4 text-school-gold transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
-                <p className="mt-2 text-[10px] leading-5 text-white/35">Digital design, development and technology partner.</p>
-              </div>
-              <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit Carter Digitals website" className="group inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full border border-school-gold/45 bg-school-gold px-6 py-3 text-xs font-extrabold uppercase tracking-[.12em] text-school-navy shadow-[0_14px_36px_-16px_rgba(212,175,55,.55)] transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white sm:self-center">
-                Visit Carter Digitals <ExternalLink className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
-            </div>
+        <div className="flex flex-col gap-4 border-t border-white/15 py-6 text-[10px] sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-white/40">
+            <span>© {new Date().getFullYear()} Soshanguve Engineering School of Specialisation.</span>
+            <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:block" />
+            <span>All rights reserved.</span>
           </div>
-        </div>
-        <div className="border-t border-white/10 py-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-col gap-2 text-xs text-white/35 sm:flex-row sm:items-center sm:gap-4"><span>&copy; {new Date().getFullYear()} Soshanguve Engineering School of Specialisation.</span><span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" /><span>All rights reserved.</span></div>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs"><Link href="/privacy" className="text-white/35 transition-colors hover:text-white/70">Privacy Policy</Link><Link href="/terms" className="text-white/35 transition-colors hover:text-white/70">Terms of Service</Link></div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link href="/privacy" className="text-white/45 transition-colors hover:text-white/85">Privacy</Link>
+            <Link href="/terms" className="text-white/45 transition-colors hover:text-white/85">Terms</Link>
+            <span className="hidden h-3 w-px bg-white/15 sm:block" />
+            <span className="text-white/35">Designed & developed by</span>
+            <Link href="https://carterdigitals.co.za/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 font-semibold text-[#c4dcec]/75 transition-colors hover:text-white" aria-label="Designed and developed by Carter Digitals — visit website">
+              Carter Digitals <ArrowUpRight className="h-3 w-3 text-[#d9c580]/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </div>
